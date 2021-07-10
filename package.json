@@ -1,16 +1,29 @@
 {
-  "version": "0.0.0",
+  "name": "gitart-vue-dialog",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
+  "files": ["dist"],
+  "main": "./dist/gitart-vue-dialog.umd.js",
+  "module": "./dist/gitart-vue-dialog.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/gitart-vue-dialog.es.js",
+      "require": "./dist/gitart-vue-dialog.umd.js"
+    }
+  },
   "dependencies": {
+    "body-scroll-lock": "^4.0.0-beta.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@types/node": "^16.3.1",
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.0.5",
+    "sass": "^1.35.2",
     "typescript": "^4.3.2",
     "vite": "^2.4.0",
     "vue-tsc": "^0.0.24"
