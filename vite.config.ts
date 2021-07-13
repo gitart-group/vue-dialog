@@ -17,8 +17,8 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/gitart-dialog/index.ts'),
-      name: 'gitart-dialog'
+      entry: path.resolve(__dirname, 'src/gitart-vue-dialog/index.ts'),
+      name: 'gitart-vue-dialog'
     },
     rollupOptions: {
       external: ['vue'],

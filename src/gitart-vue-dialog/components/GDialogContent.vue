@@ -9,7 +9,7 @@ import { computed, defineComponent } from 'vue';
 import { useWidthStyle } from '../composable/widthStyle';
 
 export default defineComponent({
-  name: 'QDialogContent',
+  name: 'GDialogContent',
   props: {
     maxWidth: {
       type: [String, Number],

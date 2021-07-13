@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <QDialog v-model="dialogState" max-width="400">
+    <GDialog v-model="dialogState" max-width="400">
       <div class="text-box">
         <div>
           Header
@@ -15,9 +15,9 @@
           Footer
         </div>
       </div>
-    </QDialog>
+    </GDialog>
 
-    <QDialog v-model="dialogState2" max-width="400" scrollable>
+    <GDialog v-model="dialogState2" max-width="400" scrollable>
       <div class="text-box scrollable">
         <div>
           Header
@@ -34,7 +34,7 @@
           Footer
         </div>
       </div>
-    </QDialog>
+    </GDialog>
 
     <button @click="onClick">Simple</button>
     <hr />
@@ -47,12 +47,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import QLib from '@/gitart-dialog/index'
+import QLib from '@/gitart-vue-dialog/index'
 
 export default defineComponent({
   name: 'App',
    components: {
-    QDialog: QLib.QDialog
+    GDialog: QLib.GDialog
   },
 
   data: () => ({

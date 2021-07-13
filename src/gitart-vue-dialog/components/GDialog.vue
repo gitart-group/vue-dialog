@@ -1,7 +1,7 @@
 <template>
   <template v-if="activatedOnce">
     <Teleport to="body">
-      <QDialogOverlay
+      <GDialogOverlay
         @click="onClickOutside"
         :value="isActive"
         :activeZIndex="activeZIndex"
@@ -9,13 +9,13 @@
 
       <Transition name="dialog-transition">
         <div ref="frame" v-show="isActive" :class="classes" :style="styles">
-          <QDialogContent
+          <GDialogContent
             :width="width"
             :maxWidth="maxWidth"
             :scrollable="scrollable"
           >
             <slot />
-          </QDialogContent>
+          </GDialogContent>
         </div>
       </Transition>
     </Teleport>
@@ -28,14 +28,14 @@ import { defineComponent, computed, ref } from 'vue';
 import { useStackable } from '../composable/stackable';
 import { useLazyActivation } from '../composable/lazyActivation';
 
-import QDialogOverlay from './QDialogOverlay.vue';
-import QDialogContent from './QDialogContent.vue';
+import GDialogOverlay from './GDialogOverlay.vue';
+import GDialogContent from './GDialogContent.vue';
 
 export default defineComponent({
-  name: 'QDialog',
+  name: 'GDialog',
   components: {
-    QDialogOverlay,
-    QDialogContent,
+    GDialogOverlay,
+    GDialogContent,
   },
 
   props: {
