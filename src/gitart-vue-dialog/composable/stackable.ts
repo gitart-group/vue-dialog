@@ -35,11 +35,10 @@ export const useStackable: (param: IUseStackableParams) => {activeZIndex: Comput
     const index = isActive.value ? getMaxZIndex() + 2 : getZIndex(content.value);
 
     if (index === null) {
-      // return null;
       return 0
     }
 
-    return parseInt(index);
+    return index;
   });
 
   return {
