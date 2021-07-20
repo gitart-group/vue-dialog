@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useWidthStyle } from '../composable/widthStyle';
+import { computed, defineComponent } from 'vue'
+import { useWidthStyle } from '../composable/widthStyle'
 
 export default defineComponent({
   name: 'GDialogContent',
@@ -28,20 +28,20 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { widthStyles: styles } = useWidthStyle(props);
+    const { widthStyles: styles } = useWidthStyle(props)
     const classes = computed(() => [
       'q-dialog-content',
       {
         'q-dialog-content--scrollable': props.scrollable,
       },
-    ]);
+    ])
 
     return {
       styles,
       classes,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

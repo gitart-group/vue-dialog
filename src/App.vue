@@ -17,7 +17,11 @@
       </div>
     </GDialog>
 
-    <GDialog v-model="dialogState2" max-width="400" scrollable>
+    <GDialog
+      v-model="dialogState2"
+      max-width="400"
+      scrollable
+    >
       <div class="text-box scrollable">
         <div>
           Header
@@ -36,11 +40,17 @@
       </div>
     </GDialog>
 
-    <button @click="onClick">Simple</button>
-    <hr />
-    <button @click="dialogState2 = true">Scrollable</button>
-    <hr />
-    <button @click="onOpenBoth">both</button>
+    <button @click="onClick">
+      Simple
+    </button>
+    <hr>
+    <button @click="dialogState2 = true">
+      Scrollable
+    </button>
+    <hr>
+    <button @click="onOpenBoth">
+      both
+    </button>
   </div>
 </template>
 
@@ -51,8 +61,8 @@ import QLib from '@/gitart-vue-dialog/index'
 
 export default defineComponent({
   name: 'App',
-   components: {
-    GDialog: QLib.GDialog
+  components: {
+    GDialog: QLib.GDialog,
   },
 
   data: () => ({
@@ -62,15 +72,15 @@ export default defineComponent({
 
   methods: {
     onClick() {
-      console.log('set true');
-      this.dialogState = true;
+      console.log('set true')
+      this.dialogState = true
     },
     onOpenBoth() {
-      console.log('set true');
-      this.dialogState = true;
+      console.log('set true')
+      this.dialogState = true
       setTimeout(() => {
-        this.dialogState2 = true;
-      }, 2200);
+        this.dialogState2 = true
+      }, 2200)
     },
   },
 })

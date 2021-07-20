@@ -1,11 +1,11 @@
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 // helpers
-import { convertToUnit } from '@/gitart-vue-dialog/helper';
+import { convertToUnit } from '@/gitart-vue-dialog/helper'
 
 export interface WidthProps {
-  maxWidth?: number | string;
-  width?: number | string;
+  maxWidth?: number | string
+  width?: number | string
 }
 
 export const useWidthStyle = (props: WidthProps) => {
@@ -20,10 +20,10 @@ export const useWidthStyle = (props: WidthProps) => {
         props.width === 'auto'
           ? undefined
           : convertToUnit(props.width),
-    };
-  });
+    }
+  })
 
   return {
     widthStyles,
-  };
-};
+  }
+}

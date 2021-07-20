@@ -1,13 +1,17 @@
 <template>
   <Transition name="fade">
     <template v-if="active">
-      <div :class="classes" :style="styles" @click="onClick" />
+      <div
+        :class="classes"
+        :style="styles"
+        @click="onClick"
+      />
     </template>
   </Transition>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/runtime-core';
+import { computed, defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
   name: 'GDialogOverlay',
@@ -33,24 +37,24 @@ export default defineComponent({
   setup(props, { emit }) {
     const styles = computed(() => ({
       zIndex: props.activeZIndex - 1,
-    }));
+    }))
 
     const classes = computed(() => [
       'q-dialog-overlay',
       {
         'q-dialog-overlay--active': props.active && !props.deactivating,
       },
-    ]);
+    ])
 
     const onClick = () => {
-      emit('click');
-    };
+      emit('click')
+    }
 
     return {
       styles,
       classes,
       onClick,
-    };
+    }
   },
 })
 </script>

@@ -2,17 +2,22 @@
   <template v-if="activatedOnce">
     <Teleport to="body">
       <GDialogOverlay
-        @click="onClickOutside"
         :active="isActive"
         :deactivating="deactivating"
-        :activeZIndex="activeZIndex"
+        :active-z-index="activeZIndex"
+        @click="onClickOutside"
       />
 
       <Transition name="dialog-transition">
-        <div ref="frame" v-show="isActive" :class="classes" :style="styles">
+        <div
+          v-show="isActive"
+          ref="frame"
+          :class="classes"
+          :style="styles"
+        >
           <GDialogContent
             :width="width"
-            :maxWidth="maxWidth"
+            :max-width="maxWidth"
             :scrollable="scrollable"
           >
             <slot />
@@ -24,13 +29,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed, ref } from 'vue'
 
-import { useStackable } from '../composable/stackable';
-import { useLazyActivation } from '../composable/lazyActivation';
+import { useStackable } from '../composable/stackable'
+import { useLazyActivation } from '../composable/lazyActivation'
 
-import GDialogOverlay from './GDialogOverlay.vue';
-import GDialogContent from './GDialogContent.vue';
+import GDialogOverlay from './GDialogOverlay.vue'
+import GDialogContent from './GDialogContent.vue'
 
 export default defineComponent({
   name: 'GDialog',
@@ -85,35 +90,37 @@ export default defineComponent({
     },
   },
 
+  emits: ['update:modelValue'],
+
   setup(props, { emit }) {
     const onClickOutside = () => {
       if (!props.persistent) {
-        emit('update:modelValue', false);
+        emit('update:modelValue', false)
       }
-    };
+    }
 
     const { activatedOnce, active: isActive, deactivating } = useLazyActivation(
-      computed(() => props.modelValue)
-    );
+      computed(() => props.modelValue),
+    )
 
-    const frame = ref(null);
+    const frame = ref(null)
     const { activeZIndex } = useStackable({
       activeElSelector: '.q-dialog-frame--active',
       stackMinZIndex: 200,
       isActive,
       content: frame,
-    });
+    })
 
     const classes = computed(() => [
       'q-dialog-frame',
       {
         'q-dialog-frame--active': isActive,
       },
-    ]);
+    ])
 
     const styles = computed(() => ({
       zIndex: activeZIndex.value,
-    }));
+    }))
 
     return {
       onClickOutside,
@@ -124,9 +131,9 @@ export default defineComponent({
       classes,
       styles,
       frame,
-    };
+    }
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

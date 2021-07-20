@@ -7,8 +7,8 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     fs: {
-      allow: ['..']
-    }
+      allow: ['..'],
+    },
   },
   resolve: {
     alias: {
@@ -18,15 +18,15 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/gitart-vue-dialog/index.ts'),
-      name: 'gitart-vue-dialog'
+      name: 'gitart-vue-dialog',
     },
     rollupOptions: {
       external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue'
-        }
+          vue: 'Vue',
+        },
       },
-    }
-  }
+    },
+  },
 })
