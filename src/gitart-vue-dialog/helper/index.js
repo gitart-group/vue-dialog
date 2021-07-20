@@ -27,7 +27,7 @@ const windowWidthWithoutScrollbar = () => {
  * @param {string} unit
  * @returns {string | undefined}
  */
-const convertToUnit = (str, unit = 'px') => {
+export const convertToUnit = (str, unit = 'px') => {
   if (str == null || str === '') {
     return undefined;
   } else if (isNaN(+str)) {

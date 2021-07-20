@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <template v-if="value">
+    <template v-if="active">
       <div :class="classes" :style="styles" @click="onClick" />
     </template>
   </Transition>
@@ -12,7 +12,12 @@ import { computed, defineComponent } from '@vue/runtime-core';
 export default defineComponent({
   name: 'GDialogOverlay',
   props: {
-    value: {
+    active: {
+      type: Boolean,
+      required: true,
+    },
+
+    deactivating: {
       type: Boolean,
       required: true,
     },
@@ -33,7 +38,7 @@ export default defineComponent({
     const classes = computed(() => [
       'q-dialog-overlay',
       {
-        'q-dialog-overlay--active': props.value,
+        'q-dialog-overlay--active': props.active && !props.deactivating,
       },
     ]);
 
@@ -76,7 +81,7 @@ export default defineComponent({
   }
 
   &-leave-active {
-    transition: all 20.2s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
   }
 
   &-enter-from,

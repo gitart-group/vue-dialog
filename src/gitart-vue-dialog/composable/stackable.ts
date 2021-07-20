@@ -2,7 +2,9 @@
 import { Ref, ComputedRef } from 'vue';
 
 import { computed } from 'vue';
-import { getZIndex } from '../helper';
+
+// helpers
+import { getZIndex } from '@/gitart-vue-dialog/helper';
 
 interface IUseStackableParams {
   activeElSelector: string;

@@ -3,7 +3,8 @@
     <Teleport to="body">
       <GDialogOverlay
         @click="onClickOutside"
-        :value="isActive"
+        :active="isActive"
+        :deactivating="deactivating"
         :activeZIndex="activeZIndex"
       />
 
@@ -91,7 +92,7 @@ export default defineComponent({
       }
     };
 
-    const { activatedOnce, active: isActive } = useLazyActivation(
+    const { activatedOnce, active: isActive, deactivating } = useLazyActivation(
       computed(() => props.modelValue)
     );
 
@@ -119,6 +120,7 @@ export default defineComponent({
       activatedOnce,
       activeZIndex,
       isActive,
+      deactivating,
       classes,
       styles,
       frame,

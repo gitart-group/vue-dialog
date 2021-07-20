@@ -1,12 +1,25 @@
+import { Ref } from 'vue';
+
 import { nextTick, ref, watch } from 'vue';
 
-export const useLazyActivation = baseState => {
+export const useLazyActivation = (baseState: Ref<boolean>) => {
   const activatedOnce = ref(baseState.value);
   const active = ref(baseState.value);
+  const deactivating = ref(false)
 
   watch(
     () => baseState.value,
     value => {
+      if(!value){
+        deactivating.value = true
+        nextTick(() => {
+          active.value = value;
+          deactivating.value = false
+        });
+
+        return;
+      }
+      
       if (activatedOnce.value) {
         active.value = value;
         return;
@@ -22,5 +35,6 @@ export const useLazyActivation = baseState => {
   return {
     activatedOnce,
     active,
+    deactivating,
   };
 };
