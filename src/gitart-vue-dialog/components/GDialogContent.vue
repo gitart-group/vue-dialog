@@ -52,12 +52,13 @@ export default defineComponent({
   border-radius: 4px;
   margin: 24px;
   overflow-y: auto;
-  pointer-events: auto;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100%;
   z-index: inherit;
-  box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%),
-    0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+  box-shadow:
+    0 11px 15px -7px rgb(0 0 0 / 20%),
+    0 24px 38px 3px rgb(0 0 0 / 14%),
+    0 9px 46px 8px rgb(0 0 0 / 12%);
 
   &:not(#{$dialog}--fullscreen) {
     max-height: 90%;

@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "stylelint": "stylelint .",
+    "lint": "stylelint . && eslint .",
+    "eslint": "eslint"
   },
   "files": [
     "dist"
@@ -34,6 +37,8 @@
     "eslint-plugin-vue": "^7.14.0",
     "eslint-plugin-vue-scoped-css": "^1.2.2",
     "sass": "^1.35.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
     "typescript": "^4.3.2",
     "vite": "^2.4.0",
     "vue-tsc": "^0.0.24"
