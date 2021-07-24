@@ -19,6 +19,7 @@
             :width="width"
             :max-width="maxWidth"
             :scrollable="scrollable"
+            :depressed="depressed"
           >
             <slot />
           </GDialogContent>
@@ -85,6 +86,14 @@ export default defineComponent({
     },
 
     scrollable: {
+      type: Boolean,
+      default: false,
+    },
+
+    /**
+     * removes box-shadow for content
+     */
+    depressed: {
       type: Boolean,
       default: false,
     },
