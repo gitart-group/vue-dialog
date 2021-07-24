@@ -22,6 +22,13 @@ module.exports = {
   ],
 
   rules: {
+    'object-curly-spacing': ['error', 'always'],
+    'space-before-blocks': 'error',
+    'arrow-spacing': ['error', { 'before': true, 'after': true }],
+    'arrow-body-style': ['error', 'as-needed'],
+    'quotes': ['error', 'single'],
+    'key-spacing': ['error'],
+
     'vue/html-self-closing': 'warn',
     'vue/padding-line-between-blocks': 'error',
 
@@ -37,7 +44,7 @@ module.exports = {
       },
     ],
 
-    semi: ['warn', 'never'],
+    'semi': ['warn', 'never'],
     'linebreak-style': ['off'],
     'import/no-unresolved': ['off'],
     'import/prefer-default-export': ['off'],
@@ -72,7 +79,7 @@ module.exports = {
       ignoreComments: false,
     }],
 
-    "import/newline-after-import": ["error", { "count": 1 }],
+    'import/newline-after-import': ['error', { 'count': 1 }],
 
     'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
   },
