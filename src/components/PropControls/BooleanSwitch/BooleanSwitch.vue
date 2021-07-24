@@ -14,12 +14,13 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import { useModelWrapper } from '@/composables/modelWrapper'
 
 import Radio from '@/components/UI/Radio/Radio.vue'
 import RadioGroup from '@/components/UI/RadioGroup/RadioGroup.vue'
 
-export default {
+export default defineComponent({
   name: 'BooleanSwitch',
   components: {
     Radio,
@@ -45,5 +46,5 @@ export default {
       value,
     }
   },
-}
+})
 </script>

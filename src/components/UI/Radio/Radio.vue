@@ -13,13 +13,13 @@
 </template>
 
 <script lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, defineComponent } from 'vue'
 
 import { useComponentId } from '@/composables/componentId'
 
 import { RadioInjectionKey } from '@/components/UI/symbols'
 
-export default {
+export default defineComponent({
   name: 'Radio',
   props: {
     value: {
@@ -52,7 +52,7 @@ export default {
         return props.name
       }
 
-      return RadioGroup?.name || `radio-${id}`
+      return RadioGroup?.name.value || `radio-${id}`
     })
 
     const onChange = () => {
@@ -68,5 +68,5 @@ export default {
       selected,
     }
   },
-}
+})
 </script>

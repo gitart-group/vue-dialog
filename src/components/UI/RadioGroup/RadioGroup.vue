@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import { provide, computed } from 'vue'
+import { provide, computed, defineComponent } from 'vue'
 
 import { useComponentId } from '@/composables/componentId'
 
 import { RadioInjectionKey } from '@/components/UI/symbols'
 
-export default {
+export default defineComponent({
   name: 'RadioGroup',
   props: {
     name: {
@@ -44,5 +44,5 @@ export default {
     })
 
   },
-}
+})
 </script>
