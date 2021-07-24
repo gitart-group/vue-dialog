@@ -28,6 +28,7 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'quotes': ['error', 'single'],
     'key-spacing': ['error'],
+    'space-infix-ops': 'error',
 
     'vue/html-self-closing': 'warn',
     'vue/padding-line-between-blocks': 'error',
