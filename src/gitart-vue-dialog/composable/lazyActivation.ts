@@ -10,7 +10,7 @@ export const useLazyActivation = (baseState: Ref<boolean>) => {
   watch(
     () => baseState.value,
     value => {
-      if(!value){
+      if(!value) {
         deactivating.value = true
         nextTick(() => {
           active.value = value

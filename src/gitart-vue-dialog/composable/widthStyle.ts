@@ -9,19 +9,17 @@ export interface WidthProps {
 }
 
 export const useWidthStyle = (props: WidthProps) => {
-  const widthStyles = computed(() => {
-    return {
-      maxWidth:
+  const widthStyles = computed(() => ({
+    maxWidth:
         props.maxWidth === 'none'
           ? undefined
           : convertToUnit(props.maxWidth),
 
-      width:
+    width:
         props.width === 'auto'
           ? undefined
           : convertToUnit(props.width),
-    }
-  })
+  }))
 
   return {
     widthStyles,
