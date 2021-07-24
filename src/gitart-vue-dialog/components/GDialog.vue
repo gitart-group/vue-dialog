@@ -112,7 +112,7 @@ export default defineComponent({
       computed(() => props.modelValue),
     )
 
-    const frame = ref(null)
+    const frame = ref<Element | null>(null)
     const { activeZIndex } = useStackable({
       activeElSelector: '.q-dialog-frame--active',
       stackMinZIndex: 200,
@@ -123,7 +123,7 @@ export default defineComponent({
     const classes = computed(() => [
       'q-dialog-frame',
       {
-        'q-dialog-frame--active': isActive,
+        'q-dialog-frame--active': isActive.value,
       },
     ])
 

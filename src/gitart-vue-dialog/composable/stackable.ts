@@ -1,4 +1,6 @@
-import { computed, Ref, ComputedRef } from 'vue'
+import {
+  computed, Ref, ComputedRef,
+} from 'vue'
 
 // helpers
 import { getZIndex } from '@/gitart-vue-dialog/helper'
@@ -7,7 +9,7 @@ interface IUseStackableParams {
   activeElSelector: string
   stackMinZIndex: number
   isActive: Ref<boolean>
-  content: any
+  content: Ref<Element | null>
 }
 
 export const useStackable: (param: IUseStackableParams) => {activeZIndex: ComputedRef<number>} = ({
@@ -16,20 +18,28 @@ export const useStackable: (param: IUseStackableParams) => {activeZIndex: Comput
   isActive,
   content,
 }) => {
-  const getMaxZIndex = () => {
+  const getMaxZIndex = (exclude: Element[] = []) => {
     const zIndexes = [stackMinZIndex]
 
     const activeElements = document.querySelectorAll(activeElSelector)
 
     for (let index = 0; index < activeElements.length; index++) {
-      zIndexes.push(getZIndex(activeElements[index]))
+      if(!exclude.includes(activeElements[index])) {
+        zIndexes.push(getZIndex(activeElements[index]))
+      }
     }
 
     return Math.max(...zIndexes)
   }
 
   const activeZIndex = computed(() => {
-    const index = isActive.value ? getMaxZIndex() + 2 : getZIndex(content.value)
+    if(!content.value) {
+      return 0
+    }
+
+    const index = isActive.value
+      ? getMaxZIndex([content.value]) + 2
+      : getZIndex(content.value)
 
     if (index === null) {
       return 0
