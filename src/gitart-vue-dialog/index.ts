@@ -1,5 +1,1 @@
-import GDialog from '@/gitart-vue-dialog/components/GDialog.vue'
-
-export default {
-  GDialog,
-}
+export { default as GDialog } from './components/GDialog.vue'
