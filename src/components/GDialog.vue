@@ -32,11 +32,11 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
 
-import { useStackable } from '../composable/stackable'
-import { useLazyActivation } from '../composable/lazyActivation'
+import { useStackable } from '@/composable/stackable'
+import { useLazyActivation } from '@/composable/lazyActivation'
 
-import GDialogOverlay from './GDialogOverlay.vue'
-import GDialogContent from './GDialogContent.vue'
+import GDialogOverlay from '@/components/GDialogOverlay.vue'
+import GDialogContent from '@/components/GDialogContent.vue'
 
 export default defineComponent({
   name: 'GDialog',
@@ -112,7 +112,7 @@ export default defineComponent({
       computed(() => props.modelValue),
     )
 
-    const frame = ref<Element | null>(null)
+    const frame = ref(null)
     const { activeZIndex } = useStackable({
       activeElSelector: '.q-dialog-frame--active',
       stackMinZIndex: 200,
@@ -145,7 +145,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .q-dialog-frame {
   align-items: center;
   display: flex;

@@ -2,9 +2,8 @@
   "name": "gitart-vue-dialog",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview",
+    "dev": "node ./scripts/dev.js",
+    "build": "node ./scripts/build.js",
     "stylelint": "stylelint .",
     "lint": "stylelint . && eslint .",
     "eslint": "eslint"
@@ -12,12 +11,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/gitart-vue-dialog.umd.js",
-  "module": "./dist/gitart-vue-dialog.es.js",
+  "main": "./dist/server.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/gitart-vue-dialog.es.js",
-      "require": "./dist/gitart-vue-dialog.umd.js"
+      "import": "./dist/index.js",
+      "require": "./dist/server.js"
     }
   },
   "dependencies": {
@@ -30,12 +30,13 @@
     "@typescript-eslint/parser": "^4.28.4",
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.0.5",
-    "bootstrap-reboot": "^4.5.6",
+    "chokidar": "^3.5.2",
     "eslint": "^7.31.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-vue": "^7.14.0",
     "eslint-plugin-vue-scoped-css": "^1.2.2",
     "sass": "^1.35.2",
+    "shelljs": "^0.8.4",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "typescript": "^4.3.2",

@@ -1,19 +1,19 @@
 <template>
-  <BaseDialog v-model="model" />
+  <StyledDialog v-model="model" />
 
   <button @click="open">
-    BaseDialog
+    StyledDialog
   </button>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from 'vue'
-import BaseDialog from './BaseDialog.vue'
+import StyledDialog from './StyledDialog.vue'
 
 export default {
-  name: 'BaseDialogWrapper',
+  name: 'StyledDialogWrapper',
   components: {
-    BaseDialog,
+    StyledDialog,
   },
 
   setup() {

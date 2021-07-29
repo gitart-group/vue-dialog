@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/runtime-core'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'GDialogOverlay',
@@ -59,7 +59,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .q-dialog-overlay {
   position: fixed;
   left: 0;

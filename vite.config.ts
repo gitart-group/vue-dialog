@@ -1,7 +1,8 @@
 import path from 'path'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
+const resolvePath = (str: string) => path.resolve(__dirname, str)
 
 export default defineConfig({
   plugins: [vue()],
@@ -12,14 +13,27 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '/src'),
+      '@': resolvePath('/src'),
     },
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/gitart-vue-dialog/index.ts'),
-      name: 'gitart-vue-dialog',
+      entry: resolvePath('src/index.ts'),
+      name: 'index',
+      fileName: format => {
+        switch (format) {
+          case 'es':
+            return 'index.js'
+
+          case 'umd':
+            return 'server.js'
+
+          default:
+            return `index.${format}.js`
+        }
+      },
     },
+
     rollupOptions: {
       external: ['vue'],
       output: {

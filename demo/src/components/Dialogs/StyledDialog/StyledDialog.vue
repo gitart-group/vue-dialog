@@ -2,32 +2,28 @@
   <GDialog
     v-model="value"
     :max-width="400"
-    :depressed="depressed"
   >
-    <p>
-      Base component
-    </p>
-
-    <BooleanSwitch
-      v-model="depressed"
-      label="depressed (without box-shadow)"
-    />
+    <DialogCard>
+      <p>
+        StyledDialogWrapper
+      </p>
+    </DialogCard>
   </GDialog>
 </template>
 
-<script>
-import { ref } from 'vue'
-import { GDialog } from '@/gitart-vue-dialog'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { GDialog } from 'plugin/index.js'
 
 import { useModelWrapper } from '@/composables/modelWrapper'
 
-import BooleanSwitch from '@/components/PropControls/BooleanSwitch/BooleanSwitch.vue'
+import DialogCard from '@/components/Dialog/DialogCard.vue'
 
-export default {
+export default defineComponent({
   name: 'BaseDialog',
   components: {
     GDialog,
-    BooleanSwitch,
+    DialogCard,
   },
 
   props: {
@@ -38,13 +34,11 @@ export default {
   },
 
   setup(props, { emit }) {
-    const depressed = ref(false)
     const value = useModelWrapper(props, emit)
 
     return {
-      depressed,
       value,
     }
   },
-}
+})
 </script>
