@@ -1,6 +1,6 @@
 {
   "name": "gitart-vue-dialog",
-  "version": "0.0.7",
+  "version": "0.0.12",
   "scripts": {
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
@@ -8,21 +8,11 @@
     "lint": "stylelint . && eslint .",
     "eslint": "eslint"
   },
-  "files": [
-    "dist/"
-  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/MichaelGitArt/gitart-vue-dialog.git"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/server.js"
-    }
   },
   "dependencies": {
     "body-scroll-lock": "^4.0.0-beta.0"

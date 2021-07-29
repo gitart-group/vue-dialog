@@ -1,1 +1,6 @@
-export { default as GDialog } from '@/components/GDialog.vue'
+import GDialogComponent from '@/components/GDialog.vue'
+
+export const GDialog = GDialogComponent
+export default {
+  GDialog: GDialogComponent,
+}
