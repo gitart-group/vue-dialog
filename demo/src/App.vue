@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app p-3">
     <DialogLayout />
   </div>
 </template>

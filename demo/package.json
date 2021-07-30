@@ -1,12 +1,11 @@
 {
-  "name": "my-vue-app",
-  "version": "0.0.0",
+  "name": "gitart-vue-dialog-demo",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build"
   },
   "dependencies": {
-    "bootstrap-reboot": "^4.5.6",
     "vue": "^3.0.5"
   },
   "devDependencies": {
@@ -14,6 +13,8 @@
     "@vue/compiler-sfc": "^3.0.5",
     "typescript": "^4.3.2",
     "vite": "^2.4.4",
-    "vue-tsc": "^0.2.2"
+    "vite-plugin-windicss": "^1.2.7",
+    "vue-tsc": "^0.2.2",
+    "windicss": "^3.1.6"
   }
 }

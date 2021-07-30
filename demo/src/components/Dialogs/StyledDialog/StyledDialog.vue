@@ -3,11 +3,22 @@
     v-model="value"
     :max-width="400"
   >
-    <DialogCard>
-      <p>
-        StyledDialogWrapper
-      </p>
-    </DialogCard>
+    <div
+      bg="gray-50"
+      border="rounded"
+    >
+      <DialogToolbar @close="onClose">
+        <h4 class="text-lg font-medium">
+          Styled Dialog
+        </h4>
+      </DialogToolbar>
+
+      <div p="x-5 y-4">
+        <p>
+          StyledDialogWrapper
+        </p>
+      </div>
+    </div>
   </GDialog>
 </template>
 
@@ -17,13 +28,13 @@ import { GDialog } from 'plugin/index.js'
 
 import { useModelWrapper } from '@/composables/modelWrapper'
 
-import DialogCard from '@/components/Dialog/DialogCard.vue'
+import DialogToolbar from '@/components/Dialog/DialogToolbar.vue'
 
 export default defineComponent({
   name: 'BaseDialog',
   components: {
     GDialog,
-    DialogCard,
+    DialogToolbar,
   },
 
   props: {
@@ -36,8 +47,13 @@ export default defineComponent({
   setup(props, { emit }) {
     const value = useModelWrapper(props, emit)
 
+    const onClose = () => {
+      value.value = false
+    }
+
     return {
       value,
+      onClose,
     }
   },
 })

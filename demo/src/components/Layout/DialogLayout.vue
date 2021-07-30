@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <BaseDialogWrapper />
-  </div>
-
-  <div>
+  <div class="flex wrap">
+    <BaseDialogWrapper class="mr-3" />
     <StyledDialogWrapper />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import BaseDialogWrapper from '@/components/Dialogs/BaseDialog/BaseDialogWrapper.vue'
 import StyledDialogWrapper from '@/components/Dialogs/StyledDialog/StyledDialogWrapper.vue'
 

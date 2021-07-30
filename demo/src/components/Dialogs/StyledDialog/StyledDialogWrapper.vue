@@ -1,18 +1,23 @@
 <template>
-  <StyledDialog v-model="model" />
+  <div>
+    <StyledDialog v-model="model" />
 
-  <button @click="open">
-    StyledDialog
-  </button>
+    <Btn @click="open">
+      StyledDialog
+    </Btn>
+  </div>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue'
+
+import Btn from '@/components/UI/Btn/Btn.vue'
 import StyledDialog from './StyledDialog.vue'
 
 export default {
   name: 'StyledDialogWrapper',
   components: {
+    Btn,
     StyledDialog,
   },
 

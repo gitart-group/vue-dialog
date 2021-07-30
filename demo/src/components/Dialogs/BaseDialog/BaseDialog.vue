@@ -4,9 +4,9 @@
     :max-width="400"
     :depressed="depressed"
   >
-    <p>
+    <h4 class="mb-3 text-lg font-medium">
       Base component
-    </p>
+    </h4>
 
     <BooleanSwitch
       v-model="depressed"
