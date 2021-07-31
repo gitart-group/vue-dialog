@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 
 // helpers
-import { convertToUnit } from '@/helper'
+import { convertToUnit } from '../helper'
 
 export interface WidthProps {
   maxWidth?: number | string

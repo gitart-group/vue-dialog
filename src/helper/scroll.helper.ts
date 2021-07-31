@@ -14,29 +14,19 @@ export const getScrollbarWidth = () => {
   return scrollbarWidth
 }
 
-/**
- *
- * @param {boolean} hideScroll
- */
-const disableScroll = (hideScroll = false) => {
-  if (hideScroll) {
+export const disableScroll = (hideScrollbar = false) => {
+  if (hideScrollbar) {
+    disableBodyScroll(document.body)
+  } else {
     const scrollWidth = getScrollbarWidth()
     disableBodyScroll(document.body)
     if (scrollWidth > 0) {
       document.body.style.paddingRight = scrollWidth + 'px'
     }
-  } else {
-    disableBodyScroll(document.body)
   }
 }
 
-const enableScroll = () => {
+export const enableScroll = () => {
   enableBodyScroll(document.body)
   document.body.style.paddingRight = '0'
-}
-
-export default {
-  getScrollbarWidth,
-  disableScroll,
-  enableScroll,
 }

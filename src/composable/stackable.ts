@@ -3,7 +3,7 @@ import {
 } from 'vue'
 
 // helpers
-import { getZIndex } from '@/helper'
+import { getZIndex } from '../helper'
 
 interface IUseStackableParams {
   activeElSelector: string

@@ -11,7 +11,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import {
+  computed, defineComponent,
+} from 'vue'
 
 export default defineComponent({
   name: 'GDialogOverlay',
@@ -38,7 +40,6 @@ export default defineComponent({
     const styles = computed(() => ({
       zIndex: props.activeZIndex - 1,
     }))
-
     const classes = computed(() => [
       'q-dialog-overlay',
       {

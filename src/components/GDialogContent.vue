@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useWidthStyle } from '@/composable/widthStyle'
+import { useWidthStyle } from '../composable/widthStyle'
 
 export default defineComponent({
   name: 'GDialogContent',

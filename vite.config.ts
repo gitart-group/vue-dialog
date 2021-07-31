@@ -11,11 +11,6 @@ export default defineConfig({
       allow: ['..'],
     },
   },
-  resolve: {
-    alias: {
-      '@': resolvePath('/src'),
-    },
-  },
   build: {
     lib: {
       entry: resolvePath('src/index.ts'),

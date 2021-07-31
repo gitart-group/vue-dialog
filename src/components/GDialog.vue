@@ -30,13 +30,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
+import {
+  defineComponent, computed, ref, watch,
+} from 'vue'
 
-import { useStackable } from '@/composable/stackable'
-import { useLazyActivation } from '@/composable/lazyActivation'
+import { useStackable } from '../composable/stackable'
+import { useLazyActivation } from '../composable/lazyActivation'
 
-import GDialogOverlay from '@/components/GDialogOverlay.vue'
-import GDialogContent from '@/components/GDialogContent.vue'
+import { disableScroll, enableScroll } from '../helper/scroll.helper'
+
+import GDialogOverlay from './GDialogOverlay.vue'
+import GDialogContent from './GDialogContent.vue'
 
 export default defineComponent({
   name: 'GDialog',
@@ -97,6 +101,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+
+    /**
+     * hide scrollbar after opening the dialog
+     */
+    hideScrollbar: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: ['update:modelValue'],
@@ -130,6 +142,14 @@ export default defineComponent({
     const styles = computed(() => ({
       zIndex: activeZIndex.value,
     }))
+
+    watch(isActive, (active) => {
+      if(active) {
+        disableScroll(props.hideScrollbar)
+      } else {
+        enableScroll()
+      }
+    })
 
     return {
       onClickOutside,
