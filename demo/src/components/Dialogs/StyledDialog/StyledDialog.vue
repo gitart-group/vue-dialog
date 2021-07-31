@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { GDialog } from 'plugin/index.js'
+import { GDialog } from 'plugin'
 
 import { useModelWrapper } from '@/composables/modelWrapper'
 

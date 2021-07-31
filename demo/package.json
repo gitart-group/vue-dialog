@@ -5,8 +5,10 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build"
   },
+  "license": "MIT",
   "dependencies": {
-    "vue": "^3.0.5"
+    "gitart-vue-dialog": "^0.0.12",
+    "vue": "3.2.0-beta.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.3.0",
