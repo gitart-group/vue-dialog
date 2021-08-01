@@ -1,6 +1,6 @@
 {
   "name": "gitart-vue-dialog",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "scripts": {
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
