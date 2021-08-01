@@ -1,14 +1,22 @@
 <template>
   <div
-    class="flex justify-between items-center"
+    class="flex"
+    justify="between"
+    items="center"
     p="y-3 x-5"
-    shadow="lg"
+    :shadow="shadow ? 'lg' : ''"
   >
     <slot />
 
     <div
-      class="w-8 h-8 flex items-center justify-center cursor-pointer"
+      class="flex transition"
+      cursor="pointer"
+      h="8"
+      w="8"
+      justify="center"
+      items="center"
       text="red-500"
+      border="rounded-full"
       bg="gray-200 hover:gray-300"
       p="a-2"
 
@@ -24,6 +32,13 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'DialogToolbar',
+
+  props: {
+    shadow: {
+      type: Boolean,
+      default: true,
+    },
+  },
 
   emits: ['close'],
 

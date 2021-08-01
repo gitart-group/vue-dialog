@@ -8,7 +8,7 @@
       border="rounded"
     >
       <DialogToolbar @close="onClose">
-        <h4 class="text-lg font-medium">
+        <h4>
           Styled Dialog
         </h4>
       </DialogToolbar>

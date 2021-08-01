@@ -5,11 +5,11 @@ import WindiCSS from 'vite-plugin-windicss'
 
 export default ({ mode }: { mode: 'production'| 'development' }) => {
   const dialogPlugin = mode === 'development'
-    ? path.resolve(__dirname, '../dist/index.js')
+    ? path.resolve(__dirname, '../src/index.ts')
     : 'gitart-vue-dialog'
 
   const dialogPluginCss = mode === 'development'
-    ? path.resolve(__dirname, '../dist/style.css')
+    ? path.resolve(__dirname, './src/scss/plugin-css-placeholder.css')
     : 'gitart-vue-dialog/dist/style.css'
 
   return defineConfig({

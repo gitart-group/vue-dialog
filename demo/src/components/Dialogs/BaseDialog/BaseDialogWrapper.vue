@@ -2,7 +2,7 @@
   <div>
     <BaseDialog v-model="model" />
     <Btn @click="open">
-      BaseDialog
+      Base
     </Btn>
   </div>
 </template>

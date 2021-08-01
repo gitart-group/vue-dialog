@@ -4,7 +4,7 @@
     :max-width="400"
     :depressed="depressed"
   >
-    <h4 class="mb-3 text-lg font-medium">
+    <h4 class="mb-3">
       Base component
     </h4>
 

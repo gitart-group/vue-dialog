@@ -3,7 +3,7 @@
     <StyledDialog v-model="model" />
 
     <Btn @click="open">
-      StyledDialog
+      Styled
     </Btn>
   </div>
 </template>
