@@ -3,13 +3,14 @@ import { computed } from 'vue'
 // helpers
 import { convertToUnit } from '../helper'
 
-export interface WidthProps {
+export interface SizeProps {
   maxWidth?: number | string
   width?: number | string
+  height?: number | string
 }
 
-export const useWidthStyle = (props: WidthProps) => {
-  const widthStyles = computed(() => ({
+export const useSizeStyle = (props: SizeProps) => {
+  const sizeStyles = computed(() => ({
     maxWidth:
         props.maxWidth === 'none'
           ? undefined
@@ -19,9 +20,14 @@ export const useWidthStyle = (props: WidthProps) => {
         props.width === 'auto'
           ? undefined
           : convertToUnit(props.width),
+
+    height:
+        props.height === 'auto'
+          ? undefined
+          : convertToUnit(props.height),
   }))
 
   return {
-    widthStyles,
+    sizeStyles,
   }
 }

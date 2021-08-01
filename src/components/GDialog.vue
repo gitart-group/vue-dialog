@@ -16,8 +16,9 @@
           :style="styles"
         >
           <GDialogContent
-            :width="width"
             :max-width="maxWidth"
+            :width="width"
+            :height="height"
             :scrollable="scrollable"
             :depressed="depressed"
           >
@@ -85,6 +86,11 @@ export default defineComponent({
     },
 
     width: {
+      type: [String, Number],
+      default: 'auto',
+    },
+
+    height: {
       type: [String, Number],
       default: 'auto',
     },

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useWidthStyle } from '../composable/widthStyle'
+import { useSizeStyle } from '../composable/sizeStyle'
 
 export default defineComponent({
   name: 'GDialogContent',
@@ -17,6 +17,11 @@ export default defineComponent({
     },
 
     width: {
+      type: [String, Number],
+      default: 'auto',
+    },
+
+    height: {
       type: [String, Number],
       default: 'auto',
     },
@@ -36,7 +41,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { widthStyles: styles } = useWidthStyle(props)
+    const { sizeStyles: styles } = useSizeStyle(props)
     const classes = computed(() => [
       'q-dialog-content',
       {
