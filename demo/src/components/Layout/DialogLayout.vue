@@ -1,22 +1,35 @@
 <template>
   <div class="flex wrap">
-    <BaseDialogWrapper class="mr-3" />
-    <StyledDialogWrapper />
+    <DialogStateWrapper
+      v-slot="{model, input}"
+      label="Base"
+      class="mr-3"
+    >
+      <BaseDialog :model-value="model" @update:model-value="input" />
+    </DialogStateWrapper>
+
+    <DialogStateWrapper
+      v-slot="{model, input}"
+      label="Styled"
+    >
+      <StyledDialog :model-value="model" @update:model-value="input" />
+    </DialogStateWrapper>
   </div>
 </template>
 
 <script lang="ts">
-import BaseDialogWrapper from '@/components/Dialogs/BaseDialog/BaseDialogWrapper.vue'
-import StyledDialogWrapper from '@/components/Dialogs/StyledDialog/StyledDialogWrapper.vue'
+import DialogStateWrapper from '@/components/Dialog/DialogStateWrapper.vue'
+import BaseDialog from '@/components/Dialogs/BaseDialog/BaseDialog.vue'
+import StyledDialog from '@/components/Dialogs/StyledDialog/StyledDialog.vue'
 
 export default {
   name: 'DialogLayout',
   components: {
-    BaseDialogWrapper,
-    StyledDialogWrapper,
+    DialogStateWrapper,
+    BaseDialog,
+    StyledDialog,
   },
 
-  setup() {
-  },
+  setup() {},
 }
 </script>

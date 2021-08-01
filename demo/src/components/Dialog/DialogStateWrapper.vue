@@ -1,8 +1,9 @@
 <template>
   <div>
-    <BaseDialog v-model="model" />
-    <Btn @click="open">
-      Base
+    <slot :model="model" :input="onInput" />
+
+    <Btn @click="onInput(true)">
+      {{ label }}
     </Btn>
   </div>
 </template>
@@ -11,25 +12,29 @@
 import { ref } from 'vue'
 import Btn from '@/components/UI/Btn/Btn.vue'
 
-import BaseDialog from './BaseDialog.vue'
-
 export default {
-  name: 'BaseDialogWrapper',
+  name: 'DialogStateWrapper',
   components: {
-    BaseDialog,
     Btn,
+  },
+
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
   },
 
   setup() {
     const model = ref(false)
 
-    const open = () => {
-      model.value = true
+    const onInput = (value: boolean) => {
+      model.value = value
     }
 
     return {
       model,
-      open,
+      onInput,
     }
   },
 }
