@@ -43,10 +43,10 @@ export default defineComponent({
   setup(props) {
     const { sizeStyles: styles } = useSizeStyle(props)
     const classes = computed(() => [
-      'q-dialog-content',
+      'g-dialog-content',
       {
-        'q-dialog-content--scrollable': props.scrollable,
-        'q-dialog-content--depressed': props.depressed,
+        'g-dialog-content--scrollable': props.scrollable,
+        'g-dialog-content--depressed': props.depressed,
       },
     ])
 
@@ -59,7 +59,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.q-dialog-content {
+.g-dialog-content {
   $dialog: &;
 
   pointer-events: auto;

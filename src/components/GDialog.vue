@@ -136,16 +136,16 @@ export default defineComponent({
     )
 
     const { activeZIndex } = useStackable({
-      activeElSelector: '.q-dialog-frame--active',
+      activeElSelector: '.g-dialog-frame--active',
       stackMinZIndex: 200,
       isActive,
       content: contentFrame,
     })
 
     const classes = computed(() => [
-      'q-dialog-frame',
+      'g-dialog-frame',
       {
-        'q-dialog-frame--active': isActive.value,
+        'g-dialog-frame--active': isActive.value,
       },
     ])
 
@@ -186,7 +186,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.q-dialog-frame {
+.g-dialog-frame {
   align-items: center;
   display: flex;
   height: 100%;

@@ -41,9 +41,9 @@ export default defineComponent({
       zIndex: props.activeZIndex - 1,
     }))
     const classes = computed(() => [
-      'q-dialog-overlay',
+      'g-dialog-overlay',
       {
-        'q-dialog-overlay--active': props.active && !props.deactivating,
+        'g-dialog-overlay--active': props.active && !props.deactivating,
       },
     ])
 
@@ -61,7 +61,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.q-dialog-overlay {
+.g-dialog-overlay {
   position: fixed;
   left: 0;
   top: 0;
