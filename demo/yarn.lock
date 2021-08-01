@@ -515,10 +515,10 @@ get-intrinsic@^1.0.2:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
-gitart-vue-dialog@0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-0.0.14.tgz#321a301b9db6df07941ab84a2b44027a454ff699"
-  integrity sha512-RlVLe0YDttF3aimasnK9p97XqM5pKrDlJfZ6r37JoB2cqB2c+x9UlRkcrbvLgQCCuNybh4dJSPsD3qaUTV6xpg==
+gitart-vue-dialog@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-0.0.15.tgz#c8286e42070414e7af9e141aa6bc9f16d564f63e"
+  integrity sha512-tdJYCEJU8kdn1QXQtq4/cTRX0rNkCDQPjzjk6KZAhB1b4qSW5hHqTMUpv+W2rQPpRt+JKlHa4r5t6iqvRpFVxA==
 
 glob-parent@^5.1.2:
   version "5.1.2"

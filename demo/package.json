@@ -1,13 +1,13 @@
 {
   "name": "gitart-vue-dialog-demo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build"
   },
   "license": "MIT",
   "dependencies": {
-    "gitart-vue-dialog": "0.0.14",
+    "gitart-vue-dialog": "0.0.15",
     "vue": "3.2.0-beta.7"
   },
   "devDependencies": {
