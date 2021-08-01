@@ -1,9 +1,10 @@
 <template>
-  <div class="flex wrap">
+  <div
+    grid="inline gap-3 auto-cols-auto flow-col"
+  >
     <DialogStateWrapper
       v-slot="{model, input}"
       label="Base"
-      class="mr-3"
     >
       <BaseDialog :model-value="model" @update:model-value="input" />
     </DialogStateWrapper>
@@ -14,6 +15,13 @@
     >
       <StyledDialog :model-value="model" @update:model-value="input" />
     </DialogStateWrapper>
+
+    <DialogStateWrapper
+      v-slot="{model, input}"
+      label="Scroll"
+    >
+      <ScrollDialog :model-value="model" @update:model-value="input" />
+    </DialogStateWrapper>
   </div>
 </template>
 
@@ -21,6 +29,7 @@
 import DialogStateWrapper from '@/components/Dialog/DialogStateWrapper.vue'
 import BaseDialog from '@/components/Dialogs/BaseDialog/BaseDialog.vue'
 import StyledDialog from '@/components/Dialogs/StyledDialog/StyledDialog.vue'
+import ScrollDialog from '@/components/Dialogs/ScrollDialog/ScrollDialog.vue'
 
 export default {
   name: 'DialogLayout',
@@ -28,6 +37,7 @@ export default {
     DialogStateWrapper,
     BaseDialog,
     StyledDialog,
+    ScrollDialog,
   },
 
   setup() {},

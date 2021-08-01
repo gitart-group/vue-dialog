@@ -53,6 +53,6 @@ export default defineComponent({
 
 <style lang="scss">
 .app {
-  height: 2000px;
+  min-height: 100vh;
 }
 </style>

@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gitart-vue-dialog": "^0.0.12",
+    "gitart-vue-dialog": "0.0.14",
     "vue": "3.2.0-beta.7"
   },
   "devDependencies": {
