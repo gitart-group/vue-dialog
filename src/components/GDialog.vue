@@ -2,6 +2,7 @@
   <template v-if="activatedOnce">
     <Teleport to="body">
       <GDialogOverlay
+        ref="overlay"
         :active="isActive"
         :deactivating="deactivating"
         :active-z-index="activeZIndex"
@@ -11,7 +12,7 @@
       <Transition name="dialog-transition">
         <div
           v-show="isActive"
-          ref="frame"
+          ref="contentFrame"
           :class="classes"
           :style="styles"
         >
@@ -32,13 +33,12 @@
 
 <script lang="ts">
 import {
-  defineComponent, computed, ref, watch,
+  defineComponent, computed, ref, watch, onBeforeUnmount,
 } from 'vue'
 
 import { useStackable } from '../composable/stackable'
 import { useLazyActivation } from '../composable/lazyActivation'
-
-import { disableScroll, enableScroll } from '../helper/scroll.helper'
+import { useScroll } from '../composable/scroll'
 
 import GDialogOverlay from './GDialogOverlay.vue'
 import GDialogContent from './GDialogContent.vue'
@@ -120,6 +120,11 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup(props, { emit }) {
+    const contentFrame = ref<Element>()
+    const overlay = ref<InstanceType<typeof GDialogOverlay>>()
+
+    const overlayElement = computed<Element | undefined>(() => overlay.value?.$el as Element)
+
     const onClickOutside = () => {
       if (!props.persistent) {
         emit('update:modelValue', false)
@@ -130,12 +135,11 @@ export default defineComponent({
       computed(() => props.modelValue),
     )
 
-    const frame = ref(null)
     const { activeZIndex } = useStackable({
       activeElSelector: '.q-dialog-frame--active',
       stackMinZIndex: 200,
       isActive,
-      content: frame,
+      content: contentFrame,
     })
 
     const classes = computed(() => [
@@ -149,12 +153,21 @@ export default defineComponent({
       zIndex: activeZIndex.value,
     }))
 
+    const { enableScroll, disableScroll } = useScroll({
+      overlay: overlayElement,
+      content: contentFrame,
+    })
+
     watch(isActive, (active) => {
       if(active) {
-        disableScroll(props.hideScrollbar)
+        disableScroll()
       } else {
         enableScroll()
       }
+    })
+
+    onBeforeUnmount(() => {
+      enableScroll()
     })
 
     return {
@@ -165,7 +178,8 @@ export default defineComponent({
       deactivating,
       classes,
       styles,
-      frame,
+      contentFrame,
+      overlay,
     }
   },
 })

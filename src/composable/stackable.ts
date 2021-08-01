@@ -9,7 +9,7 @@ interface IUseStackableParams {
   activeElSelector: string
   stackMinZIndex: number
   isActive: Ref<boolean>
-  content: Ref<Element | null>
+  content: Ref<Element | undefined>
 }
 
 export const useStackable: (param: IUseStackableParams) => {activeZIndex: ComputedRef<number>} = ({

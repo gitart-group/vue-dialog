@@ -1,32 +1,57 @@
-import { enableBodyScroll, disableBodyScroll } from 'body-scroll-lock'
+/**
+ * A copy of the vuetify implemantation
+ * https://github.com/vuetifyjs/vuetify/blob/v2.5.8/packages/vuetify/src/mixins/overlayable/index.ts
+ */
 
-export const getScrollbarWidth = () => {
-  const container = document.createElement('div')
-  container.style.visibility = 'hidden'
-  container.style.overflow = 'scroll'
-  const inner = document.createElement('div')
+/**
+ * Polyfill for Event.prototype.composedPath
+ */
+const composedPath = (e: WheelEvent): EventTarget[] => {
+  if (e.composedPath) return e.composedPath()
 
-  container.appendChild(inner)
-  document.body.appendChild(container)
-  const scrollbarWidth = container.offsetWidth - inner.offsetWidth
-  document.body.removeChild(container)
+  const path = []
+  let el = e.target as Element
 
-  return scrollbarWidth
-}
+  while (el) {
+    path.push(el)
 
-export const disableScroll = (hideScrollbar = false) => {
-  if (hideScrollbar) {
-    disableBodyScroll(document.body)
-  } else {
-    const scrollWidth = getScrollbarWidth()
-    disableBodyScroll(document.body)
-    if (scrollWidth > 0) {
-      document.body.style.paddingRight = scrollWidth + 'px'
+    if (el.tagName === 'HTML') {
+      path.push(document)
+      path.push(window)
+
+      return path
     }
+
+    el = el.parentElement!
   }
+  return path
 }
 
-export const enableScroll = () => {
-  enableBodyScroll(document.body)
-  document.body.style.paddingRight = '0'
+const hasScrollbar = (el?: Element) => {
+  if (!el || el.nodeType !== Node.ELEMENT_NODE) return false
+
+  const style = window.getComputedStyle(el)
+  return ['auto', 'scroll'].includes(style.overflowY!) && el.scrollHeight > el.clientHeight
+}
+
+const shouldScroll = (el: Element, delta: number) => {
+  if (el.scrollTop === 0 && delta < 0) return true
+  return el.scrollTop + el.clientHeight === el.scrollHeight && delta > 0
+}
+
+export const noScrollableParent = (event: WheelEvent, content: Element | undefined) => {
+  const path = composedPath(event)
+  const delta = event.deltaY
+
+  for (let index = 0; index < path.length; index++) {
+    const el = path[index]
+
+    if (el === document) return true
+    if (el === document.documentElement) return true
+    if (el === content) return true
+
+    if (hasScrollbar(el as Element)) return shouldScroll(el as Element, delta)
+  }
+
+  return true
 }
