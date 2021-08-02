@@ -17,9 +17,9 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { GDialog } from 'plugin'
+import { useVModel } from '@vueuse/core'
 
-import { useModelWrapper } from '@/composables/modelWrapper'
+import { GDialog } from 'plugin'
 
 import BooleanSwitch from '@/components/PropControls/BooleanSwitch/BooleanSwitch.vue'
 
@@ -39,7 +39,7 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const depressed = ref(false)
-    const value = useModelWrapper(props, emit)
+    const value = useVModel(props, 'modelValue', emit)
 
     return {
       depressed,

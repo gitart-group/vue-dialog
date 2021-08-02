@@ -24,9 +24,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { GDialog } from 'plugin'
+import { useVModel } from '@vueuse/core'
 
-import { useModelWrapper } from '@/composables/modelWrapper'
+import { GDialog } from 'plugin'
 
 import DialogToolbar from '@/components/Dialog/DialogToolbar.vue'
 
@@ -47,7 +47,7 @@ export default defineComponent({
   emits: ['update:modelValue'],
 
   setup(props, { emit }) {
-    const value = useModelWrapper(props, emit)
+    const value = useVModel(props, 'modelValue', emit)
 
     const onClose = () => {
       value.value = false

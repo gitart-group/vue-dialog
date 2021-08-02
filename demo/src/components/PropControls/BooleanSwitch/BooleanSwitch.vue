@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useModelWrapper } from '@/composables/modelWrapper'
+import { useVModel } from '@vueuse/core'
 
 import Radio from '@/components/UI/Radio/Radio.vue'
 import RadioGroup from '@/components/UI/RadioGroup/RadioGroup.vue'
@@ -40,7 +40,7 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
-    const value = useModelWrapper(props, emit)
+    const value = useVModel(props, 'modelValue', emit)
 
     return {
       value,
