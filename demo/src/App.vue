@@ -31,8 +31,8 @@
 import { defineComponent } from 'vue'
 import { GDialogRoot } from 'plugin'
 
-import TheHeader from '@/components/Layout/TheHeader.vue'
-import TheFooter from '@/components/Layout/TheFooter.vue'
+import TheHeader from '@/components/Interface/TheHeader.vue'
+import TheFooter from '@/components/Interface/TheFooter.vue'
 
 import DialogLayout from '@/components/Layout/DialogLayout.vue'
 import ProgrammaticalDialogLayout from '@/components/Layout/ProgrammaticalDialogLayout.vue'

@@ -5,7 +5,7 @@
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
     "stylelint": "stylelint **/*.vue",
-    "lint": "stylelint . && eslint .",
+    "lint": "yarn stylelint && yarn eslint",
     "eslint": "eslint"
   },
   "main": "dist/index.js",
