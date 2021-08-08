@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
-    "stylelint": "stylelint .",
+    "stylelint": "stylelint **/*.vue",
     "lint": "stylelint . && eslint .",
     "eslint": "eslint"
   },
