@@ -7,46 +7,44 @@
     <div
       class="container"
       bg="white"
-      p="y-8 x-6"
+      p="t-8 b-4 x-6"
       m="x-auto"
       border="rounded"
     >
-      <div
-        class="flex items-end"
-        m="b-8"
-      >
-        <h1
-          m="r-4"
-        >
-          Vue Dialog
-        </h1>
+      <TheHeader m="b-4" />
 
-        <a
-          m="r-2"
-          href="https://www.npmjs.com/package/gitart-vue-dialog"
-          target="_blank"
-        >
-          npm
-        </a>
-
-        <a href="https://github.com/MichaelGitArt/gitart-vue-dialog" target="_blank">
-          github
-        </a>
+      <div p="y-3">
+        <DialogLayout />
       </div>
 
-      <DialogLayout />
+      <div p="y-3">
+        <ProgrammaticalDialogLayout />
+      </div>
+
+      <TheFooter m="t-4" />
     </div>
   </div>
+  <GDialogRoot />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import DialogLayout from './components/Layout/DialogLayout.vue'
+import { GDialogRoot } from 'plugin'
+
+import TheHeader from '@/components/Layout/TheHeader.vue'
+import TheFooter from '@/components/Layout/TheFooter.vue'
+
+import DialogLayout from '@/components/Layout/DialogLayout.vue'
+import ProgrammaticalDialogLayout from '@/components/Layout/ProgrammaticalDialogLayout.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
+    GDialogRoot,
+    TheHeader,
+    TheFooter,
     DialogLayout,
+    ProgrammaticalDialogLayout,
   },
 })
 </script>

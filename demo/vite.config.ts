@@ -9,7 +9,7 @@ export default ({ mode }: { mode: 'production'| 'development' }) => {
     : 'gitart-vue-dialog'
 
   const dialogPluginCss = mode === 'development'
-    ? path.resolve(__dirname, './src/scss/plugin-css-placeholder.css')
+    ? path.resolve(__dirname, './src/empty.css')
     : 'gitart-vue-dialog/dist/style.css'
 
   return defineConfig({

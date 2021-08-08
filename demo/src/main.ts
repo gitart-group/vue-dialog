@@ -1,8 +1,10 @@
 import { createApp } from 'vue'
+import { plugin as dialogPlugin } from 'plugin' // gitart-vue-dialog
+import 'plugin-css' // gitart-vue-dialog/dist/style.css
 
 import App from './App.vue'
-
-import './scss/main.scss'
 import 'virtual:windi.css'
 
-createApp(App).mount('#app')
+export const app = createApp(App)
+  .use(dialogPlugin)
+  .mount('#app')

@@ -18,10 +18,14 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { useVModel } from '@vueuse/core'
-
 import { GDialog } from 'plugin'
 
 import BooleanSwitch from '@/components/PropControls/BooleanSwitch/BooleanSwitch.vue'
+
+export interface IBaseDialogProps {
+  modelValue: boolean
+  lorem: boolean
+}
 
 export default defineComponent({
   name: 'BaseDialog',
@@ -35,9 +39,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+
+    lorem: {
+      type: Boolean,
+      required: true,
+    },
   },
 
-  setup(props, { emit }) {
+  setup(props: IBaseDialogProps, { emit }) {
     const depressed = ref(false)
     const value = useVModel(props, 'modelValue', emit)
 

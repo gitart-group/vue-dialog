@@ -25,7 +25,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useVModel } from '@vueuse/core'
-
 import { GDialog } from 'plugin'
 
 import DialogToolbar from '@/components/Dialog/DialogToolbar.vue'
