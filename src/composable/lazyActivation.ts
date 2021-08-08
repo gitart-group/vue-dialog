@@ -9,9 +9,16 @@ type UseLazyActivationFunc = (baseState: Ref<boolean>) => {
 }
 
 export const useLazyActivation: UseLazyActivationFunc = (baseState) => {
-  const activatedOnce = ref(baseState.value)
-  const active = ref(baseState.value)
+  const activatedOnce = ref(false)
+  const active = ref(false)
   const deactivating = ref(false)
+
+  if(baseState.value) {
+    activatedOnce.value = true
+    nextTick(() => {
+      active.value = true
+    })
+  }
 
   watch(
     () => baseState.value,
