@@ -38,12 +38,18 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+
+    class: {
+      type: String,
+      default: '',
+    },
   },
 
   setup(props) {
     const { sizeStyles: styles } = useSizeStyle(props)
     const classes = computed(() => [
       'g-dialog-content',
+      props.class,
       {
         'g-dialog-content--scrollable': props.scrollable,
         'g-dialog-content--depressed': props.depressed,

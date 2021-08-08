@@ -17,6 +17,7 @@
           :style="styles"
         >
           <GDialogContent
+            :class="contentClass"
             :max-width="maxWidth"
             :width="width"
             :height="height"
@@ -114,6 +115,11 @@ export default defineComponent({
     hideScrollbar: {
       type: Boolean,
       default: false,
+    },
+
+    contentClass: {
+      type: String,
+      default: '',
     },
   },
 
