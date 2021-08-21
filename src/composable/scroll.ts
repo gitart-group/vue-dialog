@@ -1,6 +1,6 @@
 import { Ref } from 'vue'
 
-import { noScrollableParent } from '../helper/scroll.helper'
+import { noScrollableParent, getScrollbarWidth } from '../helper/scroll.helper'
 
 type ScrollParams = {
   overlay: Ref<Element | undefined>
@@ -12,6 +12,7 @@ export const useScroll = ({
   content,
 }: ScrollParams) => {
   let disabled = false
+  let disableType: 'byEvents' | 'byOverflow' = null
 
   const eventListener = (event: WheelEvent) => {
     if(event.target === overlay.value
@@ -27,9 +28,19 @@ export const useScroll = ({
       return
     }
 
-    window.addEventListener('wheel', eventListener, {
-      passive: false,
-    })
+    const scrollbarWidth = getScrollbarWidth()
+
+    // The mobile has a scroll bar width of 0
+    if (scrollbarWidth === 0) {
+      disableType = 'byOverflow'
+      document.documentElement.classList.add('overflow-y-hidden')
+    } else {
+      disableType = 'byEvents'
+      window.addEventListener('wheel', eventListener, {
+        passive: false,
+      })
+    }
+
     disabled = true
   }
 
@@ -38,7 +49,12 @@ export const useScroll = ({
       return
     }
 
-    window.removeEventListener('wheel', eventListener)
+    if(disableType === 'byEvents') {
+      window.removeEventListener('wheel', eventListener)
+    }else if (disableType === 'byOverflow') {
+      document.documentElement.classList.remove('overflow-y-hidden')
+    }
+
     disabled = false
   }
 

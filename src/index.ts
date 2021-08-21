@@ -1,3 +1,5 @@
+import './scss/main.scss'
+
 // standalone component
 export { default as GDialog } from './components/GDialog.vue'
 

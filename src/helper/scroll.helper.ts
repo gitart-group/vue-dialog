@@ -55,3 +55,17 @@ export const noScrollableParent = (event: WheelEvent, content: Element | undefin
 
   return true
 }
+
+export const getScrollbarWidth = () => {
+  const container = document.createElement('div')
+  container.style.visibility = 'hidden'
+  container.style.overflow = 'scroll'
+  const inner = document.createElement('div')
+
+  container.appendChild(inner)
+  document.body.appendChild(container)
+  const scrollbarWidth = container.offsetWidth - inner.offsetWidth
+  document.body.removeChild(container)
+
+  return scrollbarWidth
+}
