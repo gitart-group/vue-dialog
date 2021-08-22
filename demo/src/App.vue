@@ -2,7 +2,7 @@
   <div
     class="app"
     p="x-5 y-12"
-    gradient="to-r from-purple-400 via-pink-500 to-red-500"
+    gradient="to-br from-purple-400 via-pink-500 to-red-500"
   >
     <div
       class="container"
