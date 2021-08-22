@@ -1,0 +1,17 @@
+{
+  "name": "vitepress-starter",
+  "version": "1.0.0",
+  "description": "Vite press starter",
+  "main": "index.js",
+  "repository": "https://www.github.com/bekaku",
+  "author": "bekaku",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "serve": "vitepress serve src"
+  },
+  "devDependencies": {
+    "vitepress": "^0.16.1"
+  }
+}
