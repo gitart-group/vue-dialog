@@ -30,7 +30,7 @@ import { GDialog } from 'plugin'
 import DialogToolbar from '@/components/Dialog/DialogToolbar.vue'
 
 export default defineComponent({
-  name: 'BaseDialog',
+  name: 'StyledDialog',
   components: {
     GDialog,
     DialogToolbar,
