@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineAsyncComponent, defineComponent, inject } from 'vue'
-import { DialogMethodsKey } from 'plugin'
+import { dialogInjectionKey } from 'plugin'
 
 import Btn from '@/components/UI/Btn/Btn.vue'
 import ScrollDialog from '@/components/Dialogs/ScrollDialog/ScrollDialog.vue'
@@ -29,16 +29,18 @@ export default defineComponent({
   },
 
   setup() {
-    const $dialog = inject(DialogMethodsKey)
+    const {
+      addDialog,
+    } = inject(dialogInjectionKey)!
 
     const onOpenProfilePhotoDialog = () => {
-      $dialog?.add({
+      addDialog({
         component: ProfilePhotoDialog,
       })
     }
 
     const onOpenScrollDialog = () => {
-      $dialog?.add({
+      addDialog({
         component: ScrollDialog,
       })
     }
