@@ -1,12 +1,26 @@
+const path = require('path')
+
 module.exports = {
-  title: "Gitart Vue Dialog",
-  description: "Documentaion for Gitart Vue Dialog. Docs",
-  lang: "en-US",
   vite: {
     server: {
       port: 3001,
-    }
+      fs: {
+        strict: false,
+        allow: [path.resolve(__dirname, '../')],
+      },
+    },
+
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../'),
+      },
+    },
   },
+
+  title: "Gitart Vue Dialog",
+  description: "Documentaion for Gitart Vue Dialog. Docs",
+  lang: "en-US",
+
   head: [
     ['link', { rel: 'icon', href: '/favicon.png' }],
   ],
@@ -18,8 +32,7 @@ module.exports = {
 
     nav: [
       { text: "Home", link: "/" },
-      { text: "Guide", link: "/guide/" },
-      { text: "API", link: "/api/" },
+      { text: "Docs", link: "/docs/introduction/getting-started" },
       {
         text: "npm",
         link: "https://www.npmjs.com/package/gitart-vue-dialog",
@@ -46,33 +59,25 @@ function getGuideSidebar() {
     {
       text: 'Introduction',
       children: [
-        { text: 'Getting Started', link: '/guide/' },
+        { text: 'Getting Started', link: '/docs/introduction/getting-started' },
+        { text: 'Usage Types', link: '/docs/introduction/usage-types' },
       ]
     },
-    // {
-    //   text: 'Guide',
-    //   children: [
-    //     { text: 'Chapter One', link: '/guide/getting-start' },
-    //     { text: 'Chapter two', link: '/guide/two' },
-    //     { text: 'API', link: '/api/' },
-    //   ]
-    // },
-    // {
-    //   text: 'Advanced',
-    //   children: [
-    //     { text: 'Frontmatter', link: '/guide/frontmatter' },
-    //     { text: 'Global Computed', link: '/guide/global-computed' },
-    //     { text: 'Global Component', link: '/guide/global-component' },
-    //     { text: 'Customization', link: '/guide/customization' },
-    //     {
-    //       text: 'Differences from Vuepress',
-    //       link: '/guide/differences-from-vuepress'
-    //     }
-    //   ]
-    // },
+
     {
-      text: 'API',
-      link: '/api/'
+      text: 'Guide',
+      children: [
+        { text: 'Component Usage', link: '/docs/guide/component-usage' },
+        { text: 'Plugin Usage', link: '/docs/guide/plugin-usage' },
+        { text: 'Properties', link: '/docs/guide/properties' },
+      ]
+    },
+
+    {
+      text: 'Components',
+      children: [
+        { text: 'GDialog', link: '/docs/components/g-dialog' },
+      ]
     },
   ]
 }

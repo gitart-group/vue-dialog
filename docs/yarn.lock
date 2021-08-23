@@ -633,6 +633,11 @@ generic-names@^2.0.1:
   dependencies:
     loader-utils "^1.1.0"
 
+gitart-vue-dialog@^0.2.0-alpha.3:
+  version "0.2.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-0.2.0-alpha.3.tgz#2e3372c327f7fd932ce4050a870ee22a59b64b7f"
+  integrity sha512-eRzWZc+7O52TkOXrx6r70CahOpfRa9mbVeV5Oq5j39GiZ9IeSwfEUlPIQ65L/lxQ+fTtZ0Xa433U0HyJNgQDew==
+
 glob-parent@^5.1.0:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
