@@ -9,7 +9,7 @@ const srcWatcher = chokidar.watch('./src', { persistent: true })
 
 distWatcher
   .on('change', () => {
-    shell.exec('cp ./types/* ./dist')
+    shell.exec('cp ./@types/* ./dist')
   })
 
 srcWatcher
