@@ -4,8 +4,10 @@ import './scss/main.scss'
 export { default as GDialog } from './components/GDialog.vue'
 
 // using plugin
+export * from './types/Plugin'
+
 export { default as GDialogRoot } from './components/GDialogRoot.vue'
 
-export { DialogDialogListKey as DialogDialogListKey } from './plugin'
-export { DialogMethodsKey as DialogMethodsKey } from './plugin'
-export { plugin as plugin } from './plugin'
+export {
+  plugin, dialogInjectionKey,
+} from './plugin'

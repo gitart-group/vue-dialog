@@ -1,5 +1,5 @@
 import {
-  Component, ShallowUnwrapRef,
+  Component, ShallowUnwrapRef, InjectionKey,
 } from 'vue'
 
 export interface IDialogItem {
@@ -19,7 +19,13 @@ type DialogRemoveMethod = (
   index: number
 ) => void
 
-export interface DialogMethods {
-  add: DialogAddMethod
-  remove: DialogRemoveMethod
+interface IDialogMethods {
+  addDialog: DialogAddMethod
+  removeDialog: DialogRemoveMethod
 }
+
+export interface IDialog extends IDialogMethods {
+  dialogs: IDialogItem[]
+}
+
+export type DialogInjectionKey = InjectionKey<IDialog>

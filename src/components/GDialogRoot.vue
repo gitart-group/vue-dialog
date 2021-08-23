@@ -11,25 +11,23 @@
 <script lang="ts">
 import { inject } from 'vue'
 
-import { DialogMethodsKey, DialogDialogListKey } from '../index'
+import { dialogInjectionKey } from '../index'
 
 export default {
   name: 'GDialogRoot',
 
   setup() {
-    const dialogs = inject(DialogDialogListKey, [])
-    const $dialog = inject(DialogMethodsKey, null)
+    const {
+      dialogs,
+      removeDialog,
+    } = inject(dialogInjectionKey)!
 
-    if(!$dialog) {
-      console.error('The plugin is not initialized')
+    if(!dialogs) {
+      console.error('The giart-vue-dialog plugin is not initialized')
     }
 
     function onClose(index: number) {
-      if(!$dialog) {
-        throw new Error('good')
-      }
-
-      $dialog.remove(index)
+      removeDialog(index)
     }
 
     return {
