@@ -1,7 +1,4 @@
-<!-- <script setup>
-import BaseDialog from '@/.vitepress/components/Dialogs/Guide/BaseDialog.vue'
-import BaseStyledDialog from '@/.vitepress/components/Dialogs/Guide/BaseStyledDialog.vue'
-</script> -->
+
 
 ![Tux, the Linux mascot](/gitart-dialog-logo.svg)
 
@@ -34,8 +31,15 @@ Let's use standalone component (without installing plugin)
 <<< @/.vitepress/includes/minumal-working-example/YourComponent.js
 <<< @/.vitepress/includes/minumal-working-example/YourComponent.html
 
-<!-- <BaseDialog />
+<script setup>
+  import GettingStartedExample from '@/.vitepress/components/GettingStartedExample.vue'
+  import GettingStartedExampleStyled from '@/.vitepress/components/GettingStartedExampleStyled.vue'
+</script>
+
+<GettingStartedExample />
 
 Pretty **ugly** dialog, right? Let's add max-width, background and some padding. Take a look:
 
-<BaseStyledDialog /> -->
+<GettingStartedExampleStyled />
+
+Looks better. Here is more advanced [examples](https://michaelgitart.github.io/gitart-vue-dialog)

@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .base-btn {
   cursor: pointer;
   display: inline-block;

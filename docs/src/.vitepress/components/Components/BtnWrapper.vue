@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .btn-wrapper {
   padding: 30px;
   border-radius: 4px;
