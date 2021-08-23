@@ -1,7 +1,7 @@
 <template>
-  <GDialog v-model="dialogState">
+  <!-- <GDialog v-model="dialogState">
     Content
-  </GDialog>
+  </GDialog> -->
 
   <BtnWrapper>
     <BaseBtn @click="onOpen">
@@ -11,15 +11,8 @@
 </template>
 
 <script>
-import { GDialog } from 'gitart-vue-dialog'
-import 'gitart-vue-dialog/dist/style.css'
-
 export default {
   name: 'BaseDialog',
-  components: {
-    GDialog,
-  },
-
   data: () => ({
     dialogState: false,
   }),

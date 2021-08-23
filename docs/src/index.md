@@ -6,7 +6,7 @@ heroText: Gitart Vue Dialog
 tagline: Beautiful dialogs (Vue 3 only)
 
 actionText: View Docs
-actionLink: /guide/
+actionLink: docs/introduction/getting-started
 
 altActionText: Demo
 altActionLink: https://michaelgitart.github.io/gitart-vue-dialog
