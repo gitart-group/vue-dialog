@@ -12,7 +12,7 @@ export const useScroll = ({
   content,
 }: ScrollParams) => {
   let disabled = false
-  let disableType: 'byEvents' | 'byOverflow' = null
+  let disableType: 'byEvents' | 'byOverflow'
 
   const eventListener = (event: WheelEvent) => {
     if(event.target === overlay.value
