@@ -10,12 +10,11 @@
   </BtnWrapper>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 import { GDialog } from 'gitart-vue-dialog'
 import 'gitart-vue-dialog/dist/style.css'
 
-export default defineComponent({
+export default {
   name: 'BaseDialog',
   components: {
     GDialog,
@@ -30,5 +29,5 @@ export default defineComponent({
       this.dialogState = true
     },
   },
-})
+}
 </script>
