@@ -58,8 +58,8 @@ export default {
 
     info: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   setup(props: IBaseDialogProps, { emit }) {
@@ -70,9 +70,8 @@ export default {
 
       set(val) {
         emit('update:modelValue', val)
-      } 
+      },
     })
-
 
     return {
       value,
@@ -92,11 +91,10 @@ export default {
       this.$dialog.addDialog({
         component: InfoDialog,
         props: {
-          info: 'Info to display'
-        }
+          info: 'Info to display',
+        },
       })
     },
   },
 }
-
 ```

@@ -12,5 +12,5 @@ export default {
     app.component('GDialog', GDialog)
     app.component('BaseBtn', BaseBtn)
     app.component('BtnWrapper', BtnWrapper)
-  }
+  },
 }
