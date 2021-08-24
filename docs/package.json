@@ -15,7 +15,9 @@
     "vitepress": "^0.16.1"
   },
   "dependencies": {
+    "@vueuse/core": "^6.0.0",
     "gitart-vue-dialog": "^0.2.0-alpha.3",
+    "prismjs": "^1.24.1",
     "sass": "^1.38.0"
   }
 }
