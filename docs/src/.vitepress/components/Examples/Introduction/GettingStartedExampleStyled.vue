@@ -16,7 +16,7 @@
 import { ref, computed } from 'vue'
 
 export default {
-  name: 'BaseDialog',
+  name: 'GettingStartedExampleStyled',
 
   setup() {
     const dialogState = ref(false)
