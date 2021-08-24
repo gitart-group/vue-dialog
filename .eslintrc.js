@@ -83,6 +83,8 @@ module.exports = {
     'import/newline-after-import': ['error', { 'count': 1 }],
 
     'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
+
+    'import/named': 'off',
   },
 
   settings: {
