@@ -3,31 +3,21 @@
     Content
   </GDialog>
 
-  <BtnWrapper>
-    <BaseBtn @click="onOpen">
+  <ButtonWrapper>
+    <UiButton @click="onOpen">
       Open Dialog
-    </BaseBtn>
-  </BtnWrapper>
+    </UiButton>
+  </ButtonWrapper>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 export default {
   name: 'GettingStartedExample',
 
   setup() {
-    const dialogState = ref(false)
-
-    const value = computed({
-      get() {
-        return dialogState.value
-      },
-      set(val) {
-        dialogState.value = val
-      },
-    })
-
+    const value = ref(false)
     const onOpen = () => {
       value.value = true
     }

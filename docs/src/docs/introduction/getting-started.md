@@ -2,7 +2,6 @@
 
 ![Tux, the Linux mascot](/gitart-dialog-logo.svg)
 
-
 ::: warning Vue 3 only
 Remember that the package only works with **Vue 3**
 :::
@@ -33,7 +32,7 @@ Let's use standalone component (without installing plugin)
 
 <Example file="Introduction/GettingStartedExample" />
 
-Pretty **ugly** dialog, right? Let's add max-width, background and some padding. Take a look:
+Pretty **ugly** dialog, right? Let's add background and some content. Take a look:
 
 <Example file="Introduction/GettingStartedExampleStyled" />
 

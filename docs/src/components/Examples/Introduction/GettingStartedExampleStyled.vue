@@ -1,35 +1,37 @@
 <template>
   <GDialog v-model="value" max-width="500">
     <div class="getting-started-example-styled">
-      Content
+      <div class="getting-started-example-styled__content">
+        <div class="getting-started-example-styled__title">
+          Content
+        </div>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, ratione!</p>
+      </div>
+
+      <div class="getting-started-example-styled__actions">
+        <UiButton>
+          Submit
+        </UiButton>
+      </div>
     </div>
   </GDialog>
 
-  <BtnWrapper>
-    <BaseBtn @click="onOpen">
+  <ButtonWrapper>
+    <UiButton @click="onOpen">
       Open Dialog
-    </BaseBtn>
-  </BtnWrapper>
+    </UiButton>
+  </ButtonWrapper>
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 export default {
   name: 'GettingStartedExampleStyled',
 
   setup() {
-    const dialogState = ref(false)
-
-    const value = computed({
-      get() {
-        return dialogState.value
-      },
-      set(val) {
-        dialogState.value = val
-      },
-    })
-
+    const value = ref(false)
     const onOpen = () => {
       value.value = true
     }
@@ -44,7 +46,23 @@ export default {
 
 <style lang="scss">
   .getting-started-example-styled {
-    padding: 30px;
     background: #fff;
+
+    &__content {
+      padding: 20px;
+    }
+
+    &__title {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
   }
 </style>

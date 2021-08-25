@@ -1,0 +1,6 @@
+@import './var';
+
+:root {
+  --c-brand: #{$primary};
+  --c-brand-light: #{lighten($primary, 5%)};
+}

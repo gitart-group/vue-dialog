@@ -1,4 +1,15 @@
+/**
+ * Composable to extract partitions (template, script, style) from the vue component
+ */
+
+import { Ref } from 'vue'
 import { useAsyncState } from '@vueuse/core'
+
+export interface IPen {
+  template: string
+  script: string
+  style: string
+}
 
 const parseTemplate = (target: string, template: string): string => {
   const string = `(<${target}(.*)?>[\\w\\W]*<\\/${target}>)`
@@ -8,63 +19,20 @@ const parseTemplate = (target: string, template: string): string => {
   return parsed[1] || ''
 }
 
-export const usePen = (file: string) => {
+export const usePen = (file: string): Ref<IPen | null> => {
   const { state } = useAsyncState(async () => {
     const { default: res } = await import(`../components/Examples/${file}.vue?raw`)
 
     const template = parseTemplate('template', res)
+    const script = parseTemplate('script', res)
+    const style = parseTemplate('style', res)
 
     return {
       template,
+      script,
+      style,
     }
   }, null)
 
   return state
 }
-
-// boot (res) {
-//   console.log('🚀 ~ file: Example.vue ~ line 54 ~ boot ~ this.parseTemplate(\'template\', res)', this.parseTemplate('template', res))
-
-//   // const template = this.parseTemplate('template', res)
-//   // const style = this.parseTemplate('style', res)
-//   // const script = this.parseTemplate('script', res)
-//   // const codepenResources = this.parseTemplate('codepen-resources', res)
-//   // const codepenAdditional = this.parseTemplate('codepen-additional', res)
-
-//   // this.pen = {
-//   //   template,
-//   //   style,
-//   //   script,
-//   //   codepenResources,
-//   //   codepenAdditional,
-//   // }
-// },
-
-// parseTemplate (target, template) {
-//   const string = `(<${target}(.*)?>[\\w\\W]*<\\/${target}>)`
-//   const regex = new RegExp(string, 'g')
-//   const parsed = regex.exec(template) || []
-
-//   return parsed[1] || ''
-// },
-
-// data: () => ({ component: undefined }),
-
-// created () {
-//   this.load()
-// },
-
-// methods: {
-//   async load () {
-//     let component = {}
-
-//     try {
-//       const res = await import(`../Examples/${this.file}.vue?raw`)
-
-//     } catch (err) {
-//       console.warn(err)
-//     }
-
-//     this.component = component.default
-//   },
-// },

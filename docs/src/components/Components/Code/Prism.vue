@@ -33,7 +33,7 @@ export default defineComponent({
         h('code', {
           ...attrs,
           class: [attrs.class, className],
-          innerHTML: Prism.highlight(code.value, prismLanguage),
+          innerHTML: Prism.highlight(code.value, prismLanguage, language.value),
         }),
       ],
     )
