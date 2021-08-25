@@ -58,22 +58,6 @@ export default defineComponent({
     },
 
     /**
-     * lock scrolling of the body after opening
-     */
-    lockScroll: {
-      type: Boolean,
-      default: true,
-    },
-
-    /**
-     * make body indent after the scroll bar disappears
-     */
-    lockScrollPadding: {
-      type: Boolean,
-      default: true,
-    },
-
-    /**
      * clicking outside content will not close modal
      */
     persistent: {
@@ -105,14 +89,6 @@ export default defineComponent({
      * removes box-shadow for content
      */
     depressed: {
-      type: Boolean,
-      default: false,
-    },
-
-    /**
-     * hide scrollbar after opening the dialog
-     */
-    hideScrollbar: {
       type: Boolean,
       default: false,
     },
