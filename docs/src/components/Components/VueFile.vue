@@ -8,6 +8,7 @@
 <script lang="ts">
 import { defineComponent, Component } from 'vue'
 import { useAsyncState } from '@vueuse/core'
+import { imports } from '@/imports'
 
 export default defineComponent({
   name: 'VueFile',
@@ -21,8 +22,14 @@ export default defineComponent({
 
   setup(props) {
     const { state: component } = useAsyncState(async () => {
-      const res = await import(`../Examples/${props.file}.vue`)
-      return res.default as Component
+      try {
+        const { component } = (await imports[props.file]()) as { component: Component }
+
+        return component
+      } catch (error) {
+        console.warn(`Example component "${props.file}" not found`)
+        return null
+      }
     }, null)
 
     return {

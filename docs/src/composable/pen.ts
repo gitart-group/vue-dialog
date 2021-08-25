@@ -4,6 +4,7 @@
 
 import { Ref } from 'vue'
 import { useAsyncState } from '@vueuse/core'
+import { imports } from '@/imports'
 
 export interface IPen {
   template: string
@@ -21,16 +22,21 @@ const parseTemplate = (target: string, template: string): string => {
 
 export const usePen = (file: string): Ref<IPen | null> => {
   const { state } = useAsyncState(async () => {
-    const { default: res } = await import(`../components/Examples/${file}.vue?raw`)
+    try {
+      const { raw } = (await imports[file]()) as { raw: string }
 
-    const template = parseTemplate('template', res)
-    const script = parseTemplate('script', res)
-    const style = parseTemplate('style', res)
+      const template = parseTemplate('template', raw)
+      const script = parseTemplate('script', raw)
+      const style = parseTemplate('style', raw)
 
-    return {
-      template,
-      script,
-      style,
+      return {
+        template,
+        script,
+        style,
+      }
+    } catch (error) {
+      console.warn(`Example component "${file}" not found`)
+      return null
     }
   }, null)
 
