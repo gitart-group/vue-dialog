@@ -18,6 +18,7 @@ import './custom.scss'
 
 import ButtonWrapper from '@/components/Components/ButtonWrapper.vue'
 import Example from '@/components/Components/Example/Example.vue'
+import MethodSwitch from '@/components/Components/MethodSwitch.vue'
 
 export default {
   ...DefaultTheme,
@@ -36,5 +37,6 @@ export default {
     app.component('GDialog', GDialog)
     app.component('ButtonWrapper', ButtonWrapper)
     app.component('Example', Example)
+    app.component('MethodSwitch', MethodSwitch)
   },
 }

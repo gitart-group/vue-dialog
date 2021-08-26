@@ -20,6 +20,7 @@
     "@vueuse/core": "^6.0.0",
     "balm-ui": "9.36.0",
     "gitart-vue-dialog": "^0.2.0-alpha.3",
+    "markdown-it-container": "^3.0.0",
     "prismjs": "^1.24.1",
     "sass": "^1.38.0"
   }
