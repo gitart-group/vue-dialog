@@ -1,13 +1,19 @@
 <template>
   <div class="example-toolbar">
-    <UiButton
-      class="example-toolbar__code-button"
-      outlined
-      :raised="false"
-      @click="onToggleCode"
-    >
-      <Icon :icon-path="codeIcon" />
-    </UiButton>
+    <span>
+      Live Example
+    </span>
+
+    <div>
+      <UiButton
+        class="example-toolbar__code-button"
+        outlined
+        :raised="false"
+        @click="onToggleCode"
+      >
+        <Icon :icon-path="codeIcon" />
+      </UiButton>
+    </div>
   </div>
 </template>
 
@@ -40,7 +46,8 @@ export default defineComponent({
 <style lang="scss">
 .example-toolbar {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   padding: 5px 12px;
 
   &__code-button {
