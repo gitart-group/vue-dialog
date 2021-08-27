@@ -479,10 +479,10 @@ get-intrinsic@^1.0.2:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
-gitart-vue-dialog@0.2.0-alpha.3:
-  version "0.2.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-0.2.0-alpha.3.tgz#2e3372c327f7fd932ce4050a870ee22a59b64b7f"
-  integrity sha512-eRzWZc+7O52TkOXrx6r70CahOpfRa9mbVeV5Oq5j39GiZ9IeSwfEUlPIQ65L/lxQ+fTtZ0Xa433U0HyJNgQDew==
+gitart-vue-dialog@0.2.0-alpha.4:
+  version "0.2.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-0.2.0-alpha.4.tgz#6bb5cf0361fb4f13ae0edf9852fe5d5e836e3b8f"
+  integrity sha512-HOoeyS2icve0bnBFTkMBocdpUagkVSEXDZ7KzWpeewFWgzzn7yP+zOhZAayfOVSBCBRkaPQcjjYAdNywe7EKfg==
 
 glob-parent@^5.1.2:
   version "5.1.2"
