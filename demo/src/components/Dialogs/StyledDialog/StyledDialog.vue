@@ -15,7 +15,7 @@
 
       <div p="x-5 y-4">
         <p>
-          StyledDialogWrapper
+          Some content
         </p>
       </div>
     </div>
