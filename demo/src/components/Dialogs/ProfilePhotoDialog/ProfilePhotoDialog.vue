@@ -1,7 +1,7 @@
 <template>
   <GDialog
     v-model="value"
-    content-class="profile-dialog-wrapper"
+    border-radius="50%"
     width="300"
     height="300"
   >
@@ -40,18 +40,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-::v-global(.profile-dialog-wrapper) { /* stylelint-disable-line selector-pseudo-element-no-unknown */
-  border-radius: 50%;
-}
-
 .profile-dialog {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 10px;
   background-color: #fff;
-  // overflow: auto;
 
   img {
     max-height: 100%;
