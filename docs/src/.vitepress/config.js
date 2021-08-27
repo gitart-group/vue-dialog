@@ -2,8 +2,6 @@
 const path = require('path')
 const mdContainerPlugin = require('markdown-it-container')
 
-console.log('🚀 ~ file: config.js ~ line 4 ~ mdContainerPlugin', mdContainerPlugin)
-
 module.exports = {
   vite: {
     server: {

@@ -37,7 +37,7 @@ export default {
 
 ## Usage
 
-You can access to the [methods and properties](/docs/guide/properties) of the plugin by injection `inject(dialogInjectionKey)` (or `this.$dialog` in option api)
+You can access to the methods and properties of the plugin by injection `inject(dialogInjectionKey)` (or `this.$dialog` in option api)
 
 ))) method-switch
 
