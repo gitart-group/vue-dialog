@@ -1,9 +1,9 @@
 <template>
   <Component
-    :is="modal.component"
-    v-for="(modal, index) in dialogs"
-    :key="modal.id"
-    v-bind="modal.props"
+    :is="dialog.component"
+    v-for="(dialog, index) in dialogs"
+    :key="dialog.id"
+    v-bind="dialog.props"
     @update:modelValue="onClose(index)"
   />
 </template>

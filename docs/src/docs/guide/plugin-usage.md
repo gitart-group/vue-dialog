@@ -39,6 +39,9 @@ Next create your Dialog component that will be launched from method. Name it Inf
 </GDialog>
 ```
 
+))) method-switch
+
+::: vue-slot composition
 ```js
 // InfoDialog.vue
 import { computed } from 'vue'
@@ -49,13 +52,11 @@ export default {
   components: {
     GDialog,
   },
-
   props: {
     modelValue: {
       type: Boolean,
       default: false,
     },
-
     info: {
       type: String,
       required: true,
@@ -79,9 +80,79 @@ export default {
   },
 }
 ```
+:::
+
+::: vue-slot option
+```js
+// InfoDialog.vue
+import { GDialog } from 'gitart-vue-dialog'
+
+export default {
+  name: 'BaseDialog',
+  components: {
+    GDialog,
+  },
+  props: {
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
+    info: {
+      type: String,
+      required: true,
+    },
+  },
+
+  computed: {
+    value: {
+      get() {
+        return this.modelValue
+      },
+      set(val) {
+        this.$emit('update:modelValue', val)
+      },
+    },
+  },
+}
+```
+:::
+
+)))
+
 
 Now launch the dialog from any component of your app:
 
+))) method-switch
+
+::: vue-slot composition
+```js
+import { dialogInjectionKey } from 'gitart-vue-dialog'
+const InfoDialog = defineAsyncComponent(() => import('@/components/InfoDialog.vue'))
+
+export default {
+  setup() {
+    const {
+      addDialog,
+    } = inject(dialogInjectionKey)
+
+    const onOpenInfo = () => {
+      addDialog({
+        component: InfoDialog,
+        props: {
+          info: 'Info to display',
+        },
+      })
+    }
+
+    return {
+      onOpenInfo,
+    }
+  },
+}
+```
+:::
+
+::: vue-slot option
 ```js
 const InfoDialog = defineAsyncComponent(() => import('@/components/InfoDialog.vue'))
 
@@ -98,3 +169,6 @@ export default {
   },
 }
 ```
+:::
+
+)))
