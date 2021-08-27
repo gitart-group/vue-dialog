@@ -1,5 +1,7 @@
 # Component Usage
 
+- [GDialog Details](/docs/components/g-dialog)
+
 To use the package you don't need install the plugin. 
 Just styles and register GDialog component. In some cases it's enough
 

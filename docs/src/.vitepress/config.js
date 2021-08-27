@@ -80,7 +80,7 @@ module.exports = {
 
   themeConfig: {
     lastUpdated: 'Last Updated',
-    displayAllHeaders: true,
+    displayAllHeaders: false,
     activeHeaderLinks: false,
 
     nav: [
@@ -122,7 +122,6 @@ function getGuideSidebar() {
       children: [
         { text: 'Component Usage', link: '/docs/guide/component-usage' },
         { text: 'Plugin Usage', link: '/docs/guide/plugin-usage' },
-        { text: 'Properties', link: '/docs/guide/properties' },
       ],
     },
 
