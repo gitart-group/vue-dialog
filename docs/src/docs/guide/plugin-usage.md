@@ -104,8 +104,7 @@ export default {
   To close the dialog (DialogComponent.vue) you need inside emit the event `update:modelValue` with `false` inside. Take a look at the [example](#example) below
   :::
 
-
-
+---
 
 ### `removeDialog(index)` 
 
@@ -116,6 +115,8 @@ export default {
 
 - **Details:** <br/>
   The method removes item from [dialogs](#dialogs) by index. Useful if you decide to write your own [GDialogRoot](/docs/components/g-dialog-root)
+
+---
 
 ### `dialogs` 
 - **Type:** `Array`
@@ -133,6 +134,8 @@ export default {
     }
   }
   ```
+
+---
 
 ## Example
 
