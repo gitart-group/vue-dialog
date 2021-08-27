@@ -16,11 +16,18 @@
       npm
     </a>
 
-    <a href="https://github.com/MichaelGitArt/gitart-vue-dialog" target="_blank">
+    <a
+      m="r-2"
+      href="https://github.com/MichaelGitArt/gitart-vue-dialog"
+      target="_blank"
+    >
       github
     </a>
 
-    <a href="https://gitart-vue-dialog.netlify.app" target="_blank">
+    <a
+      href="https://gitart-vue-dialog.netlify.app"
+      target="_blank"
+    >
       docs
     </a>
   </div>
