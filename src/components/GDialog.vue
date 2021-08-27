@@ -52,6 +52,30 @@ export default defineComponent({
   },
 
   props: {
+
+    contentClass: {
+      type: String,
+      default: '',
+    },
+
+    /**
+     * removes box-shadow for content
+     */
+    depressed: {
+      type: Boolean,
+      default: false,
+    },
+
+    height: {
+      type: [String, Number],
+      default: 'auto',
+    },
+
+    maxWidth: {
+      type: [String, Number],
+      default: 'none',
+    },
+
     modelValue: {
       type: Boolean,
       default: false,
@@ -65,37 +89,14 @@ export default defineComponent({
       default: false,
     },
 
-    maxWidth: {
-      type: [String, Number],
-      default: 'none',
-    },
-
-    width: {
-      type: [String, Number],
-      default: 'auto',
-    },
-
-    height: {
-      type: [String, Number],
-      default: 'auto',
-    },
-
     scrollable: {
       type: Boolean,
       default: false,
     },
 
-    /**
-     * removes box-shadow for content
-     */
-    depressed: {
-      type: Boolean,
-      default: false,
-    },
-
-    contentClass: {
-      type: String,
-      default: '',
+    width: {
+      type: [String, Number],
+      default: 'auto',
     },
   },
 

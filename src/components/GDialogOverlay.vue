@@ -23,13 +23,13 @@ export default defineComponent({
       required: true,
     },
 
-    deactivating: {
-      type: Boolean,
+    activeZIndex: {
+      type: Number,
       required: true,
     },
 
-    activeZIndex: {
-      type: Number,
+    deactivating: {
+      type: Boolean,
       required: true,
     },
   },

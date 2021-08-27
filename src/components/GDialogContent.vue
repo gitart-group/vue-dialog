@@ -11,24 +11,9 @@ import { useSizeStyle } from '../composable/sizeStyle'
 export default defineComponent({
   name: 'GDialogContent',
   props: {
-    maxWidth: {
-      type: [String, Number],
-      default: 'none',
-    },
-
-    width: {
-      type: [String, Number],
-      default: 'auto',
-    },
-
-    height: {
-      type: [String, Number],
-      default: 'auto',
-    },
-
-    scrollable: {
-      type: Boolean,
-      default: false,
+    class: {
+      type: String,
+      default: '',
     },
 
     /**
@@ -39,9 +24,24 @@ export default defineComponent({
       default: false,
     },
 
-    class: {
-      type: String,
-      default: '',
+    height: {
+      type: [String, Number],
+      default: 'auto',
+    },
+
+    maxWidth: {
+      type: [String, Number],
+      default: 'none',
+    },
+
+    scrollable: {
+      type: Boolean,
+      default: false,
+    },
+
+    width: {
+      type: [String, Number],
+      default: 'auto',
     },
   },
 
