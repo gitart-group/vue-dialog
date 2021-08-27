@@ -21,6 +21,10 @@
         <ProgrammaticalDialogLayout />
       </div>
 
+      <div p="y-3">
+        <NestingDialogLayout />
+      </div>
+
       <TheFooter m="t-4" />
     </div>
   </div>
@@ -36,6 +40,7 @@ import TheFooter from '@/components/Interface/TheFooter.vue'
 
 import DialogLayout from '@/components/Layout/DialogLayout.vue'
 import ProgrammaticalDialogLayout from '@/components/Layout/ProgrammaticalDialogLayout.vue'
+import NestingDialogLayout from '@/components/Layout/NestingDialogLayout.vue'
 
 export default defineComponent({
   name: 'App',
@@ -45,11 +50,17 @@ export default defineComponent({
     TheFooter,
     DialogLayout,
     ProgrammaticalDialogLayout,
+    NestingDialogLayout,
   },
 })
 </script>
 
 <style lang="scss">
+:root {
+  --g-dialog-content-bg: #f9fafb;
+  --g-dialog-content-border-radius: 6px;
+}
+
 .app {
   min-height: 120vh;
 }
