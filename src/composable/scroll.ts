@@ -5,11 +5,13 @@ import { noScrollableParent, getScrollbarWidth } from '../helper/scroll.helper'
 type ScrollParams = {
   overlay: Ref<Element | undefined>
   content: Ref<Element | undefined>
+  fullscreen: boolean
 }
 
 export const useScroll = ({
   overlay,
   content,
+  fullscreen,
 }: ScrollParams) => {
   let disabled = false
   let disableType: 'byEvents' | 'byOverflow'
@@ -31,7 +33,7 @@ export const useScroll = ({
     const scrollbarWidth = getScrollbarWidth()
 
     // The mobile has a scroll bar width of 0
-    if (scrollbarWidth === 0) {
+    if (scrollbarWidth === 0 || fullscreen) {
       disableType = 'byOverflow'
       document.documentElement.classList.add('overflow-y-hidden')
     } else {

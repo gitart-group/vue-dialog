@@ -24,6 +24,11 @@ export default defineComponent({
       default: false,
     },
 
+    fullscreen: {
+      type: Boolean,
+      default: false,
+    },
+
     height: {
       type: [String, Number],
       default: 'auto',
@@ -53,6 +58,7 @@ export default defineComponent({
       {
         'g-dialog-content--scrollable': props.scrollable,
         'g-dialog-content--depressed': props.depressed,
+        'g-dialog-content--fullscreen': props.fullscreen,
       },
     ])
 
@@ -69,8 +75,6 @@ export default defineComponent({
   $dialog: &;
 
   pointer-events: auto;
-  border-radius: 4px;
-  margin: 24px;
   overflow-y: auto;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100%;
@@ -84,11 +88,17 @@ export default defineComponent({
   }
 
   &:not(#{$dialog}--fullscreen) {
+    border-radius: 4px;
     max-height: 90%;
+    margin: 24px;
   }
 
   &--scrollable {
     display: flex;
+  }
+
+  &--fullscreen {
+    height: 100%;
   }
 }
 </style>

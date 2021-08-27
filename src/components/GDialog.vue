@@ -23,6 +23,7 @@
             :height="height"
             :scrollable="scrollable"
             :depressed="depressed"
+            :fullscreen="fullscreen"
           >
             <slot />
           </GDialogContent>
@@ -52,7 +53,6 @@ export default defineComponent({
   },
 
   props: {
-
     contentClass: {
       type: String,
       default: '',
@@ -62,6 +62,11 @@ export default defineComponent({
      * removes box-shadow for content
      */
     depressed: {
+      type: Boolean,
+      default: false,
+    },
+
+    fullscreen: {
       type: Boolean,
       default: false,
     },
@@ -139,6 +144,7 @@ export default defineComponent({
     const { enableScroll, disableScroll } = useScroll({
       overlay: overlayElement,
       content: contentFrame,
+      fullscreen: props.fullscreen,
     })
 
     watch(isActive, (active) => {
