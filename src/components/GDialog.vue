@@ -24,6 +24,8 @@
             :scrollable="scrollable"
             :depressed="depressed"
             :fullscreen="fullscreen"
+            :background="background"
+            :border-radius="borderRadius"
           >
             <slot />
           </GDialogContent>
@@ -53,6 +55,16 @@ export default defineComponent({
   },
 
   props: {
+    background: {
+      type: [Boolean, String],
+      default: true,
+    },
+
+    borderRadius: {
+      type: [Boolean, Number, String],
+      default: true,
+    },
+
     contentClass: {
       type: String,
       default: '',

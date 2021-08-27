@@ -7,10 +7,21 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { useSizeStyle } from '../composable/sizeStyle'
+import { convertToUnit } from '../helper'
 
 export default defineComponent({
   name: 'GDialogContent',
   props: {
+    background: {
+      type: [Boolean, String],
+      required: true,
+    },
+
+    borderRadius: {
+      type: [Boolean, Number, String],
+      required: true,
+    },
+
     class: {
       type: String,
       default: '',
@@ -59,12 +70,37 @@ export default defineComponent({
         'g-dialog-content--scrollable': props.scrollable,
         'g-dialog-content--depressed': props.depressed,
         'g-dialog-content--fullscreen': props.fullscreen,
+        'g-dialog-content--no-bg': props.background,
       },
     ])
+
+    const computedBackground = computed(() => {
+      if (typeof props.background === 'string') {
+        return props.background
+      } else if(props.background) {
+        return 'var(--content-bg)'
+      }
+
+      return 'transparent'
+    })
+
+    const computedBorderRadius = computed(() => {
+      if (typeof props.borderRadius === 'string') {
+        return convertToUnit(props.borderRadius)
+      } else if(props.borderRadius) {
+        return 'var(--content-border-radius)'
+      }
+
+      return '0'
+    })
+
+    // const computedBorderRadius = computed(() => convertToUnit(props.borderRadius))
 
     return {
       styles,
       classes,
+      computedBackground,
+      computedBorderRadius,
     }
   },
 })
@@ -74,11 +110,16 @@ export default defineComponent({
 .g-dialog-content {
   $dialog: &;
 
+  --content-bg: var(--g-dialog-content-bg, #fff);
+  --content-border-radius: var(--g-dialog-content-border-radius, 4px);
+
   pointer-events: auto;
   overflow-y: auto;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100%;
   z-index: inherit;
+  background: v-bind('computedBackground');
+  border-radius: v-bind('computedBorderRadius');
 
   &:not(#{$dialog}--depressed) {
     box-shadow:
@@ -88,7 +129,6 @@ export default defineComponent({
   }
 
   &:not(#{$dialog}--fullscreen) {
-    border-radius: 4px;
     max-height: 90%;
     margin: 24px;
   }
@@ -99,6 +139,7 @@ export default defineComponent({
 
   &--fullscreen {
     height: 100%;
+    border-radius: 0;
   }
 }
 </style>
