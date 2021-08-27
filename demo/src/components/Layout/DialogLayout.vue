@@ -30,6 +30,16 @@
         @update:model-value="input"
       />
     </DialogStateWrapper>
+
+    <DialogStateWrapper
+      v-slot="{model, input}"
+      label="Fullscreen"
+    >
+      <FullscreenDialog
+        :model-value="model"
+        @update:model-value="input"
+      />
+    </DialogStateWrapper>
   </ButtonGrid>
 </template>
 
@@ -42,6 +52,7 @@ import ButtonGrid from '@/components/Layout/ButtonGrid.vue'
 const BaseDialog = defineAsyncComponent(() => import('@/components/Dialogs/BaseDialog/BaseDialog.vue'))
 const StyledDialog = defineAsyncComponent(() => import('@/components/Dialogs/StyledDialog/StyledDialog.vue'))
 const ScrollDialog = defineAsyncComponent(() => import('@/components/Dialogs/ScrollDialog/ScrollDialog.vue'))
+const FullscreenDialog = defineAsyncComponent(() => import('@/components/Dialogs/FullscreenDialog/FullscreenDialog.vue'))
 
 export default defineComponent({
   name: 'DialogLayout',
@@ -51,6 +62,7 @@ export default defineComponent({
     BaseDialog,
     StyledDialog,
     ScrollDialog,
+    FullscreenDialog,
   },
 
   setup() {},
