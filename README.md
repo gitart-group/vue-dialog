@@ -1,12 +1,8 @@
-<div style="text-align: center;">
+<p align="center"><img src="docs/src/public/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo"></p>
 
-<img src="docs/src/public/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo">
+<h1 align="center">Gitart Vue Dialog</h1>
 
-# Gitart Vue Dialog
-
-Vue 3 Dialog/Modal Component + Plugin (optional)
-
-</div>
+<p align="center">Vue 3 Dialog/Modal Component + Plugin (optional)</p>
 
 ---
 
@@ -60,3 +56,5 @@ createApp(App)
 ## Usage
 
 Read [Documentation](https://gitart-vue-dialog.netlify.app/)
+
+<img src="docs/src/public/example-video.gif" width="690" alt="Example Video">
