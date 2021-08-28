@@ -11,7 +11,7 @@ import 'balm-ui/components/tabs/tabs.css'
 import $theme from 'balm-ui/plugins/theme'
 
 // Gitart Dialog
-import { GDialog } from 'gitart-vue-dialog/dist/server'
+import { GDialog } from 'gitart-vue-dialog'
 import 'gitart-vue-dialog/dist/style.css'
 
 import './custom.scss'
