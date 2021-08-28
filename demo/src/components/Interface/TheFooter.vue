@@ -6,7 +6,7 @@
     text="xs gray-400"
   >
     <span>
-      gitart-vue-dialog@0.2.0
+      gitart-vue-dialog@1.0.0
     </span>
 
     <span m="l-auto">
