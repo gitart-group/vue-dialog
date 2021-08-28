@@ -8,6 +8,8 @@
       v-model="dialogs.first"
       max-width="400"
     >
+      <DialogToolbar @close="dialogs.first = false" />
+
       <div p="x-5 y-4">
         <h3 m="b-4">
           First Dialog
@@ -29,8 +31,10 @@
 
     <GDialog
       v-model="dialogs.second"
-      max-width="300"
+      fullscreen
     >
+      <DialogToolbar @close="dialogs.second = false" />
+
       <div p="x-5 y-4">
         <h3 m="b-4">
           Second Dialog
@@ -50,6 +54,8 @@
       v-model="dialogs.third"
       max-width="500"
     >
+      <DialogToolbar @close="dialogs.third = false" />
+
       <div p="x-5 y-4">
         <h3 m="b-4">
           Third Dialog
@@ -84,12 +90,15 @@
 import { defineComponent, reactive } from 'vue'
 import { GDialog } from 'plugin'
 
+import DialogToolbar from '@/components/Dialog/DialogToolbar.vue'
+
 import Btn from '@/components/UI/Btn/Btn.vue'
 
 export default defineComponent({
   name: 'DialogLayout',
   components: {
     GDialog,
+    DialogToolbar,
     Btn,
   },
 

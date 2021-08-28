@@ -19,6 +19,7 @@
       border="rounded-full"
       bg="gray-200 hover:gray-300"
       p="a-2"
+      m="l-auto"
 
       @click="onClose"
     >
