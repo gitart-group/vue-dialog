@@ -1,23 +1,20 @@
 <template>
   <GDialog
     v-model="value"
+    transition="custom-rotate-transition"
+    overlay-background="rgba(143, 108, 249, 0.4)"
     :max-width="400"
   >
-    <div
-      bg="gray-50"
-      border="rounded"
-    >
-      <DialogToolbar @close="onClose">
-        <h4>
-          Styled Dialog
-        </h4>
-      </DialogToolbar>
+    <DialogToolbar @close="onClose">
+      <h4>
+        Styled Dialog
+      </h4>
+    </DialogToolbar>
 
-      <div p="x-5 y-4">
-        <p>
-          Some content
-        </p>
-      </div>
+    <div p="x-5 y-4">
+      <p>
+        Some content
+      </p>
     </div>
   </GDialog>
 </template>
@@ -59,3 +56,22 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss" >
+.custom-rotate-transition {
+  &-enter-active,
+  &-leave-active {
+    transition-timing-function: linear;
+  }
+
+  &-enter-from {
+    transform: translate(0, 30px) rotate(12deg);
+    opacity: 0;
+  }
+
+  &-leave-to {
+    transform: translate(0, 30px) rotate(4deg);
+    opacity: 0;
+  }
+}
+</style>

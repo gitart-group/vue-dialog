@@ -2,9 +2,9 @@
   <GDialog
     v-model="value"
     fullscreen
+    transition="custom-slide-up-transition"
   >
     <div
-      bg="gray-50"
       min-h="full"
     >
       <DialogToolbar @close="onClose">
@@ -77,3 +77,18 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+.custom-slide-up-transition {
+  opacity: 0;
+
+  &-enter-from {
+    transform: translate(0, 40%);
+    opacity: 0;
+  }
+
+  &-leave-to {
+    opacity: 0;
+  }
+}
+</style>

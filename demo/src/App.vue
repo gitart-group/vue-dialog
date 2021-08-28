@@ -59,6 +59,7 @@ export default defineComponent({
 :root {
   --g-dialog-content-bg: #f9fafb;
   --g-dialog-content-border-radius: 6px;
+  --g-dialog-overlay-bg: rgba(33, 33, 33, 0.55);
 }
 
 .app {
