@@ -42,7 +42,7 @@ export default defineComponent({
 
     height: {
       type: [String, Number],
-      default: 'auto',
+      required: true,
     },
 
     maxWidth: {
@@ -135,6 +135,7 @@ export default defineComponent({
 
   &--scrollable {
     display: flex;
+    flex-direction: column;
   }
 
   &--fullscreen {
