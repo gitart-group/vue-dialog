@@ -146,6 +146,7 @@ export default defineComponent({
       'g-dialog-frame',
       {
         'g-dialog-frame--active': isActive.value,
+        'g-dialog-frame--fullscreen': props.fullscreen,
       },
     ])
 
@@ -156,7 +157,9 @@ export default defineComponent({
     const { enableScroll, disableScroll } = useScroll({
       overlay: overlayElement,
       content: contentFrame,
+      contentActiveClass: 'g-dialog-frame--active',
       fullscreen: props.fullscreen,
+      contentFullscreenClass: 'g-dialog-frame--fullscreen',
     })
 
     watch(isActive, (active) => {

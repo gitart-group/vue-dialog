@@ -5,13 +5,17 @@ import { noScrollableParent, getScrollbarWidth } from '../helper/scroll.helper'
 type ScrollParams = {
   overlay: Ref<Element | undefined>
   content: Ref<Element | undefined>
+  contentActiveClass: string
   fullscreen: boolean
+  contentFullscreenClass: string
 }
 
 export const useScroll = ({
   overlay,
   content,
+  contentActiveClass,
   fullscreen,
+  contentFullscreenClass,
 }: ScrollParams) => {
   let disabled = false
   let disableType: 'byEvents' | 'byOverflow'
@@ -25,15 +29,17 @@ export const useScroll = ({
     }
   }
 
+  const scrollbarWidth = getScrollbarWidth()
+  const zeroScrollBar = scrollbarWidth === 0
+
   const disableScroll = () => {
     if(disabled) {
       return
     }
 
-    const scrollbarWidth = getScrollbarWidth()
-
-    // The mobile has a scroll bar width of 0
-    if (scrollbarWidth === 0 || fullscreen) {
+    // The mobile has the scroll bar width of 0
+    // hide the scroll bar for fullscreen mode
+    if (zeroScrollBar || fullscreen) {
       disableType = 'byOverflow'
       document.documentElement.classList.add('overflow-y-hidden')
     } else {
@@ -54,7 +60,12 @@ export const useScroll = ({
     if(disableType === 'byEvents') {
       window.removeEventListener('wheel', eventListener)
     }else if (disableType === 'byOverflow') {
-      document.documentElement.classList.remove('overflow-y-hidden')
+      const activeContentElements = document.getElementsByClassName(contentActiveClass)
+      const activeFullscreenContentElements = document.getElementsByClassName(contentFullscreenClass)
+
+      if((!zeroScrollBar && fullscreen && activeFullscreenContentElements.length === 1) || activeContentElements.length === 1) {
+        document.documentElement.classList.remove('overflow-y-hidden')
+      }
     }
 
     disabled = false
