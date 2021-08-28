@@ -2,7 +2,6 @@
   "name": "gitart-vue-dialog",
   "version": "0.2.0",
   "scripts": {
-    "dev": "node ./scripts/dev.js",
     "build": "node ./scripts/build.js",
     "stylelint": "stylelint **/*.vue",
     "lint": "yarn stylelint && yarn eslint",
@@ -33,7 +32,6 @@
     "@typescript-eslint/parser": "^4.28.4",
     "@vitejs/plugin-vue": "^1.4",
     "@vue/compiler-sfc": "^3.2.4",
-    "chokidar": "^3.5.2",
     "eslint": "^7.31.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-vue": "^7.14.0",

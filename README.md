@@ -2,15 +2,16 @@
 
 Customizable, beautifully animated, lightweight. Typescript support
 
-🤯 [Documentation](https://gitart-vue-dialog.netlify.app/)
+📘 [Documentation](https://gitart-vue-dialog.netlify.app/)
 
 🤯 [Examples](https://michaelgitart.github.io/gitart-vue-dialog/)
 
 ---
 
-- lightweight <br/>
-  ~ 1.7 KiB - style.css <br/>
-  ~ 8.4 KiB - index.js
+- files <br/>
+  ~ 1.7 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
+  ~ 8.4 KiB - index.js (ES format) `gitart-vue-dialog` <br/> 
+  ~ 9.2 KiB - index.upd.js (UPD format) `gitart-vue-dialog/dist/index.upd.js`
 
 
 ## Instalation
@@ -35,7 +36,7 @@ export default {
 
 ### Plugin
 
-Be sure to read the [вocumentation](https://gitart-vue-dialog.netlify.app/) for using the plugin
+Be sure to read the [documentation](https://gitart-vue-dialog.netlify.app/) for using the plugin
 
 ```js
 import App from './App.vue'

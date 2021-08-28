@@ -3,4 +3,5 @@
 const shell = require('shelljs')
 
 shell.exec('vue-tsc --noEmit && vite build')
-shell.exec('cp ./@types/* ./dist')
+shell.exec('cp ./@types/index.d.ts ./dist/index.d.ts')
+shell.exec('cp ./@types/index.d.ts ./dist/index.upd.d.ts')

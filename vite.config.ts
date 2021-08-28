@@ -21,7 +21,7 @@ export default defineConfig({
             return 'index.js'
 
           case 'umd':
-            return 'server.js'
+            return 'index.umd.js'
 
           default:
             return `index.${format}.js`
