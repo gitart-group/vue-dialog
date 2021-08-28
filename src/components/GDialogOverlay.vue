@@ -32,6 +32,11 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
+
+    background: {
+      type: [Boolean, String],
+      required: true,
+    },
   },
 
   emits: ['click'],
@@ -47,6 +52,16 @@ export default defineComponent({
       },
     ])
 
+    const computedBackground = computed(() => {
+      if (typeof props.background === 'string') {
+        return props.background
+      } else if(props.background) {
+        return 'var(--overlay-bg)'
+      }
+
+      return 'transparent'
+    })
+
     const onClick = () => {
       emit('click')
     }
@@ -54,6 +69,7 @@ export default defineComponent({
     return {
       styles,
       classes,
+      computedBackground,
       onClick,
     }
   },
@@ -62,6 +78,8 @@ export default defineComponent({
 
 <style lang="scss">
 .g-dialog-overlay {
+  --overlay-bg: var(--g-dialog-overlay-bg, rgba(33, 33, 33, 0.46));
+
   position: fixed;
   left: 0;
   top: 0;
@@ -71,8 +89,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   pointer-events: none;
-  opacity: 0.46;
-  background-color: rgb(33, 33, 33);
+  background: v-bind('computedBackground');
   z-index: 200;
 
   &--active {

@@ -6,6 +6,7 @@
         :active="isActive"
         :deactivating="deactivating"
         :active-z-index="activeZIndex"
+        :background="overlayBackground"
         @click="onClickOutside"
       />
 
@@ -96,6 +97,11 @@ export default defineComponent({
     modelValue: {
       type: Boolean,
       default: false,
+    },
+
+    overlayBackground: {
+      type: [Boolean, String],
+      default: true,
     },
 
     /**
