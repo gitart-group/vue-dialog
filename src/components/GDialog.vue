@@ -9,7 +9,7 @@
         @click="onClickOutside"
       />
 
-      <Transition name="dialog-transition">
+      <Transition :name="transition">
         <div
           v-show="isActive"
           ref="contentFrame"
@@ -111,6 +111,11 @@ export default defineComponent({
       default: false,
     },
 
+    transition: {
+      type: String,
+      default: 'g-dialog-transition',
+    },
+
     width: {
       type: [String, Number],
       default: 'auto',
@@ -198,16 +203,22 @@ export default defineComponent({
   left: 0;
   position: fixed;
   top: 0;
-  transition: 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), z-index 1ms;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100%;
   outline: none;
   pointer-events: none;
   z-index: 201;
 }
 
-.dialog-transition {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+.g-dialog-transition {
   opacity: 0;
+
+  &-enter-active,
+  &-leave-active {
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 0.2s;
+  }
 
   &-enter-from,
   &-leave-to {
