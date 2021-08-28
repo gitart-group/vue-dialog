@@ -1,17 +1,24 @@
-# Gitart Vue Dialog (Vue 3 Only)
+<div style="text-align: center;">
 
-Customizable, beautifully animated, lightweight. Typescript support
+<img src="docs/src/public/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo">
+
+# Gitart Vue Dialog
+
+Vue 3 Dialog/Modal Component + Plugin (optional)
+
+</div>
+
+---
 
 📘 [Documentation](https://gitart-vue-dialog.netlify.app/)
 
 🤯 [Examples](https://michaelgitart.github.io/gitart-vue-dialog/)
 
----
+Typescript support, customizable, beautifully animated, lightweight
 
-- files <br/>
-  ~ 1.7 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
-  ~ 9.2 KiB - index.upd.js (UPD format) `gitart-vue-dialog` <br/> 
-  ~ 8.4 KiB - index.es.js (ES format) `gitart-vue-dialog/dist/index.es.js`
+~9.2 KiB - index.upd.js `gitart-vue-dialog` <br/> 
+~8.4 KiB - index.es.js `gitart-vue-dialog/dist/index.es.js` <br/>
+~1.7 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
 
 
 ## Instalation
