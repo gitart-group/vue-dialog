@@ -10,6 +10,18 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "gitart",
+    "gitart-vue-dialog",
+    "vue",
+    "dialog",
+    "modal",
+    "dialog component",
+    "modal component",
+    "vue plugin",
+    "vue modal",
+    "vue dialog"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/MichaelGitArt/gitart-vue-dialog.git"
