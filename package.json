@@ -7,7 +7,14 @@
     "lint": "yarn stylelint && yarn eslint",
     "eslint": "eslint"
   },
-  "main": "dist/index.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "keywords": [
     "gitart",
@@ -24,6 +31,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MichaelGitArt/gitart-vue-dialog.git"
+  },
+  "author": {
+    "name": "Michael Gitart",
+    "email": "michaelgitart@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {

@@ -15,18 +15,7 @@ export default defineConfig({
     lib: {
       entry: resolvePath('src/index.ts'),
       name: 'index',
-      fileName: format => {
-        switch (format) {
-          case 'es':
-            return 'index.js'
-
-          case 'umd':
-            return 'index.umd.js'
-
-          default:
-            return `index.${format}.js`
-        }
-      },
+      fileName: format => `index.${format}.js`,
     },
 
     rollupOptions: {
