@@ -46,8 +46,6 @@ export default {
 
 <style lang="scss">
   .getting-started-example-styled {
-    background: #fff;
-
     &__content {
       padding: 20px;
     }
