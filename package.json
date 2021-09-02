@@ -16,7 +16,7 @@
     },
     "./dist/*": "./dist/*"
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/index.upd.d.ts",
   "keywords": [
     "gitart",
     "gitart-vue-dialog",
