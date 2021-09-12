@@ -1,16 +1,33 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "allowJs": true,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018",
+      "es2019",
+      "es2020",
+      "dom",
+      "dom.iterable"
+    ],
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
-    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "downlevelIteration": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "exclude": [
+    "node_modules"
+  ]
 }

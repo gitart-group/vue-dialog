@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "gitart-vue-dialog": ["./src/index.ts"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

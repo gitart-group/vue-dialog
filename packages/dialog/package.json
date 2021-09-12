@@ -1,0 +1,52 @@
+{
+  "name": "gitart-vue-dialog",
+  "version": "1.0.2",
+  "scripts": {
+    "dev": "vite --config dev/vite.config.ts",
+    "build": "node build/build.js"
+  },
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "types": "dist/index.upd.d.ts",
+  "keywords": [
+    "gitart",
+    "gitart-vue-dialog",
+    "vue",
+    "dialog",
+    "modal",
+    "dialog component",
+    "modal component",
+    "vue plugin",
+    "vue modal",
+    "vue dialog"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelGitArt/gitart-vue-dialog.git",
+    "directory": "packages/dialog"
+  },
+  "author": {
+    "name": "Michael Gitart",
+    "email": "michaelgitart@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.6.0",
+    "sass": "^1.39.0",
+    "shelljs": "^0.8.4",
+    "vite": "^2.5.3",
+    "vue": "3.2.6",
+    "vue-tsc": "^0.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.6"
+  }
+}

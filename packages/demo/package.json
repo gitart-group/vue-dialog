@@ -1,0 +1,20 @@
+{
+  "name": "gitart-vue-dialog-demo",
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@vueuse/core": "^5.2.0",
+    "gitart-vue-dialog": "1.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.3.0",
+    "vite": "^2.5.3",
+    "vite-plugin-windicss": "^1.2.7",
+    "vue-tsc": "0.3.0",
+    "windicss": "^3.1.6"
+  }
+}
