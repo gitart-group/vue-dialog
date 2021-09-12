@@ -76,3 +76,29 @@ export default {
 Pretty **ugly** dialog, right? Let's add background and some content. Take a look:
 
 <Example file="Introduction/GettingStartedExampleStyled" />
+
+## Examples
+
+### Fullscreen
+
+Due to limited space, full-screen dialogs may be more appropriate for mobile devices
+
+<Example file="Guide/UsageFullscreenExample" />
+
+### Transitions
+
+You can customize appearing with a custom transitions
+
+<Example file="Guide/UsageTransitionExample" />
+
+### Persistent
+
+With `persistent` clicking ouside doesn't close the dialog
+
+<Example file="Guide/UsagePersistentExample" />
+
+### Scrollable
+
+`scrollable` allows you to make scroll content somewhere inside your dialog
+
+<Example file="Guide/UsageScrollableExample" />

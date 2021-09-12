@@ -17,7 +17,9 @@ export default {
   padding: 30px;
   border-radius: 4px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-around;
   background: rgba($primary, 0.2);
 }
 </style>

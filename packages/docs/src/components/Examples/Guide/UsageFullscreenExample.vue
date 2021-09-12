@@ -1,10 +1,12 @@
 <template>
-  <GDialog v-model="value">
-    Content
+  <GDialog v-model="value" fullscreen>
+    <UiButton @click="value = false">
+      Close
+    </UiButton>
   </GDialog>
 
   <ButtonWrapper>
-    <UiButton @click="onOpen">
+    <UiButton @click="value = true">
       Open Dialog
     </UiButton>
   </ButtonWrapper>
@@ -16,13 +18,9 @@ import { ref } from 'vue'
 export default {
   setup() {
     const value = ref(false)
-    const onOpen = () => {
-      value.value = true
-    }
 
     return {
       value,
-      onOpen,
     }
   },
 }

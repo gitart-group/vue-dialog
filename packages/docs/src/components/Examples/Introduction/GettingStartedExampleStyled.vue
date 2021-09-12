@@ -28,8 +28,6 @@
 import { ref } from 'vue'
 
 export default {
-  name: 'GettingStartedExampleStyled',
-
   setup() {
     const value = ref(false)
     const onOpen = () => {
