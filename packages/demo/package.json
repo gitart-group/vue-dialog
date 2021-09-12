@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@vueuse/core": "^5.2.0",
-    "gitart-vue-dialog": "1.0.2"
+    "gitart-vue-dialog": "1.0.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.3.0",

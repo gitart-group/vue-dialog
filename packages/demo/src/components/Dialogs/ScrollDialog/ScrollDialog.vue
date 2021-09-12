@@ -5,21 +5,23 @@
     height="600px"
     scrollable
   >
-    <DialogToolbar @close="onClose">
-      <h4>
-        Scroll Dialog
-      </h4>
-    </DialogToolbar>
+    <div flex="~ col">
+      <DialogToolbar @close="onClose">
+        <h4>
+          Scroll Dialog
+        </h4>
+      </DialogToolbar>
 
-    <div
-      p="x-5 y-4"
-      overflow="auto"
-    >
-      <p v-for="item in 8" :key="item">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quisquam iste assumenda
-        voluptates optio dolorum facere, corrupti adipisci ex possimus,
-        quis sunt. Quis dolorum voluptatibus ab quasi, nemo rem? Culpa!
-      </p>
+      <div
+        p="x-5 y-4"
+        overflow="auto"
+      >
+        <p v-for="item in 8" :key="item">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quisquam iste assumenda
+          voluptates optio dolorum facere, corrupti adipisci ex possimus,
+          quis sunt. Quis dolorum voluptatibus ab quasi, nemo rem? Culpa!
+        </p>
+      </div>
     </div>
   </GDialog>
 </template>
