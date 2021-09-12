@@ -136,7 +136,6 @@ export default defineComponent({
 
   &--scrollable {
     display: flex;
-    flex-direction: column;
   }
 
   &--fullscreen {
