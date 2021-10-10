@@ -14,6 +14,13 @@ export const imports = {
     }
   },
 
+  async 'Guide/UsageActivatorExample'() {
+    return {
+      component: (await import('./components/Examples/Guide/UsageActivatorExample.vue')).default,
+      raw: (await import('./components/Examples/Guide/UsageActivatorExample.vue?raw')).default,
+    }
+  },
+
   async 'Guide/UsageFullscreenExample'() {
     return {
       component: (await import('./components/Examples/Guide/UsageFullscreenExample.vue')).default,

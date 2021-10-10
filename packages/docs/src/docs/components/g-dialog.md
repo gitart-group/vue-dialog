@@ -193,7 +193,62 @@ Sets width for the dialog
 | Name | Description |
 |:---|:---|
 | default | The default Vue slot |
+| activator | When used, will activate the component when clicked |
 
+### `default`
+- **Scoped Data:**
+
+    ```js
+    undefined
+    ```
+
+- **Details:** 
+
+  Just put your content inside `<GDialog>`
+
+---
+
+### `activator`
+- **Scoped Data:**
+
+    ```js
+    {
+      onClick: () => {}
+      on: () => {}
+    }
+    ```
+
+- **Details:** 
+
+  `onClick` will open your dialog. Bind scoped data to an element 
+
+  ```html
+  <GDialog>
+    <template #activator="attrs">
+      <button v-bind="attrs">
+        open
+      </button>
+    </template>
+
+    Content
+  </GDialog>
+  ```
+
+  or call `onClick` manually with another event
+
+  ```html
+  <GDialog>
+    <template #activator="{ onClick }">
+      <button @mouseenter="onClick">
+        open
+      </button>
+    </template>
+
+    Content
+  </GDialog>
+  ```
+
+---
 
 ## Events
 

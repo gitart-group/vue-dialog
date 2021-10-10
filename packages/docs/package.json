@@ -15,7 +15,7 @@
     "@mdi/js": "^5.9.55",
     "@vueuse/core": "^6.0.0",
     "balm-ui": "9.37.2",
-    "gitart-vue-dialog": "1.0.3",
+    "gitart-vue-dialog": "1.1.0-beta.1",
     "markdown-it-container": "^3.0.0",
     "prismjs": "^1.24.1",
     "sass": "^1.38.0"

@@ -79,6 +79,14 @@ Pretty **ugly** dialog, right? Let's add background and some content. Take a loo
 
 ## Examples
 
+### Activator slot 
+
+`v1.1.0`
+
+In some cases, you only need one button to open a dialog. An activator slot can help here
+
+<Example file="Guide/UsageActivatorExample" />
+
 ### Fullscreen
 
 Due to limited space, full-screen dialogs may be more appropriate for mobile devices
