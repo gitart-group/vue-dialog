@@ -1,4 +1,6 @@
 <template>
+  <slot name="activator" v-bind="activatorAttrs" />
+
   <template v-if="activatedOnce">
     <Teleport to="body">
       <GDialogOverlay
@@ -128,22 +130,33 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: {
+    'update:modelValue': (val: boolean) => true,
+  },
 
   setup(props, { emit }) {
     const contentFrame = ref<Element>()
     const overlay = ref<InstanceType<typeof GDialogOverlay>>()
-
     const overlayElement = computed<Element | undefined>(() => overlay.value?.$el as Element)
 
-    const onClickOutside = () => {
-      if (!props.persistent) {
-        emit('update:modelValue', false)
-      }
+    const scopedModelValue = ref(props.modelValue)
+
+    watch(() => props.modelValue, (val) => {
+      scopedModelValue.value = val
+    })
+
+    const onClose = () => {
+      scopedModelValue.value = false
+      emit('update:modelValue', false)
+    }
+
+    const onOpen = () => {
+      scopedModelValue.value = true
+      emit('update:modelValue', true)
     }
 
     const { activatedOnce, active: isActive, deactivating } = useLazyActivation(
-      computed(() => props.modelValue),
+      computed(() => scopedModelValue.value),
     )
 
     const { activeZIndex } = useStackable({
@@ -165,6 +178,7 @@ export default defineComponent({
       zIndex: activeZIndex.value,
     }))
 
+    // scroll
     const { enableScroll, disableScroll } = useScroll({
       overlay: overlayElement,
       content: contentFrame,
@@ -185,6 +199,20 @@ export default defineComponent({
       enableScroll()
     })
 
+    // click outside
+    const onClickOutside = () => {
+      if (!props.persistent) {
+        onClose()
+      }
+    }
+
+    // activator slot
+    const activatorAttrs = {
+      onClick() {
+        onOpen()
+      },
+    }
+
     return {
       onClickOutside,
       activatedOnce,
@@ -195,6 +223,7 @@ export default defineComponent({
       styles,
       contentFrame,
       overlay,
+      activatorAttrs,
     }
   },
 })
