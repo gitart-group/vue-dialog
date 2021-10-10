@@ -25,6 +25,10 @@
         <NestingDialogLayout />
       </div>
 
+      <div p="y-3">
+        <ActivatorDialogLayout />
+      </div>
+
       <TheFooter m="t-4" />
     </div>
   </div>
@@ -41,6 +45,7 @@ import TheFooter from '@/components/Interface/TheFooter.vue'
 import DialogLayout from '@/components/Layout/DialogLayout.vue'
 import ProgrammaticalDialogLayout from '@/components/Layout/ProgrammaticalDialogLayout.vue'
 import NestingDialogLayout from '@/components/Layout/NestingDialogLayout.vue'
+import ActivatorDialogLayout from '@/components/Layout/ActivatorDialogLayout.vue'
 
 export default defineComponent({
   name: 'App',
@@ -51,6 +56,7 @@ export default defineComponent({
     DialogLayout,
     ProgrammaticalDialogLayout,
     NestingDialogLayout,
+    ActivatorDialogLayout,
   },
 })
 </script>
