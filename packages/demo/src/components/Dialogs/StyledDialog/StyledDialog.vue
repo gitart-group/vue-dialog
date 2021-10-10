@@ -40,7 +40,9 @@ export default defineComponent({
     },
   },
 
-  emits: ['update:modelValue'],
+  emits: {
+    'update:modelValue': (val: boolean) => true,
+  },
 
   setup(props, { emit }) {
     const value = useVModel(props, 'modelValue', emit)
