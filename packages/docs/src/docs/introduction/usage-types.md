@@ -1,4 +1,4 @@
-<!-- # Usage Types
+# Usage Types
 
 You can use standalone component GDialog. Similar to Vuetify VDialog.
 or take full functionality after installing a plugin
@@ -55,4 +55,4 @@ export default {
 This way, you can launch a dialog from any component of your app. This's great! Isn't it? :)
 
 
-Don't forget read [Plugin Usage](/docs/guide/plugin-usage). You need add GDialogRoot to you App.vue -->
+Don't forget read [Plugin Usage](/docs/guide/plugin-usage). You need add GDialogRoot to you App.vue
