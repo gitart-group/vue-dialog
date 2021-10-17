@@ -4,6 +4,7 @@
   <template v-if="activatedOnce">
     <Teleport to="body">
       <GDialogOverlay
+        v-if="!fullscreen"
         ref="overlay"
         :active="isActive"
         :deactivating="deactivating"
