@@ -1,16 +1,13 @@
 /*eslint-env node*/
 import path from 'path'
-import { defineConfig, UserConfigExport } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 
 const resolve = (str: string) => path.resolve(__dirname, str)
 
-export default ({ mode }: { mode: 'production'| 'development' }): UserConfigExport => defineConfig({
+export default defineConfig({
   root: resolve('.'),
-  base: mode === 'production'
-    ? '/gitart-vue-dialog/'
-    : '/',
 
   plugins: [
     vue(),
