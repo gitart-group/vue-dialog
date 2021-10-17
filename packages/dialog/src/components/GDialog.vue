@@ -30,7 +30,7 @@
             :background="background"
             :border-radius="borderRadius"
           >
-            <slot />
+            <slot :onClose="onClose" />
           </GDialogContent>
         </div>
       </Transition>
@@ -214,7 +214,6 @@ export default defineComponent({
     }
 
     return {
-      onClickOutside,
       activatedOnce,
       activeZIndex,
       isActive,
@@ -224,6 +223,8 @@ export default defineComponent({
       contentFrame,
       overlay,
       activatorAttrs,
+      onClickOutside,
+      onClose,
     }
   },
 })
