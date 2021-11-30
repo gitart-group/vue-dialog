@@ -44,7 +44,7 @@
     "shelljs": "^0.8.4",
     "vite": "^2.5.3",
     "vue": "3.2.6",
-    "vue-tsc": "^0.3.0"
+    "vue-tsc": "^0.29.8"
   },
   "peerDependencies": {
     "vue": "^3.2.6"
