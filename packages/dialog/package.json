@@ -3,19 +3,20 @@
   "version": "1.2.0-beta.1",
   "scripts": {
     "dev": "vite --config dev/vite.config.ts",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "build:types": "vue-tsc --declaration --emitDeclarationOnly --p ./build/tsconfig.json"
   },
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
-  "types": "dist/index.upd.d.ts",
+  "types": "dist/index.d.ts",
   "keywords": [
     "gitart",
     "gitart-vue-dialog",

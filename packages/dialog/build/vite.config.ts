@@ -18,7 +18,17 @@ export default defineConfig({
     lib: {
       entry: resolve('src/index.ts'),
       name: 'index',
-      fileName: format => `index.${format}.js`,
+      fileName: format => {
+        let fileEnd = 'js'
+
+        if(format === 'es') {
+          fileEnd = 'mjs'
+        }else if (format === 'umd') {
+          fileEnd = 'cjs'
+        }
+
+        return `index.${fileEnd}`
+      },
     },
 
     rollupOptions: {
