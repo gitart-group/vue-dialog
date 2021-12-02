@@ -31,8 +31,32 @@ const $dialog: IDialog = {
   },
 }
 
+/**
+ * Injection key
+ *
+ * Provides access to plugin methods and properties using the vue inject method
+ *
+ * https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html#usage
+ *
+ * @example Usage
+ * const {
+ *   dialogs,
+ *   removeDialog,
+ * } = inject(dialogInjectionKey)!
+ */
 export const dialogInjectionKey: DialogInjectionKey = Symbol('GDialog')
 
+/**
+ * Plugin to install
+ *
+ * https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html - Documentaion
+ *
+ * @example instalation
+ * import { plugin as dialogPlugin } from 'gitart-vue-dialog'
+ * createApp(App)
+ *  .use(dialogPlugin)
+ *  .mount('#app')
+ */
 export const plugin: Plugin = {
   install: (app) => {
     app.provide(dialogInjectionKey, $dialog)
