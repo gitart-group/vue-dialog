@@ -96,6 +96,15 @@ export default defineComponent({
       default: 'auto',
     },
 
+    /**
+     * enables local mode for the dialog.
+     * dialog is fixed to first "position: relative;" parent
+     */
+    local: {
+      type: Boolean,
+      default: false,
+    },
+
     maxWidth: {
       type: [String, Number],
       default: 'none',
@@ -132,15 +141,6 @@ export default defineComponent({
     width: {
       type: [String, Number],
       default: 'auto',
-    },
-
-    /**
-     * enables local mode for the dialog.
-     * dialog is fixed to first "position: relative;" parant
-     */
-    local: {
-      type: Boolean,
-      default: false,
     },
   },
 
