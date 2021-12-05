@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label v-bind="''">
+    <label>
       <input
         type="radio"
         :name="computedName"
