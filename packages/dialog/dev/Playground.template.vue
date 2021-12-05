@@ -6,7 +6,10 @@
     Content
   </GDialog>
 
-  <button @click="dialog = true">
+  <button
+    class="btn"
+    @click="dialog = true"
+  >
     Open
   </button>
 </template>

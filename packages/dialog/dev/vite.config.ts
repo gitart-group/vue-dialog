@@ -40,7 +40,9 @@ export default defineConfig({
       ],
       dts: resolve('components.d.ts'),
     }),
-    WindiCSS(),
+    WindiCSS({
+      config: resolve('windi.config.ts'),
+    }),
   ],
 
   server: {
