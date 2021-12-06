@@ -2,16 +2,20 @@
   <slot name="activator" v-bind="activatorAttrs" />
 
   <template v-if="activatedOnce">
-    <Teleport to="body">
+    <Teleport to="body" :disabled="local">
       <GDialogOverlay
+        v-if="!fullscreen"
         ref="overlay"
         :active="isActive"
-        :deactivating="deactivating"
         :active-z-index="activeZIndex"
         :background="overlayBackground"
+        :deactivating="deactivating"
+        :local="local"
         @click="onClickOutside"
       />
+    </Teleport>
 
+    <Teleport to="body" :disabled="local">
       <Transition :name="transition">
         <div
           v-show="isActive"
@@ -30,7 +34,7 @@
             :background="background"
             :border-radius="borderRadius"
           >
-            <slot />
+            <slot :onClose="onClose" />
           </GDialogContent>
         </div>
       </Transition>
@@ -57,6 +61,7 @@ export default defineComponent({
     GDialogContent,
   },
 
+  inheritAttrs: false,
   props: {
     background: {
       type: [Boolean, String],
@@ -89,6 +94,15 @@ export default defineComponent({
     height: {
       type: [String, Number],
       default: 'auto',
+    },
+
+    /**
+     * enables local mode for the dialog.
+     * dialog is fixed to first "position: relative;" parent
+     */
+    local: {
+      type: Boolean,
+      default: false,
     },
 
     maxWidth: {
@@ -171,6 +185,7 @@ export default defineComponent({
       {
         'g-dialog-frame--active': isActive.value,
         'g-dialog-frame--fullscreen': props.fullscreen,
+        'g-dialog-frame--local': props.local,
       },
     ])
 
@@ -188,6 +203,9 @@ export default defineComponent({
     })
 
     watch(isActive, (active) => {
+      if(props.local)
+        return
+
       if(active) {
         disableScroll()
       } else {
@@ -214,7 +232,6 @@ export default defineComponent({
     }
 
     return {
-      onClickOutside,
       activatedOnce,
       activeZIndex,
       isActive,
@@ -224,6 +241,8 @@ export default defineComponent({
       contentFrame,
       overlay,
       activatorAttrs,
+      onClickOutside,
+      onClose,
     }
   },
 })
@@ -244,6 +263,10 @@ export default defineComponent({
   outline: none;
   pointer-events: none;
   z-index: 201;
+
+  &--local {
+    position: absolute;
+  }
 }
 
 .g-dialog-transition {

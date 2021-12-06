@@ -10,11 +10,13 @@
 
 🤯 [Examples](https://michaelgitart.github.io/gitart-vue-dialog/)
 
+🃏 [Plan for the Future](https://trello.com/b/CYcpbq4F/gitart-oss/)
+
 Typescript support, customizable, beautifully animated, lightweight
 
-~9.5 KiB - index.upd.js `gitart-vue-dialog` <br/> 
-~8.6 KiB - index.es.js `gitart-vue-dialog/dist/index.es.js` <br/>
-~1.7 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
+~9.9 KiB - index.cjs `gitart-vue-dialog` <br/> 
+~8.9 KiB - index.mjs `gitart-vue-dialog/dist/index.mjs` <br/>
+~1.8 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
 
 
 ## Instalation

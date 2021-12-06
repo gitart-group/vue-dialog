@@ -1407,10 +1407,10 @@ get-intrinsic@^1.0.2:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
-gitart-vue-dialog@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-1.1.0.tgz#ad332773d31210e1d4c8628f861e3ebde6bb8ff2"
-  integrity sha512-NowivPXTlEZBpJJxIp9IvCt1+6oxnpb1p6WqD3IP40Z8NunlYU12C2hreKL5sZ+hUhWv1zclWn9mOwpVgDE9uw==
+gitart-vue-dialog@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gitart-vue-dialog/-/gitart-vue-dialog-1.2.0.tgz#1f8ceea3242ad7d829dec96fa135c3eca19b49ba"
+  integrity sha512-hMJEQ4cM1vkaNqMQLS9C7r6tJIt/YHbahDj+Ry/3ZLsyMvT/Vjp0euQAEdKE/Q+Xetig1wo8VmZE6HZ7NTEuZg==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"

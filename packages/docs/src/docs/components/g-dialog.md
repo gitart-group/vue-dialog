@@ -17,6 +17,7 @@ z-index of the component is 200. So be careful. Don't make z-index of the header
 | [content-class](#content-class) | `string` | `''` |
 | [depressed](#depressed) | `boolean` | `false` |
 | [height](#height) |  `string` `number` | `'auto'` |
+| [local](#local) | `boolean` | `false` |
 | [max-width](#max-width) | `string` `number` | `'none'` |
 | [model-value](#model-value) | `boolean` | `false` |
 | [overlay-background](#overlay-background) | `boolean` `string` | `true` |
@@ -84,6 +85,20 @@ Disables default box-shadow
 
 - **Details:** <br/>
 Sets height for the dialog
+
+---
+### `local`
+- **Type:** `Boolean`
+
+- **Default:** `false`
+
+- **Details:** <br/>
+  Enables local mode for the dialog. The dialog will not be teleported to body. It will be positioned `absolute` intdead `fixed`.
+  Be sure to specify `position: relative;` for the parent element where you place the dialog
+
+  The props can be usefull if you want to show some windows above a certain part of your app
+
+  `v1.2.0+`
 
 ---
 

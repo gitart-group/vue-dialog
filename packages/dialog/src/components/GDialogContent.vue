@@ -125,7 +125,7 @@ export default defineComponent({
   background: v-bind('computedBackground');
   border-radius: v-bind('computedBorderRadius');
 
-  &:not(#{$dialog}--depressed) {
+  &:not(#{$dialog}--depressed):not(#{$dialog}--fullscreen) {
     box-shadow: var(--content-shadow)
   }
 

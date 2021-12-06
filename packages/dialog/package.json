@@ -1,21 +1,22 @@
 {
   "name": "gitart-vue-dialog",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "dev": "vite --config dev/vite.config.ts",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "build:types": "vue-tsc --declaration --emitDeclarationOnly --p ./build/tsconfig.json"
   },
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
-  "types": "dist/index.upd.d.ts",
+  "types": "dist/index.d.ts",
   "keywords": [
     "gitart",
     "gitart-vue-dialog",
@@ -42,9 +43,13 @@
     "@vitejs/plugin-vue": "^1.6.0",
     "sass": "^1.39.0",
     "shelljs": "^0.8.4",
+    "unplugin-auto-import": "^0.5.1",
+    "unplugin-vue-components": "^0.17.5",
     "vite": "^2.5.3",
+    "vite-plugin-windicss": "^1.5.4",
     "vue": "3.2.6",
-    "vue-tsc": "^0.3.0"
+    "vue-tsc": "^0.29.8",
+    "windicss": "^3.2.1"
   },
   "peerDependencies": {
     "vue": "^3.2.6"

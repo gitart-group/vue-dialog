@@ -28,14 +28,19 @@ export default defineComponent({
       required: true,
     },
 
+    background: {
+      type: [Boolean, String],
+      required: true,
+    },
+
     deactivating: {
       type: Boolean,
       required: true,
     },
 
-    background: {
-      type: [Boolean, String],
-      required: true,
+    local: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -49,6 +54,7 @@ export default defineComponent({
       'g-dialog-overlay',
       {
         'g-dialog-overlay--active': props.active && !props.deactivating,
+        'g-dialog-overlay--local': props.local,
       },
     ])
 
@@ -94,6 +100,10 @@ export default defineComponent({
 
   &--active {
     pointer-events: auto;
+  }
+
+  &--local {
+    position: absolute;
   }
 }
 

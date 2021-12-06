@@ -6,27 +6,14 @@
     Content
   </GDialog>
 
-  <button @click="dialog = true">
+  <button
+    class="btn"
+    @click="dialog = true"
+  >
     Open
   </button>
 </template>
 
-<script lang="ts">
-import { ref } from 'vue'
-import { GDialog } from 'gitart-vue-dialog'
-
-export default {
-  name: 'Playground',
-  components: {
-    GDialog,
-  },
-
-  setup() {
-    const dialog = ref(false)
-
-    return {
-      dialog,
-    }
-  },
-}
+<script setup lang="ts">
+const dialog = ref(false)
 </script>
