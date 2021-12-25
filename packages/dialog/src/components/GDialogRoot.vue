@@ -23,7 +23,7 @@ export default defineComponent({
     } = inject(dialogInjectionKey)!
 
     if(!dialogs) {
-      console.error('The giart-vue-dialog plugin is not initialized')
+      console.error('The gitart-vue-dialog plugin is not initialized')
     }
 
     function onClose(index: number) {
