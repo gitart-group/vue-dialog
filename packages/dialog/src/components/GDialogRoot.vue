@@ -9,11 +9,11 @@
 </template>
 
 <script lang="ts">
-import { inject } from 'vue'
+import { defineComponent, inject } from 'vue'
 
 import { dialogInjectionKey } from '../index'
 
-export default {
+export default defineComponent({
   name: 'GDialogRoot',
 
   setup() {
@@ -35,5 +35,5 @@ export default {
       onClose,
     }
   },
-}
+})
 </script>
