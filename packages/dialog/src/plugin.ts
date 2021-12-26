@@ -31,6 +31,12 @@ const $dialog: IDialog = {
   },
 }
 
+export const errorLogger = {
+  pluginIsNotInitialized(): void {
+    console.error('The gitart-vue-dialog plugin is not initialized. Read how to solve: https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html#usage')
+  },
+}
+
 /**
  * Injection key
  *
@@ -46,12 +52,22 @@ const $dialog: IDialog = {
  */
 export const dialogInjectionKey: DialogInjectionKey = Symbol('GDialog')
 
+export const dialogInjectionFallback: IDialog = {
+  dialogs: [],
+  addDialog: () => {
+    errorLogger.pluginIsNotInitialized()
+  },
+  removeDialog: () => {
+    errorLogger.pluginIsNotInitialized()
+  },
+}
+
 /**
  * Plugin to install
  *
- * https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html - Documentaion
+ * https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html - Documentation
  *
- * @example instalation
+ * @example installation
  * import { plugin as dialogPlugin } from 'gitart-vue-dialog'
  * createApp(App)
  *  .use(dialogPlugin)

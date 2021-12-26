@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
 
-import { dialogInjectionKey } from '../index'
+import { dialogInjectionKey, dialogInjectionFallback, errorLogger } from '../plugin'
 
 export default defineComponent({
   name: 'GDialogRoot',
@@ -20,10 +20,11 @@ export default defineComponent({
     const {
       dialogs,
       removeDialog,
-    } = inject(dialogInjectionKey)!
+    } = inject(dialogInjectionKey, dialogInjectionFallback)
 
-    if(!dialogs) {
-      console.error('The gitart-vue-dialog plugin is not initialized')
+    // inject returned default value, so plugin is not installed
+    if(dialogs === dialogInjectionFallback.dialogs) {
+      errorLogger.pluginIsNotInitialized()
     }
 
     function onClose(index: number) {
