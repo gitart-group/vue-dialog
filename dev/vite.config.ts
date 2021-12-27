@@ -1,4 +1,3 @@
-/*eslint-env node*/
 import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -31,11 +30,10 @@ export default defineConfig({
           if ([
             'GDialog',
             'GDialogRoot',
-          ].includes(name)) {
+          ].includes(name))
             return { importName: name, path: 'gitart-vue-dialog' }
-          }
 
-          return
+          return null
         },
       ],
       dts: resolve('components.d.ts'),

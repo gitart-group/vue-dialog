@@ -1,6 +1,6 @@
-import {
-  computed, Ref, ComputedRef,
-} from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+
+import { computed } from 'vue'
 
 // helpers
 import { getZIndex } from '../helper'
@@ -24,26 +24,23 @@ export const useStackable: (param: IUseStackableParams) => {activeZIndex: Comput
     const activeElements = document.querySelectorAll(activeElSelector)
 
     for (let index = 0; index < activeElements.length; index++) {
-      if(!exclude.includes(activeElements[index])) {
+      if (!exclude.includes(activeElements[index]))
         zIndexes.push(getZIndex(activeElements[index]))
-      }
     }
 
     return Math.max(...zIndexes)
   }
 
   const activeZIndex = computed(() => {
-    if(!content.value) {
+    if (!content.value)
       return 0
-    }
 
     const index = isActive.value
       ? getMaxZIndex([content.value]) + 2
       : getZIndex(content.value)
 
-    if (index === null) {
+    if (index === null)
       return 0
-    }
 
     return index
   })

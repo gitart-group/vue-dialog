@@ -4,14 +4,14 @@
     v-for="(dialog, index) in dialogs"
     :key="dialog.id"
     v-bind="dialog.props"
-    @update:modelValue="onClose(index)"
+    @update:model-value="onClose(index)"
   />
 </template>
 
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
 
-import { dialogInjectionKey, dialogInjectionFallback, errorLogger } from '../plugin'
+import { dialogInjectionFallback, dialogInjectionKey, errorLogger } from '../plugin'
 
 export default defineComponent({
   name: 'GDialogRoot',
@@ -23,9 +23,8 @@ export default defineComponent({
     } = inject(dialogInjectionKey, dialogInjectionFallback)
 
     // inject returned default value, so plugin is not installed
-    if(dialogs === dialogInjectionFallback.dialogs) {
+    if (dialogs === dialogInjectionFallback.dialogs)
       errorLogger.pluginIsNotInitialized()
-    }
 
     function onClose(index: number) {
       removeDialog(index)

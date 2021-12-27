@@ -1,5 +1,6 @@
-import { Plugin } from 'vue'
-import { plugin as dialogPlugin, IDialog } from 'gitart-vue-dialog'
+import type { Plugin } from 'vue'
+import type { IDialog } from 'gitart-vue-dialog'
+import { plugin as dialogPlugin } from 'gitart-vue-dialog'
 // import 'gitart-vue-dialog/dist/style.css'
 
 declare module '@vue/runtime-core' {

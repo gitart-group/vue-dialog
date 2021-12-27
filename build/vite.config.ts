@@ -1,4 +1,3 @@
-/*eslint-env node*/
 import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -18,14 +17,14 @@ export default defineConfig({
     lib: {
       entry: resolve('src/index.ts'),
       name: 'index',
-      fileName: format => {
+      fileName: (format) => {
         let fileEnd = 'js'
 
-        if(format === 'es') {
+        if (format === 'es')
           fileEnd = 'mjs'
-        }else if (format === 'umd') {
+
+        else if (format === 'umd')
           fileEnd = 'cjs'
-        }
 
         return `index.${fileEnd}`
       },

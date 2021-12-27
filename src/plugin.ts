@@ -1,9 +1,8 @@
-import {
-  reactive, shallowRef, Plugin,
-} from 'vue'
+import type { Plugin } from 'vue'
+import { reactive, shallowRef } from 'vue'
 
-import {
-  IDialog, IDialogItem, DialogInjectionKey,
+import type {
+  DialogInjectionKey, IDialog, IDialogItem,
 } from './types/Plugin'
 
 const dialogs = reactive<IDialogItem[]>([])

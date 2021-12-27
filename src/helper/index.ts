@@ -5,13 +5,14 @@
  * @returns {string | undefined}
  */
 export const convertToUnit = (str: string | number | null | undefined, unit = 'px'): string | undefined => {
-  if (str == null || str === '') {
+  if (str == null || str === '')
     return undefined
-  } else if (isNaN(+str)) {
+
+  else if (isNaN(+str))
     return String(str)
-  } else {
+
+  else
     return `${Number(str)}${unit}`
-  }
 }
 
 export const getZIndex = (el?: Element): number => {

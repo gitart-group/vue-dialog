@@ -11,10 +11,10 @@ export default defineConfig({
       addComponents({
         '.btn': {
           'backgroundColor': '#3490dc',
-          padding: '.5rem 1rem',
-          borderRadius: '.25rem',
-          color: '#fff',
-          fontWeight: '600',
+          'padding': '.5rem 1rem',
+          'borderRadius': '.25rem',
+          'color': '#fff',
+          'fontWeight': '600',
           '&:hover': {
             backgroundColor: '#2779bd',
           },

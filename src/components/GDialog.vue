@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import {
-  defineComponent, computed, ref, watch, onBeforeUnmount,
+  computed, defineComponent, onBeforeUnmount, ref, watch,
 } from 'vue'
 
 import { useStackable } from '../composable/stackable'
@@ -203,14 +203,14 @@ export default defineComponent({
     })
 
     watch(isActive, (active) => {
-      if(props.local)
+      if (props.local)
         return
 
-      if(active) {
+      if (active)
         disableScroll()
-      } else {
+
+      else
         enableScroll()
-      }
     })
 
     onBeforeUnmount(() => {
@@ -219,9 +219,8 @@ export default defineComponent({
 
     // click outside
     const onClickOutside = () => {
-      if (!props.persistent) {
+      if (!props.persistent)
         onClose()
-      }
     }
 
     // activator slot

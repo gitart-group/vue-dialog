@@ -1,4 +1,6 @@
-import { computed, ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
+
+import { computed } from 'vue'
 
 // helpers
 import { convertToUnit } from '../helper'
@@ -11,9 +13,9 @@ export interface UseSizeStyleProps {
 
 type UseSizeStyleReturnType = {
   sizeStyles: ComputedRef<{
-    maxWidth: string | undefined;
-    width: string | undefined;
-    height: string | undefined;
+    maxWidth: string | undefined
+    width: string | undefined
+    height: string | undefined
   }>
 }
 

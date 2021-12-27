@@ -1,5 +1,5 @@
-import {
-  Component, ShallowUnwrapRef, InjectionKey,
+import type {
+  Component, InjectionKey, ShallowUnwrapRef,
 } from 'vue'
 
 export interface IDialogItem {

@@ -75,21 +75,21 @@ export default defineComponent({
     ])
 
     const computedBackground = computed(() => {
-      if (typeof props.background === 'string') {
+      if (typeof props.background === 'string')
         return props.background
-      } else if(props.background) {
+
+      else if (props.background)
         return 'var(--content-bg)'
-      }
 
       return 'transparent'
     })
 
     const computedBorderRadius = computed(() => {
-      if (typeof props.borderRadius === 'string') {
+      if (typeof props.borderRadius === 'string')
         return convertToUnit(props.borderRadius)
-      } else if(props.borderRadius) {
+
+      else if (props.borderRadius)
         return 'var(--content-border-radius)'
-      }
 
       return '0'
     })

@@ -59,11 +59,11 @@ export default defineComponent({
     ])
 
     const computedBackground = computed(() => {
-      if (typeof props.background === 'string') {
+      if (typeof props.background === 'string')
         return props.background
-      } else if(props.background) {
+
+      else if (props.background)
         return 'var(--overlay-bg)'
-      }
 
       return 'transparent'
     })

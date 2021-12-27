@@ -1,5 +1,3 @@
-/*eslint-env node*/
-/* eslint-disable @typescript-eslint/no-var-requires */
 const shell = require('shelljs')
 
 shell.exec('vue-tsc --noEmit')
