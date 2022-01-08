@@ -1,17 +1,17 @@
 import type { Plugin } from 'vue'
-import { reactive, shallowRef } from 'vue'
+import { shallowReactive } from 'vue'
 
 import type {
   DialogInjectionKey, IDialog, IDialogItem,
 } from './types/Plugin'
 
-const dialogs = reactive<IDialogItem[]>([])
+const dialogs = shallowReactive<IDialogItem[]>([])
 const $dialog: IDialog = {
   dialogs,
 
   addDialog: ({ component, props }) => {
     dialogs.push({
-      component: shallowRef(component),
+      component,
       id: Date.now() + Math.random(),
 
       props: {
