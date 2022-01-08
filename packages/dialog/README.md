@@ -6,7 +6,7 @@
 
 ---
 
-📘 [Documentation](https://gitart-vue-dialog.netlify.app/)
+📘 [Documentation](https://gitart-vue-dialog.gitart.org/)
 
 🤯 [Examples](https://michaelgitart.github.io/gitart-vue-dialog/)
 
