@@ -14,8 +14,7 @@
 
 Typescript support, customizable, beautifully animated, lightweight
 
-~10.1 KiB - index.cjs `gitart-vue-dialog` <br/> 
-~9.2 KiB - index.mjs `gitart-vue-dialog/dist/index.mjs` <br/>
+~10.2 KiB - index.cjs `gitart-vue-dialog` <br/> 
 ~1.8 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
 
 
