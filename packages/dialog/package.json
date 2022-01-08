@@ -1,6 +1,6 @@
 {
   "name": "gitart-vue-dialog",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "scripts": {
     "dev": "vite --config dev/vite.config.ts",
     "build": "node build/build.js",
