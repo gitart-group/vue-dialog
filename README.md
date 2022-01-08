@@ -6,7 +6,7 @@
 
 ---
 
-📘 [Documentation](https://gitart-vue-dialog.netlify.app/)
+📘 [Documentation](https://gitart-vue-dialog.gitart.org/)
 
 🤯 [Examples](https://michaelgitart.github.io/gitart-vue-dialog/)
 
@@ -18,7 +18,7 @@ Typescript support, customizable, beautifully animated, lightweight
 ~1.8 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
 
 
-## Instalation
+## Installation
 
 ### Standalone Component
 
@@ -45,7 +45,6 @@ Be sure to read the [documentation](https://gitart-vue-dialog.netlify.app/) for 
 ```js
 import App from './App.vue'
 import { plugin as dialogPlugin } from 'gitart-vue-dialog'
-import 'gitart-vue-dialog/dist/style.css'
 
 createApp(App)
   .use(dialogPlugin)
