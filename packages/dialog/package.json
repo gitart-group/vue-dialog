@@ -31,7 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitart-vue-dialog.gitart.org",
+    "url": "https://github.com/gitart-group/vue-dialog.git",
     "directory": "packages/dialog"
   },
   "author": {
