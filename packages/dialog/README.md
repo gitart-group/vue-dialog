@@ -40,7 +40,7 @@ export default {
 
 ### Plugin
 
-Be sure to read the [documentation](https://gitart-vue-dialog.netlify.app/) for using the plugin
+Be sure to read the [documentation](https://gitart-vue-dialog.gitart.org/) for using the plugin
 
 ```js
 import App from './App.vue'
@@ -56,6 +56,6 @@ createApp(App)
 
 ## Usage
 
-Read [Documentation](https://gitart-vue-dialog.netlify.app/)
+Read [Documentation](https://gitart-vue-dialog.gitart.org/)
 
 <img src="../docs/src/public/example-video.gif" width="690" alt="Example Video">

@@ -33,7 +33,7 @@ const $dialog: IDialog = {
 
 export const errorLogger = {
   pluginIsNotInitialized(): void {
-    console.error('The gitart-vue-dialog plugin is not initialized. Read how to solve: https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html#usage')
+    console.error('The gitart-vue-dialog plugin is not initialized. Read how to solve: https://gitart-vue-dialog.gitart.org/guide/usage/plugin-usage.html#installation')
   },
 }
 
@@ -42,7 +42,7 @@ export const errorLogger = {
  *
  * Provides access to plugin methods and properties using the vue inject method
  *
- * https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html#usage
+ * https://gitart-vue-dialog.gitart.org/guide/usage/plugin-usage.html#usage
  *
  * @example Usage
  * const {
@@ -65,7 +65,7 @@ export const dialogInjectionFallback: IDialog = {
 /**
  * Plugin to install
  *
- * https://gitart-vue-dialog.netlify.app/docs/guide/plugin-usage.html - Documentation
+ * https://gitart-vue-dialog.gitart.org/guide/usage/plugin-usage.html - Documentation
  *
  * @example installation
  * import { plugin as dialogPlugin } from 'gitart-vue-dialog'
