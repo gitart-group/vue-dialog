@@ -25,7 +25,7 @@
     </a>
 
     <a
-      href="https://gitart-vue-dialog.netlify.app"
+      href="https://gitart-vue-dialog.gitart.org"
       target="_blank"
     >
       docs
