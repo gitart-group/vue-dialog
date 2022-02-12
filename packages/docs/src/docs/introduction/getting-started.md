@@ -96,4 +96,4 @@ Pretty **ugly** dialog, right? Let's add background and some content. Take a loo
 
 <Example file="Introduction/GettingStartedExampleStyled" />
 
-Looks better. Here is more advanced [examples](https://michaelgitart.github.io/gitart-vue-dialog)
+Looks better. Here is more advanced [examples](https://examples.gitart-vue-dialog.gitart.org)

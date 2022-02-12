@@ -9,7 +9,7 @@ actionText: View Docs
 actionLink: docs/introduction/getting-started
 
 altActionText: Demo
-altActionLink: https://michaelgitart.github.io/gitart-vue-dialog
+altActionLink: https://examples.gitart-vue-dialog.gitart.org
 
 features:
 - title: Customizable
