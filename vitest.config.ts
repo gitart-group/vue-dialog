@@ -1,11 +1,14 @@
-/// <reference types="vitest" />
-
-import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vitest/config'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
 
 export default defineConfig({
   plugins: [
-    Vue(),
+    vue({}) as any,
+    AutoImport({
+      imports: ['vitest'],
+      dts: 'tests/auto-imports.d.ts',
+    }),
   ],
   test: {
     global: true,

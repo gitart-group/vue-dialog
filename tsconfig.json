@@ -29,10 +29,7 @@
     "emitDecoratorMetadata": true,
     "paths": {
       "gitart-vue-dialog": ["./src/index.ts"]
-    },
-    "types": [
-      "vitest/global"
-    ]
+    }
   },
   "exclude": [
     "node_modules"
