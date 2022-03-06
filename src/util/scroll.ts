@@ -6,26 +6,26 @@
 /**
  * Polyfill for Event.prototype.composedPath
  */
-const composedPath = (e: WheelEvent): EventTarget[] => {
-  if (e.composedPath) return e.composedPath()
+// const composedPath = (e: WheelEvent): EventTarget[] => {
+//   if (e.composedPath) return e.composedPath()
 
-  const path = []
-  let el = e.target as Element | null
+//   const path = []
+//   let el = e.target as Element | null
 
-  while (el) {
-    path.push(el)
+//   while (el) {
+//     path.push(el)
 
-    if (el.tagName === 'HTML') {
-      path.push(document)
-      path.push(window)
+//     if (el.tagName === 'HTML') {
+//       path.push(document)
+//       path.push(window)
 
-      return path
-    }
+//       return path
+//     }
 
-    el = el.parentElement
-  }
-  return path
-}
+//     el = el.parentElement
+//   }
+//   return path
+// }
 
 const hasScrollbar = (el?: Element) => {
   if (!el || el.nodeType !== Node.ELEMENT_NODE) return false
@@ -40,7 +40,7 @@ const shouldScroll = (el: Element, delta: number) => {
 }
 
 export const noScrollableParent = (event: WheelEvent, content: Element | undefined): boolean => {
-  const path = composedPath(event)
+  const path = event.composedPath()
   const delta = event.deltaY
 
   for (let index = 0; index < path.length; index++) {

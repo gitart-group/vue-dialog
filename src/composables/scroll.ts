@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 
-import { getScrollbarWidth, noScrollableParent } from '../helper/scroll.helper'
+import { getScrollbarWidth, noScrollableParent } from '../util'
 
 type UseScrollParams = {
   overlay: Ref<Element | undefined>

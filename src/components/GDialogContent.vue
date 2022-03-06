@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { useSizeStyle } from '../composables/sizeStyle'
-import { convertToUnit } from '../helper'
+import { convertToUnit } from '../util'
 
 export default defineComponent({
   name: 'GDialogContent',

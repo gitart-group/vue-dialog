@@ -2,8 +2,7 @@ import type { ComputedRef } from 'vue'
 
 import { computed } from 'vue'
 
-// helpers
-import { convertToUnit } from '../helper'
+import { convertToUnit } from '../util'
 
 export interface UseSizeStyleProps {
   maxWidth?: number | string
