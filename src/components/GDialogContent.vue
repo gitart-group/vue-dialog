@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useSizeStyle } from '../composable/sizeStyle'
+import { useSizeStyle } from '../composables/sizeStyle'
 import { convertToUnit } from '../helper'
 
 export default defineComponent({

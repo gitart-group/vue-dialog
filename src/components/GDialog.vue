@@ -46,9 +46,9 @@ import {
   computed, defineComponent, onBeforeUnmount, ref, watch,
 } from 'vue'
 
-import { useStackable } from '../composable/stackable'
-import { useLazyActivation } from '../composable/lazyActivation'
-import { useScroll } from '../composable/scroll'
+import { useStackable } from '../composables/stackable'
+import { useLazyActivation } from '../composables/lazyActivation'
+import { useScroll } from '../composables/scroll'
 
 import GDialogOverlay from './GDialogOverlay.vue'
 import GDialogContent from './GDialogContent.vue'

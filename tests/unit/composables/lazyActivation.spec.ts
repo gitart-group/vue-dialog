@@ -1,5 +1,5 @@
 import { nextTick, ref } from 'vue'
-import { useLazyActivation } from '../../../src/composable/lazyActivation'
+import { useLazyActivation } from '../../../src/composables/lazyActivation'
 
 describe('Test lazyActivation composable', () => {
   it('Test `true` by default. The activation should be delayed', async() => {
