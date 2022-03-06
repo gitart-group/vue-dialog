@@ -9,7 +9,6 @@
         :active="isActive"
         :active-z-index="activeZIndex"
         :background="overlayBackground"
-        :deactivating="deactivating"
         :local="local"
         @click="onClickOutside"
       />
@@ -169,9 +168,7 @@ export default defineComponent({
       emit('update:modelValue', true)
     }
 
-    const { activatedOnce, active: isActive, deactivating } = useLazyActivation(
-      computed(() => scopedModelValue.value),
-    )
+    const { activatedOnce, active: isActive } = useLazyActivation(scopedModelValue)
 
     const { activeZIndex } = useStackable({
       activeElSelector: '.g-dialog-frame--active',
@@ -234,7 +231,6 @@ export default defineComponent({
       activatedOnce,
       activeZIndex,
       isActive,
-      deactivating,
       classes,
       styles,
       contentFrame,

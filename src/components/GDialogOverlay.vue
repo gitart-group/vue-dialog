@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <template v-if="active">
+    <template v-if="activeProxy">
       <div
         :class="classes"
         :style="styles"
@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {
-  computed, defineComponent,
+  computed, defineComponent, ref, watch,
 } from 'vue'
 
 export default defineComponent({
@@ -33,11 +33,6 @@ export default defineComponent({
       required: true,
     },
 
-    deactivating: {
-      type: Boolean,
-      required: true,
-    },
-
     local: {
       type: Boolean,
       default: false,
@@ -50,10 +45,28 @@ export default defineComponent({
     const styles = computed(() => ({
       zIndex: props.activeZIndex - 1,
     }))
+
+    const activeProxy = ref(props.active)
+    const deactivating = ref(false)
+    watch(() => props.active, (value) => {
+      deactivating.value = !value
+
+      // immediate activation
+      if (value) {
+        activeProxy.value = true
+        return
+      }
+
+      // delayed activation
+      nextTick(() => {
+        activeProxy.value = false
+      })
+    })
+
     const classes = computed(() => [
       'g-dialog-overlay',
       {
-        'g-dialog-overlay--active': props.active && !props.deactivating,
+        'g-dialog-overlay--active': !deactivating.value,
         'g-dialog-overlay--local': props.local,
       },
     ])
@@ -73,6 +86,7 @@ export default defineComponent({
     }
 
     return {
+      activeProxy,
       styles,
       classes,
       computedBackground,

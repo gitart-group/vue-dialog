@@ -3,15 +3,24 @@ import type { Ref } from 'vue'
 import { nextTick, ref, watch } from 'vue'
 
 type UseLazyActivationFunc = (baseState: Ref<boolean>) => {
+  /**
+   * determine if `baseState' was `true` at least once
+   */
   activatedOnce: Ref<boolean>
+
+  /**
+   * proxy value of baseState.
+   */
   active: Ref<boolean>
-  deactivating: Ref<boolean>
 }
 
+/**
+ * make first activation lazy: `activatedOnce` changes immediately,
+ * `active` changes on `nextTick`
+ */
 export const useLazyActivation: UseLazyActivationFunc = (baseState) => {
   const activatedOnce = ref(false)
   const active = ref(false)
-  const deactivating = ref(false)
 
   if (baseState.value) {
     activatedOnce.value = true
@@ -20,34 +29,22 @@ export const useLazyActivation: UseLazyActivationFunc = (baseState) => {
     })
   }
 
-  watch(
-    () => baseState.value,
-    (value) => {
-      if (!value) {
-        deactivating.value = true
-        nextTick(() => {
-          active.value = value
-          deactivating.value = false
-        })
-
-        return
-      }
-
-      if (activatedOnce.value) {
-        active.value = value
-        return
-      }
-
+  watch(baseState, (value) => {
+    // lazy first activation
+    if (!activatedOnce.value) {
       activatedOnce.value = true
       nextTick(() => {
         active.value = value
       })
-    },
-  )
+
+      return
+    }
+
+    active.value = value
+  })
 
   return {
     activatedOnce,
     active,
-    deactivating,
   }
 }
