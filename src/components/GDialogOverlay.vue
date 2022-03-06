@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {
-  computed, defineComponent, ref, watch,
+  computed, defineComponent, nextTick, ref, watch,
 } from 'vue'
 
 export default defineComponent({
@@ -23,7 +23,7 @@ export default defineComponent({
       required: true,
     },
 
-    activeZIndex: {
+    zIndex: {
       type: Number,
       required: true,
     },
@@ -43,7 +43,7 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const styles = computed(() => ({
-      zIndex: props.activeZIndex - 1,
+      zIndex: props.zIndex - 1,
     }))
 
     const activeProxy = ref(props.active)

@@ -7,7 +7,7 @@
         v-if="!fullscreen"
         ref="overlay"
         :active="isActive"
-        :active-z-index="activeZIndex"
+        :z-index="zIndex"
         :background="overlayBackground"
         :local="local"
         @click="onClickOutside"
@@ -46,7 +46,9 @@ import {
   computed, defineComponent, onBeforeUnmount, ref, watch,
 } from 'vue'
 
-import { useStackable } from '../composables/stackable'
+import { useEventListener } from '@vueuse/core'
+import { useStack } from '../composables/stack'
+import { useOverlay } from '../composables/overlay'
 import { useLazyActivation } from '../composables/lazyActivation'
 import { useScroll } from '../composables/scroll'
 
@@ -114,6 +116,11 @@ export default defineComponent({
       default: false,
     },
 
+    noClickAnimation: {
+      type: Boolean,
+      default: false,
+    },
+
     overlayBackground: {
       type: [Boolean, String],
       default: true,
@@ -153,6 +160,7 @@ export default defineComponent({
     const overlayElement = computed<Element | undefined>(() => overlay.value?.$el as Element)
 
     const scopedModelValue = ref(props.modelValue)
+    const { isTop } = useStack(scopedModelValue)
 
     watch(() => props.modelValue, (val) => {
       scopedModelValue.value = val
@@ -170,12 +178,31 @@ export default defineComponent({
 
     const { activatedOnce, active: isActive } = useLazyActivation(scopedModelValue)
 
-    const { activeZIndex } = useStackable({
-      activeElSelector: '.g-dialog-frame--active',
-      stackMinZIndex: 200,
-      isActive,
-      content: contentFrame,
-    })
+    const { zIndex } = useOverlay(isActive)
+
+    // Add a quick "bounce" animation to the content
+    const animateClick = () => {
+      if (props.noClickAnimation) return
+
+      contentFrame.value?.animate?.([
+        { transformOrigin: 'center' },
+        { transform: 'scale(1.03)' },
+        { transformOrigin: 'center' },
+      ], {
+        duration: 150,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      })
+    }
+
+    useEventListener('keyup', (ev) => {
+      if (ev.key === 'Escape' && isTop.value) {
+        if (!props.persistent)
+          onClose()
+
+        else
+          animateClick()
+      }
+    }, { passive: true })
 
     const classes = computed(() => [
       'g-dialog-frame',
@@ -187,7 +214,7 @@ export default defineComponent({
     ])
 
     const styles = computed(() => ({
-      zIndex: activeZIndex.value,
+      zIndex: zIndex.value,
     }))
 
     // scroll
@@ -218,6 +245,9 @@ export default defineComponent({
     const onClickOutside = () => {
       if (!props.persistent)
         onClose()
+
+      else
+        animateClick()
     }
 
     // activator slot
@@ -229,7 +259,7 @@ export default defineComponent({
 
     return {
       activatedOnce,
-      activeZIndex,
+      zIndex,
       isActive,
       classes,
       styles,
