@@ -70,7 +70,6 @@ export default defineComponent({
         'g-dialog-content--scrollable': props.scrollable,
         'g-dialog-content--depressed': props.depressed,
         'g-dialog-content--fullscreen': props.fullscreen,
-        'g-dialog-content--no-bg': props.background,
       },
     ])
 
