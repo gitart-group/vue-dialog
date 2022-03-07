@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
+
 import { useSizeStyle } from '../composables/sizeStyle'
 import { convertToUnit } from '../util'
 
@@ -24,21 +25,15 @@ export default defineComponent({
 
     class: {
       type: String,
-      default: '',
+      required: true,
     },
 
-    /**
-     * removes box-shadow for content
-     */
     depressed: {
       type: Boolean,
-      default: false,
+      required: true,
     },
 
-    fullscreen: {
-      type: Boolean,
-      default: false,
-    },
+    fullscreen: Boolean,
 
     height: {
       type: [String, Number],
@@ -47,17 +42,17 @@ export default defineComponent({
 
     maxWidth: {
       type: [String, Number],
-      default: 'none',
+      required: true,
     },
 
     scrollable: {
       type: Boolean,
-      default: false,
+      required: true,
     },
 
     width: {
       type: [String, Number],
-      default: 'auto',
+      required: true,
     },
   },
 

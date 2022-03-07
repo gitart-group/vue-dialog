@@ -1,15 +1,3 @@
-<template>
-  <Transition name="fade">
-    <template v-if="activeProxy">
-      <div
-        :class="classes"
-        :style="styles"
-        @click="onClick"
-      />
-    </template>
-  </Transition>
-</template>
-
 <script lang="ts">
 import {
   computed, defineComponent, nextTick, ref, watch,
@@ -35,7 +23,7 @@ export default defineComponent({
 
     local: {
       type: Boolean,
-      default: false,
+      required: true,
     },
   },
 
@@ -95,6 +83,18 @@ export default defineComponent({
   },
 })
 </script>
+
+<template>
+  <Transition name="fade">
+    <template v-if="activeProxy">
+      <div
+        :class="classes"
+        :style="styles"
+        @click="onClick"
+      />
+    </template>
+  </Transition>
+</template>
 
 <style lang="scss">
 .g-dialog-overlay {
