@@ -1,7 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, defineComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { useEventListener } from '@vueuse/core'
 
+import { IN_BROWSER } from '../util'
 import { useStack } from '../composables/stack'
 import { useOverlay } from '../composables/overlay'
 import { useLazyActivation } from '../composables/lazyActivation'
@@ -95,8 +96,21 @@ export default defineComponent({
     const overlayElement = computed<Element | undefined>(() => overlayComponent.value?.$el as Element)
     const frameElement = computed<Element | undefined>(() => frameComponent.value?.$el as Element)
 
-    const scopedModelValue = ref(props.modelValue)
+    const scopedModelValue = ref(false)
     const { isTop } = useStack(scopedModelValue)
+
+    /**
+     * if props.modelValue is true at app startup, set true for
+     * scopedModelValue on nextTick (after nuxt hydration).
+     *
+     * teleport on server-side gives hydration mismatch.
+     * scopedModelValue can only be true in the browser.
+     */
+    if (IN_BROWSER && props.modelValue) {
+      nextTick(() => {
+        scopedModelValue.value = true
+      })
+    }
 
     watch(() => props.modelValue, (val) => {
       scopedModelValue.value = val

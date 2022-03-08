@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 
-import { getScrollbarWidth, noScrollableParent } from '../util'
+import { IN_BROWSER, getScrollbarWidth, noScrollableParent } from '../util'
 
 type UseScrollParams = {
   overlay: Ref<Element | undefined>
@@ -23,6 +23,13 @@ export const useScroll: UseScroll = ({
   fullscreen,
   contentFullscreenClass,
 }) => {
+  if (!IN_BROWSER) {
+    return {
+      disableScroll: () => {},
+      enableScroll: () => {},
+    }
+  }
+
   let disabled = false
   let disableType: 'byEvents' | 'byOverflow'
 
