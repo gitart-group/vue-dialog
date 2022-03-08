@@ -1,4 +1,4 @@
-<p align="center"><img src="../docs/src/public/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo"></p>
+<p align="center"><img src="./src/assets/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo"></p>
 
 <h1 align="center">Gitart Vue Dialog</h1>
 
@@ -12,9 +12,9 @@
 
 🃏 [Plan for the Future](https://trello.com/b/CYcpbq4F/gitart-oss/)
 
-Typescript support, customizable, beautifully animated, lightweight
+Typescript support, customizable, beautifully animated, SSR
 
-~10.2 KiB - index.cjs `gitart-vue-dialog` <br/> 
+~13 KiB - index.cjs `gitart-vue-dialog` <br/> 
 ~1.8 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
 
 
@@ -57,4 +57,4 @@ createApp(App)
 
 Read [Documentation](http://gitart-vue-dialog.gitart.org/)
 
-<img src="../docs/src/public/example-video.gif" width="690" alt="Example Video">
+<img src="./src/assets/example-video.gif" width="690" alt="Example Video">
