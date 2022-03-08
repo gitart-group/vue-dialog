@@ -1,4 +1,4 @@
-<p align="center"><img src="./src/assets/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo"></p>
+<p align="center"><img src="src/assets/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo"></p>
 
 <h1 align="center">Gitart Vue Dialog</h1>
 
@@ -57,4 +57,4 @@ createApp(App)
 
 Read [Documentation](http://gitart-vue-dialog.gitart.org/)
 
-<img src="./src/assets/example-video.gif" width="690" alt="Example Video">
+<img src="src/assets/example-video.gif" width="690" alt="Example Video">
