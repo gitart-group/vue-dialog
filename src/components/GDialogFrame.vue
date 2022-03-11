@@ -65,6 +65,11 @@ export default defineComponent({
       required: true,
     },
 
+    transition: {
+      type: String,
+      required: true,
+    },
+
     width: {
       type: [String, Number],
       required: true,
@@ -111,26 +116,28 @@ export default defineComponent({
 </script>
 
 <template>
-  <div
-    v-show="isActive"
-    ref="frameElement"
-    :class="classes"
-    :style="styles"
-  >
-    <GDialogContent
-      :class="contentClass"
-      :max-width="maxWidth"
-      :width="width"
-      :height="height"
-      :scrollable="scrollable"
-      :depressed="depressed"
-      :fullscreen="fullscreen"
-      :background="background"
-      :border-radius="borderRadius"
+  <Transition :name="transition">
+    <div
+      v-show="isActive"
+      ref="frameElement"
+      :class="classes"
+      :style="styles"
     >
-      <slot />
-    </GDialogContent>
-  </div>
+      <GDialogContent
+        :class="contentClass"
+        :max-width="maxWidth"
+        :width="width"
+        :height="height"
+        :scrollable="scrollable"
+        :depressed="depressed"
+        :fullscreen="fullscreen"
+        :background="background"
+        :border-radius="borderRadius"
+      >
+        <slot />
+      </GDialogContent>
+    </div>
+  </Transition>
 </template>
 
 <style lang="scss">

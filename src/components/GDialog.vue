@@ -219,26 +219,25 @@ export default defineComponent({
     </Teleport>
 
     <Teleport to="body" :disabled="local">
-      <Transition :name="transition">
-        <GDialogFrame
-          ref="frameComponent"
-          :is-active="isActive"
-          :z-index="zIndex"
-          :max-width="maxWidth"
-          :width="width"
-          :height="height"
-          :scrollable="scrollable"
-          :depressed="depressed"
-          :fullscreen="fullscreen"
-          :background="background"
-          :border-radius="borderRadius"
-          :content-class="contentClass"
-          :local="local"
-          :persistent="persistent"
-        >
-          <slot :onClose="onClose" />
-        </GDialogFrame>
-      </Transition>
+      <GDialogFrame
+        ref="frameComponent"
+        :is-active="isActive"
+        :z-index="zIndex"
+        :max-width="maxWidth"
+        :width="width"
+        :height="height"
+        :scrollable="scrollable"
+        :transition="transition"
+        :depressed="depressed"
+        :fullscreen="fullscreen"
+        :background="background"
+        :border-radius="borderRadius"
+        :content-class="contentClass"
+        :local="local"
+        :persistent="persistent"
+      >
+        <slot :onClose="onClose" />
+      </GDialogFrame>
     </Teleport>
   </template>
 </template>
