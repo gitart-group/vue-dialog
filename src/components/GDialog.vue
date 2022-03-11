@@ -1,12 +1,12 @@
 <script lang="ts">
 import { computed, defineComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
-import { useEventListener } from '@vueuse/core'
 
 import { IN_BROWSER } from '../util'
 import { useStack } from '../composables/stack'
 import { useOverlay } from '../composables/overlay'
 import { useLazyActivation } from '../composables/lazyActivation'
 import { useScroll } from '../composables/scroll'
+import { useWindowEventListener } from '../composables/window'
 
 import GDialogOverlay from './GDialogOverlay.vue'
 import GDialogFrame from './GDialogFrame.vue'
@@ -137,7 +137,7 @@ export default defineComponent({
       frameComponent.value?.animateClick()
     }
 
-    useEventListener('keyup', (ev) => {
+    useWindowEventListener('keyup', (ev) => {
       if (ev.key === 'Escape' && isTop.value) {
         if (!props.persistent)
           onClose()
