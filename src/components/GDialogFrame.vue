@@ -95,7 +95,6 @@ export default defineComponent({
       'g-dialog-frame',
       {
         'g-dialog-frame--active': props.isActive,
-        'g-dialog-frame--fullscreen': props.fullscreen,
         'g-dialog-frame--local': props.local,
       },
     ])
