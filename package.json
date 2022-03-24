@@ -23,16 +23,19 @@
   "types": "dist/index.d.ts",
   "keywords": [
     "gitart",
+    "gitart dialog",
     "gitart-vue-dialog",
     "vue",
     "vue 3",
+    "vue3",
     "dialog",
     "modal",
     "dialog component",
     "modal component",
-    "vue plugin",
     "vue modal",
-    "vue dialog"
+    "vue3 modal",
+    "vue dialog",
+    "vue3 dialog"
   ],
   "repository": {
     "type": "git",
