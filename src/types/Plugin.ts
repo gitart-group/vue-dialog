@@ -16,7 +16,8 @@ type DialogAddMethod = <T>(params: {
 }) => void
 
 type DialogRemoveMethod = (
-  index: number
+  index: number,
+  closeDelay?: number
 ) => void
 
 interface IDialogMethods {

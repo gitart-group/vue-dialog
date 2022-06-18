@@ -6,29 +6,6 @@ import type {
 } from './types/Plugin'
 
 const dialogs = shallowReactive<IDialogItem[]>([])
-const $dialog: IDialog = {
-  dialogs,
-
-  addDialog: ({ component, props }) => {
-    dialogs.push({
-      component,
-      id: Date.now() + Math.random(),
-
-      props: reactive({
-        modelValue: true,
-        ...props,
-      }),
-    })
-  },
-
-  removeDialog: (index) => {
-    const dialog = dialogs[index]
-    dialog.props.modelValue = false
-    setTimeout(() => {
-      dialogs.splice(index, 1)
-    }, 150)
-  },
-}
 
 export const errorLogger = {
   pluginIsNotInitialized(): void {
@@ -73,7 +50,33 @@ export const dialogInjectionFallback: IDialog = {
  *  .mount('#app')
  */
 export const plugin: Plugin = {
-  install: (app) => {
+  install: (app, options) => {
+    const defaultCloseDelay = options?.closeDelay ?? 150
+
+    const $dialog: IDialog = {
+      dialogs,
+
+      addDialog: ({ component, props }) => {
+        dialogs.push({
+          component,
+          id: Date.now() + Math.random(),
+
+          props: reactive({
+            modelValue: true,
+            ...props,
+          }),
+        })
+      },
+
+      removeDialog: (index, closeDelay) => {
+        const dialog = dialogs[index]
+        dialog.props.modelValue = false
+        setTimeout(() => {
+          dialogs.splice(index, 1)
+        }, closeDelay ?? defaultCloseDelay)
+      },
+    }
+
     app.provide(dialogInjectionKey, $dialog)
     app.config.globalProperties.$dialog = $dialog
   },
