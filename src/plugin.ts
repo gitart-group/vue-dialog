@@ -1,5 +1,5 @@
 import type { Plugin } from 'vue'
-import { shallowReactive } from 'vue'
+import { reactive, shallowReactive } from 'vue'
 
 import type {
   DialogInjectionKey, IDialog, IDialogItem,
@@ -14,10 +14,10 @@ const $dialog: IDialog = {
       component,
       id: Date.now() + Math.random(),
 
-      props: {
+      props: reactive({
         modelValue: true,
         ...props,
-      },
+      }),
     })
   },
 
