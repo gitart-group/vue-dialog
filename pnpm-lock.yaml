@@ -6,7 +6,7 @@ specifiers:
   '@vitejs/plugin-vue': ^2.2.4
   '@vue/compiler-sfc': ^3.2.26
   '@vue/runtime-core': ^3.2.26
-  '@vue/test-utils': ^2.0.0-rc.18
+  '@vue/test-utils': ^2.0.0
   eslint: ^8.18.0
   happy-dom: ^2.25.1
   sass: ^1.45.1
@@ -29,7 +29,7 @@ devDependencies:
   '@vitejs/plugin-vue': 2.2.4_vite@2.8.6+vue@3.2.31
   '@vue/compiler-sfc': 3.2.26
   '@vue/runtime-core': 3.2.26
-  '@vue/test-utils': 2.0.0-rc.18_vue@3.2.31
+  '@vue/test-utils': 2.0.0_vue@3.2.31
   eslint: 8.18.0
   happy-dom: 2.25.1
   sass: 1.45.1
@@ -849,8 +849,8 @@ packages:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
     dev: true
 
-  /@vue/test-utils/2.0.0-rc.18_vue@3.2.31:
-    resolution: {integrity: sha512-aifolXjVdsogjaLmDoZ0FU8vN+R67aWmg9OuVeED4w5Ij5GFQLrlhM19uhWe/r5xXUL4fXMk3pX5wW6FJP1NcQ==}
+  /@vue/test-utils/2.0.0_vue@3.2.31:
+    resolution: {integrity: sha512-zL5kygNq7hONrO1CzaUGprEAklAX+pH8J1MPMCU3Rd2xtSYkZ+PmKU3oEDRg8VAGdL5lNJHzDgrud5amFPtirw==}
     peerDependencies:
       vue: ^3.0.1
     dependencies:
