@@ -236,7 +236,7 @@ export default defineComponent({
         :local="local"
         :persistent="persistent"
       >
-        <slot :onClose="onClose" />
+        <slot :on-close="onClose" />
       </GDialogFrame>
     </Teleport>
   </template>
