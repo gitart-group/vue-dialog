@@ -26,6 +26,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "jsx": "preserve",
     "emitDecoratorMetadata": true,
     "paths": {
       "gitart-vue-dialog": ["./src/index.ts"]
