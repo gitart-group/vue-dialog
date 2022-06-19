@@ -141,6 +141,8 @@ export default defineComponent({
 
 <style lang="scss">
 .g-dialog-frame {
+  --frame-transition-duration: var(--g-dialog-transition-duration, 0.2s);
+
   align-items: center;
   display: flex;
   height: 100%;
@@ -166,7 +168,7 @@ export default defineComponent({
   &-enter-active,
   &-leave-active {
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 0.2s;
+    transition-duration: var(--frame-transition-duration);
   }
 
   &-enter-from,
