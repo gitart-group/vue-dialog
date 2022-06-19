@@ -70,9 +70,11 @@ export const plugin: Plugin = {
 
       removeDialog: (index, closeDelay) => {
         const dialog = dialogs[index]
+        if (!dialog.props.modelValue)
+          return
         dialog.props.modelValue = false
         setTimeout(() => {
-          dialogs.splice(index, 1)
+          dialogs.splice(dialogs.indexOf(dialog), 1)
         }, closeDelay ?? defaultCloseDelay)
       },
     }
