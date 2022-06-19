@@ -51,7 +51,7 @@ export const dialogInjectionFallback: IDialog = {
  */
 export const plugin: Plugin = {
   install: (app, options) => {
-    const defaultCloseDelay = options?.closeDelay ?? 150
+    const defaultCloseDelay = options?.closeDelay ?? 500
 
     const $dialog: IDialog = {
       dialogs,
