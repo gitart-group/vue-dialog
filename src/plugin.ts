@@ -52,6 +52,8 @@ export const dialogInjectionFallback: IDialog = {
 export const plugin: Plugin = {
   install: (app, options) => {
     const defaultCloseDelay = options?.closeDelay ?? 500
+    // TODO make docs for this
+    const defaultProps = options?.props ?? {}
 
     const $dialog: IDialog = {
       dialogs,
@@ -63,6 +65,7 @@ export const plugin: Plugin = {
 
           props: reactive({
             modelValue: true,
+            ...defaultProps,
             ...props,
           }),
         })
