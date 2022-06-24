@@ -74,6 +74,20 @@ export default defineComponent({
 
     scrollable: Boolean,
 
+    /**
+     * CSS selector string or an actual DOM node where
+     * where to teleport dialog when it is opened.
+     */
+    teleportTo: {
+      type: String,
+      default: 'body',
+    },
+
+    /**
+     * disables teleport.
+     */
+    disableTeleport: Boolean,
+
     transition: {
       type: String,
       default: 'g-dialog-transition',
@@ -206,7 +220,7 @@ export default defineComponent({
   <slot name="activator" v-bind="activatorAttrs" />
 
   <template v-if="activatedOnce">
-    <Teleport to="body" :disabled="local">
+    <Teleport :to="teleportTo" :disabled="local || disableTeleport">
       <GDialogOverlay
         v-if="!fullscreen"
         ref="overlayComponent"
@@ -218,7 +232,7 @@ export default defineComponent({
       />
     </Teleport>
 
-    <Teleport to="body" :disabled="local">
+    <Teleport :to="teleportTo" :disabled="local || disableTeleport">
       <GDialogFrame
         ref="frameComponent"
         :is-active="isActive"
