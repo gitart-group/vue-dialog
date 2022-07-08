@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, defineComponent, getCurrentInstance, nextTick, onBeforeUnmount, onMounted, onUnmounted, ref, watch } from 'vue'
 
 import { IN_BROWSER } from '../util'
 import { useStack } from '../composables/stack'
@@ -97,6 +97,15 @@ export default defineComponent({
       type: [String, Number],
       default: 'auto',
     },
+
+    /**
+     * it true, the dialog will add hash to the url.
+     * and will be closed on browser back button.
+     */
+    closeOnBack: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: {
@@ -192,6 +201,47 @@ export default defineComponent({
 
       else
         animateClick()
+    }
+
+    // close on back button
+    if (IN_BROWSER && props.closeOnBack) {
+      const instace = getCurrentInstance()!
+
+      let currentDialogHash = `dialog-${instace.uid}`
+      if (window.location.hash)
+        currentDialogHash = `${window.location.hash.slice(1)}-${currentDialogHash}`
+
+      const popstateListener = () => {
+        if (window.location.hash.includes(currentDialogHash) || !scopedModelValue.value)
+          return
+
+        onClose()
+      }
+
+      onMounted(() => {
+        if (scopedModelValue.value)
+          window.location.hash = currentDialogHash
+
+        window.addEventListener('popstate', popstateListener)
+      })
+
+      onUnmounted(() => {
+        window.removeEventListener('popstate', popstateListener)
+      })
+
+      watch(scopedModelValue, (value) => {
+        if (!value && window.location.hash.includes(currentDialogHash)) {
+          window.history.back()
+        }
+        else if (value) {
+          if (window.location.hash)
+            currentDialogHash = `${window.location.hash.slice(1)}-${`dialog-${instace.uid}`}`
+          else
+            currentDialogHash = `dialog-${instace.uid}`
+
+          window.location.hash = `#${currentDialogHash}`
+        }
+      })
     }
 
     // activator slot
