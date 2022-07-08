@@ -1,5 +1,7 @@
 <template>
   <Playground />
+
+  <GDialogRoot />
 </template>
 
 <script lang="ts">
