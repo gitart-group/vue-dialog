@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://savelife.in.ua/en/)
+
 <p align="center"><img src="src/assets/gitart-dialog-logo.svg" width="170" alt="Gitart Vue Dialog logo"></p>
 
 <h1 align="center">Gitart Vue Dialog</h1>
@@ -10,7 +12,7 @@
 
 🤯 [Examples](https://examples.gitart-vue-dialog.gitart.org/)
 
-🃏 [Plan for the Future](https://trello.com/b/CYcpbq4F/gitart-oss/)
+⭐ [You can star it here, thanks :)](https://github.com/gitart-group/vue-dialog)
 
 Typescript support, customizable, beautifully animated, SSR
 
@@ -58,3 +60,6 @@ createApp(App)
 Read [Documentation](http://gitart-vue-dialog.gitart.org/)
 
 <img src="src/assets/example-video.gif" width="690" alt="Example Video">
+
+
+Made in Ukraine 🇺🇦 by [Mykhailo Kryvorucho](https://twitter.com/MichaelGitart)
