@@ -2,7 +2,7 @@ import type { Plugin } from 'vue'
 import { reactive, shallowReactive } from 'vue'
 
 import type {
-  DialogInjectionKey, IDialog, IDialogItem,
+  DialogInjectionKey, DialogOnCloseEvent, IDialog, IDialogItem,
 } from './types/Plugin'
 
 const dialogs = shallowReactive<IDialogItem[]>([])
@@ -58,7 +58,7 @@ export const plugin: Plugin = {
     const $dialog: IDialog = {
       dialogs,
 
-      addDialog: ({ component, props, id }) => {
+      addDialog: ({ component, props, id }, hooks) => {
         const dialogId = id ?? Date.now() + Math.random()
 
         dialogs.push({
@@ -70,6 +70,8 @@ export const plugin: Plugin = {
             ...defaultProps,
             ...props,
           }),
+
+          onClose: hooks?.onClose,
         })
 
         return dialogId
@@ -80,6 +82,23 @@ export const plugin: Plugin = {
 
         if (!dialog || !dialog.props.modelValue)
           return
+
+        let canceled = false
+        const event: DialogOnCloseEvent = {
+          id,
+          cancel: () => {
+            console.warn('Dialog closing canceled')
+            canceled = true
+          },
+          item: dialog,
+        }
+
+        if (dialog.onClose) {
+          dialog.onClose(event)
+
+          if (canceled)
+            return
+        }
 
         dialog.props.modelValue = false
         setTimeout(() => {

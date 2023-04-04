@@ -58,7 +58,10 @@ export default defineComponent({
       default: 'none',
     },
 
-    modelValue: Boolean,
+    modelValue: {
+      type: Boolean,
+      default: undefined,
+    },
 
     noClickAnimation: Boolean,
 
@@ -119,7 +122,13 @@ export default defineComponent({
     const overlayElement = computed<Element | undefined>(() => overlayComponent.value?.$el as Element)
     const frameElement = computed<Element | undefined>(() => frameComponent.value?.$el as Element)
 
+    const withModelValue = props.modelValue !== undefined
+
     const scopedModelValue = ref(false)
+    watch(() => props.modelValue, (val) => {
+      scopedModelValue.value = !!val
+    })
+
     const { isTop } = useStack(scopedModelValue)
 
     /**
@@ -135,17 +144,17 @@ export default defineComponent({
       })
     }
 
-    watch(() => props.modelValue, (val) => {
-      scopedModelValue.value = val
-    })
-
     const onClose = () => {
-      scopedModelValue.value = false
+      if (!withModelValue)
+        scopedModelValue.value = false
+
       emit('update:modelValue', false)
     }
 
     const onOpen = () => {
-      scopedModelValue.value = true
+      if (!withModelValue)
+        scopedModelValue.value = false
+
       emit('update:modelValue', true)
     }
 

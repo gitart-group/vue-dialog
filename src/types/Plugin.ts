@@ -4,19 +4,28 @@ import type {
 
 export type IDialogItemId = number | string
 
+export type DialogOnCloseEvent = {
+  id: IDialogItemId
+  item: IDialogItem
+  cancel: () => void
+}
+
 export interface IDialogItem {
   component: ShallowUnwrapRef<Component>
   id: IDialogItemId
   props: {
     modelValue: boolean
   }
+  onClose?: ((event: DialogOnCloseEvent) => void) | undefined
 }
 
 type DialogAddMethod = <T>(params: {
   component: Component
   props?: Omit<T, 'modelValue'> | undefined
   id?: IDialogItemId | undefined
-}) => IDialogItemId
+}, hooks?: {
+    onClose?: ((event: DialogOnCloseEvent) => void) | undefined
+  }) => IDialogItemId
 
 type DialogRemoveMethod = (
   id: IDialogItemId,
