@@ -2,9 +2,11 @@ import type {
   Component, InjectionKey, ShallowUnwrapRef,
 } from 'vue'
 
+export type IDialogItemId = number | string
+
 export interface IDialogItem {
   component: ShallowUnwrapRef<Component>
-  id: number
+  id: IDialogItemId
   props: {
     modelValue: boolean
   }
@@ -13,10 +15,11 @@ export interface IDialogItem {
 type DialogAddMethod = <T>(params: {
   component: Component
   props?: Omit<T, 'modelValue'> | undefined
-}) => void
+  id?: IDialogItemId | undefined
+}) => IDialogItemId
 
 type DialogRemoveMethod = (
-  index: number,
+  id: IDialogItemId,
   closeDelay?: number
 ) => void
 

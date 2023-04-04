@@ -1,14 +1,15 @@
 <template>
   <Component
     :is="dialog.component"
-    v-for="(dialog, index) in dialogs"
+    v-for="(dialog) in dialogs"
     :key="dialog.id"
     v-bind="dialog.props"
-    @update:model-value="onClose(index)"
+    @update:model-value="onClose(dialog.id)"
   />
 </template>
 
 <script lang="ts">
+import type { IDialogItemId } from 'src/types/Plugin'
 import { defineComponent, inject } from 'vue'
 
 import { dialogInjectionFallback, dialogInjectionKey, errorLogger } from '../plugin'
@@ -26,8 +27,8 @@ export default defineComponent({
     if (dialogs === dialogInjectionFallback.dialogs)
       errorLogger.pluginIsNotInitialized()
 
-    function onClose(index: number) {
-      removeDialog(index)
+    function onClose(id: IDialogItemId) {
+      removeDialog(id)
     }
 
     return {

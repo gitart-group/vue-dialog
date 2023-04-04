@@ -32,6 +32,7 @@ export const dialogInjectionFallback: IDialog = {
   dialogs: [],
   addDialog: () => {
     errorLogger.pluginIsNotInitialized()
+    return null as any
   },
   removeDialog: () => {
     errorLogger.pluginIsNotInitialized()
@@ -52,16 +53,17 @@ export const dialogInjectionFallback: IDialog = {
 export const plugin: Plugin = {
   install: (app, options) => {
     const defaultCloseDelay = options?.closeDelay ?? 500
-    // TODO make docs for this
     const defaultProps = options?.props ?? {}
 
     const $dialog: IDialog = {
       dialogs,
 
-      addDialog: ({ component, props }) => {
+      addDialog: ({ component, props, id }) => {
+        const dialogId = id ?? Date.now() + Math.random()
+
         dialogs.push({
           component,
-          id: Date.now() + Math.random(),
+          id: dialogId,
 
           props: reactive({
             modelValue: true,
@@ -69,12 +71,16 @@ export const plugin: Plugin = {
             ...props,
           }),
         })
+
+        return dialogId
       },
 
-      removeDialog: (index, closeDelay) => {
-        const dialog = dialogs[index]
-        if (!dialog.props.modelValue)
+      removeDialog: (id, closeDelay) => {
+        const dialog = dialogs.find(d => d.id === id)
+
+        if (!dialog || !dialog.props.modelValue)
           return
+
         dialog.props.modelValue = false
         setTimeout(() => {
           dialogs.splice(dialogs.indexOf(dialog), 1)
