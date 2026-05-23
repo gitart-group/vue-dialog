@@ -1,4 +1,6 @@
 <script lang="ts">
+import type { PropType } from 'vue'
+
 import { computed, defineComponent, ref } from 'vue'
 
 import GDialogContent from './GDialogContent.vue'
@@ -25,6 +27,21 @@ export default defineComponent({
       required: true,
     },
 
+    ariaDescribedby: {
+      type: String,
+      default: undefined,
+    },
+
+    ariaLabel: {
+      type: String,
+      default: undefined,
+    },
+
+    ariaLabelledby: {
+      type: String,
+      default: undefined,
+    },
+
     borderRadius: {
       type: [Boolean, Number, String],
       required: true,
@@ -42,6 +59,11 @@ export default defineComponent({
 
     fullscreen: {
       type: Boolean,
+      required: true,
+    },
+
+    handleKeydown: {
+      type: Function as PropType<(event: KeyboardEvent) => void>,
       required: true,
     },
 
@@ -77,7 +99,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const frameElement = ref<Element>()
+    const frameElement = ref<HTMLElement>()
 
     // Add a quick "bounce" animation to the content
     const animateClick = () => {
@@ -95,6 +117,7 @@ export default defineComponent({
       'g-dialog-frame',
       {
         'g-dialog-frame--active': props.isActive,
+        'g-dialog-frame--fullscreen': props.fullscreen,
         'g-dialog-frame--local': props.local,
       },
     ])
@@ -121,9 +144,17 @@ export default defineComponent({
       ref="frameElement"
       :class="classes"
       :style="styles"
+      :aria-describedby="ariaDescribedby"
+      :aria-hidden="isActive ? 'false' : 'true'"
+      :aria-label="ariaLabel"
+      :aria-labelledby="ariaLabelledby"
+      aria-modal="true"
+      role="dialog"
+      tabindex="-1"
+      @keydown="handleKeydown"
     >
       <GDialogContent
-        :class="contentClass"
+        :content-class="contentClass"
         :max-width="maxWidth"
         :width="width"
         :height="height"

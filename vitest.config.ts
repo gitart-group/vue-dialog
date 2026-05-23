@@ -11,7 +11,10 @@ export default defineConfig({
     }),
   ],
   test: {
-    global: true,
+    cache: {
+      dir: '.vitest',
+    },
+    globals: true,
     environment: 'happy-dom',
   },
 })

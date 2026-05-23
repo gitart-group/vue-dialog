@@ -23,7 +23,7 @@ export default defineComponent({
       required: true,
     },
 
-    class: {
+    contentClass: {
       type: String,
       required: true,
     },
@@ -60,7 +60,7 @@ export default defineComponent({
     const { sizeStyles: styles } = useSizeStyle(props)
     const classes = computed(() => [
       'g-dialog-content',
-      props.class,
+      props.contentClass,
       {
         'g-dialog-content--scrollable': props.scrollable,
         'g-dialog-content--depressed': props.depressed,

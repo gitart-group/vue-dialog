@@ -14,10 +14,7 @@
 
 ⭐ [You can star it here, thanks :)](https://github.com/gitart-group/vue-dialog)
 
-Typescript support, customizable, beautifully animated, SSR
-
-~13 KiB - index.cjs `gitart-vue-dialog` <br/> 
-~1.8 KiB - style.css `gitart-vue-dialog/dist/style.css` <br/> 
+Typescript support, customizable, beautifully animated, SSR, accessible focus handling, and programmatic dialogs powered by `gitart-manage-vue-dialog`.
 
 
 ## Installation
@@ -42,22 +39,50 @@ export default {
 
 ### Plugin
 
-Be sure to read the [documentation](http://gitart-vue-dialog.gitart.org/) for using the plugin
+Be sure to read the [documentation](https://gitart-vue-dialog.gitart.org/) for using the plugin
 
 ```js
 import App from './App.vue'
-import { plugin as dialogPlugin } from 'gitart-vue-dialog'
+import { GDialogRoot, plugin as dialogPlugin } from 'gitart-vue-dialog'
 
 createApp(App)
   .use(dialogPlugin)
   .mount('#app')
 ```
 
+```vue
+<template>
+  <RouterView />
+  <GDialogRoot />
+</template>
+```
+
+### Programmatic Dialogs
+
+```ts
+import { useDialogConfirm, useGDialog } from 'gitart-vue-dialog'
+import MyDialog from './MyDialog.vue'
+
+const $dialog = useGDialog()
+const confirmDialog = useDialogConfirm(MyDialog)
+
+$dialog.addDialog({
+  component: MyDialog,
+  props: {
+    title: 'Opened programmatically',
+  },
+})
+
+const confirmed = await confirmDialog({
+  title: 'Are you sure?',
+})
+```
+
 
 
 ## Usage
 
-Read [Documentation](http://gitart-vue-dialog.gitart.org/)
+Read [Documentation](https://gitart-vue-dialog.gitart.org/)
 
 <img src="src/assets/example-video.gif" width="690" alt="Example Video">
 

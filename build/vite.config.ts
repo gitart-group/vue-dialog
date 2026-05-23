@@ -1,4 +1,5 @@
 import path from 'path'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -8,36 +9,21 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  server: {
-    fs: {
-      allow: ['..'],
-    },
-  },
   build: {
     lib: {
       entry: resolve('src/index.ts'),
-      name: 'index',
+      name: 'GitartVueDialog',
+      formats: ['es', 'cjs'],
       fileName: (format) => {
-        let fileEnd = 'js'
-
         if (format === 'es')
-          fileEnd = 'mjs'
+          return 'index.mjs'
 
-        else if (format === 'umd')
-          fileEnd = 'cjs'
-
-        return `index.${fileEnd}`
+        return 'index.cjs'
       },
     },
 
     rollupOptions: {
-      external: ['vue'],
-      output: {
-        exports: 'named',
-        globals: {
-          vue: 'Vue',
-        },
-      },
+      external: ['vue', 'gitart-manage-vue-dialog'],
     },
   },
 })

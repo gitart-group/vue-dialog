@@ -1,9 +1,10 @@
+import type { ComponentInternalInstance, EffectScope, Ref } from 'vue'
+
 import {
   computed, effectScope, getCurrentInstance, onScopeDispose, ref, toRaw, watch,
 } from 'vue'
 
 // Types
-import type { ComponentInternalInstance, EffectScope, Ref } from 'vue'
 
 const stack = ref<ComponentInternalInstance[]>([])
 

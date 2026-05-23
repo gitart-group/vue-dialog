@@ -1,7 +1,16 @@
 module.exports = {
   extends: ['stylelint-config-standard'],
+  overrides: [
+    {
+      files: ['**/*.vue'],
+      customSyntax: 'postcss-html',
+    },
+    {
+      files: ['**/*.scss'],
+      customSyntax: 'postcss-scss',
+    },
+  ],
   rules: {
-    indentation: 2,
     'at-rule-no-unknown': [
       true,
       {
@@ -12,6 +21,12 @@ module.exports = {
           'responsive',
           'screen',
         ],
+      },
+    ],
+    'function-no-unknown': [
+      true,
+      {
+        ignoreFunctions: ['v-bind'],
       },
     ],
     'declaration-block-trailing-semicolon': null,

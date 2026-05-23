@@ -2,8 +2,11 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../dist",
+    "rootDir": "../src",
   },
   "files": [
-    "../src/index.ts"
+    "../src/index.ts",
+    "../src/shims-vue.d.ts",
+    "../src/types/global.d.ts"
   ]
 }

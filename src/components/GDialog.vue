@@ -1,5 +1,17 @@
 <script lang="ts">
-import { computed, defineComponent, getCurrentInstance, nextTick, onBeforeUnmount, onMounted, onUnmounted, ref, watch } from 'vue'
+import type { PropType } from 'vue'
+
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  onUnmounted,
+  ref,
+  watch,
+} from 'vue'
 
 import { IN_BROWSER } from '../util'
 import { useStack } from '../composables/stack'
@@ -10,6 +22,36 @@ import { useWindowEventListener } from '../composables/window'
 
 import GDialogOverlay from './GDialogOverlay.vue'
 import GDialogFrame from './GDialogFrame.vue'
+
+const FOCUSABLE_SELECTOR = [
+  'a[href]',
+  'area[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  'iframe',
+  'object',
+  'embed',
+  '[contenteditable="true"]',
+  '[tabindex]:not([tabindex="-1"])',
+].join(', ')
+
+const isFocusableTarget = (value: unknown): value is HTMLElement | SVGElement => {
+  return value instanceof HTMLElement || value instanceof SVGElement
+}
+
+const getFocusableElements = (container?: Element): Array<HTMLElement | SVGElement> => {
+  if (!container)
+    return []
+
+  return Array.from(container.querySelectorAll<HTMLElement | SVGElement>(FOCUSABLE_SELECTOR))
+    .filter((element) => {
+      const htmlElement = element as HTMLElement
+      return !htmlElement.hasAttribute('disabled')
+        && htmlElement.getAttribute('aria-hidden') !== 'true'
+    })
+}
 
 export default defineComponent({
   name: 'GDialog',
@@ -23,6 +65,21 @@ export default defineComponent({
     background: {
       type: [Boolean, String],
       default: true,
+    },
+
+    ariaDescribedby: {
+      type: String,
+      default: undefined,
+    },
+
+    ariaLabel: {
+      type: String,
+      default: undefined,
+    },
+
+    ariaLabelledby: {
+      type: String,
+      default: undefined,
     },
 
     borderRadius: {
@@ -45,6 +102,11 @@ export default defineComponent({
     height: {
       type: [String, Number],
       default: 'auto',
+    },
+
+    initialFocus: {
+      type: [String, Object] as PropType<string | HTMLElement | SVGElement | null>,
+      default: undefined,
     },
 
     /**
@@ -70,6 +132,11 @@ export default defineComponent({
       default: true,
     },
 
+    restoreFocus: {
+      type: Boolean,
+      default: true,
+    },
+
     /**
      * clicking outside content will not close modal
      */
@@ -82,8 +149,13 @@ export default defineComponent({
      * where to teleport dialog when it is opened.
      */
     teleportTo: {
-      type: String,
+      type: [String, Object] as PropType<string | HTMLElement | SVGElement>,
       default: 'body',
+    },
+
+    trapFocus: {
+      type: Boolean,
+      default: true,
     },
 
     /**
@@ -120,29 +192,20 @@ export default defineComponent({
     const frameComponent = ref<InstanceType<typeof GDialogFrame> | null>(null)
 
     const overlayElement = computed<Element | undefined>(() => overlayComponent.value?.$el as Element)
-    const frameElement = computed<Element | undefined>(() => frameComponent.value?.$el as Element)
+    const frameElement = computed<HTMLElement | undefined>(() => frameComponent.value?.$el as HTMLElement)
 
     const withModelValue = props.modelValue !== undefined
 
     const scopedModelValue = ref(false)
+    const mounted = ref(false)
     watch(() => props.modelValue, (val) => {
+      if (!withModelValue || !mounted.value)
+        return
+
       scopedModelValue.value = !!val
     })
 
     const { isTop } = useStack(scopedModelValue)
-
-    /**
-     * if props.modelValue is true at app startup, set true for
-     * scopedModelValue on nextTick (after nuxt hydration).
-     *
-     * teleport on server-side gives hydration mismatch.
-     * scopedModelValue can only be true in the browser.
-     */
-    if (IN_BROWSER && props.modelValue) {
-      nextTick(() => {
-        scopedModelValue.value = true
-      })
-    }
 
     const onClose = () => {
       if (!withModelValue)
@@ -153,7 +216,7 @@ export default defineComponent({
 
     const onOpen = () => {
       if (!withModelValue)
-        scopedModelValue.value = false
+        scopedModelValue.value = true
 
       emit('update:modelValue', true)
     }
@@ -169,17 +232,103 @@ export default defineComponent({
       frameComponent.value?.animateClick()
     }
 
-    useWindowEventListener('keyup', (ev) => {
-      if (ev.key === 'Escape' && isTop.value) {
-        if (!props.persistent)
-          onClose()
+    const lastFocusedElement = ref<HTMLElement | SVGElement | null>(null)
 
-        else
-          animateClick()
+    const focusDialog = () => {
+      const currentFrameElement = frameElement.value
+
+      if (!currentFrameElement || !isTop.value)
+        return
+
+      let focusTarget: HTMLElement | SVGElement | null = null
+
+      if (typeof props.initialFocus === 'string') {
+        focusTarget = currentFrameElement.querySelector<HTMLElement>(props.initialFocus)
+          ?? document.querySelector<HTMLElement>(props.initialFocus)
       }
+      else if (isFocusableTarget(props.initialFocus)) {
+        focusTarget = props.initialFocus
+      }
+
+      const elementToFocus = focusTarget ?? getFocusableElements(currentFrameElement)[0] ?? currentFrameElement
+      elementToFocus.focus({ preventScroll: true })
+    }
+
+    const restorePreviousFocus = () => {
+      if (!props.restoreFocus)
+        return
+
+      lastFocusedElement.value?.focus({ preventScroll: true })
+    }
+
+    const handleFrameKeydown = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab' || !props.trapFocus || !isActive.value || !isTop.value)
+        return
+
+      const currentFrameElement = frameElement.value
+      if (!currentFrameElement)
+        return
+
+      const focusableElements = getFocusableElements(currentFrameElement)
+      if (!focusableElements.length) {
+        event.preventDefault()
+        currentFrameElement.focus({ preventScroll: true })
+        return
+      }
+
+      const firstFocusableElement = focusableElements[0]
+      const lastFocusableElement = focusableElements[focusableElements.length - 1]
+      const activeElement = document.activeElement
+
+      if (!activeElement || !currentFrameElement.contains(activeElement)) {
+        event.preventDefault()
+        ;(event.shiftKey ? lastFocusableElement : firstFocusableElement).focus({ preventScroll: true })
+        return
+      }
+
+      if (!event.shiftKey && activeElement === lastFocusableElement) {
+        event.preventDefault()
+        firstFocusableElement.focus({ preventScroll: true })
+      }
+      else if (event.shiftKey && activeElement === firstFocusableElement) {
+        event.preventDefault()
+        lastFocusableElement.focus({ preventScroll: true })
+      }
+    }
+
+    useWindowEventListener('keyup', (ev) => {
+      if (!isActive.value || ev.key !== 'Escape' || !isTop.value)
+        return
+
+      if (!props.persistent)
+        onClose()
+
+      else
+        animateClick()
     }, { passive: true })
 
-    // scroll
+    useWindowEventListener('keydown', (ev) => {
+      if (ev.key !== 'Tab')
+        return
+
+      handleFrameKeydown(ev)
+    }, { passive: false })
+
+    onMounted(() => {
+      mounted.value = true
+
+      if (withModelValue)
+        scopedModelValue.value = !!props.modelValue
+    })
+
+    watch(isTop, (value) => {
+      if (value && isActive.value) {
+        nextTick(() => {
+          focusDialog()
+        })
+      }
+    })
+
     const { enableScroll, disableScroll } = useScroll({
       overlay: overlayElement,
       content: frameElement,
@@ -188,19 +337,40 @@ export default defineComponent({
       contentFullscreenClass: 'g-dialog-frame--fullscreen',
     })
 
-    watch(isActive, (active) => {
-      if (props.local)
+    // scroll + focus lifecycle
+    watch(isActive, (active, previousActive) => {
+      if (!props.local) {
+        if (active)
+          disableScroll()
+        else
+          enableScroll()
+      }
+
+      if (!IN_BROWSER)
         return
 
-      if (active)
-        disableScroll()
+      if (active && !previousActive) {
+        const activeElement = document.activeElement
+        lastFocusedElement.value = isFocusableTarget(activeElement)
+          ? activeElement
+          : null
 
-      else
-        enableScroll()
+        nextTick(() => {
+          focusDialog()
+        })
+      }
+      else if (!active && previousActive) {
+        nextTick(() => {
+          restorePreviousFocus()
+        })
+      }
     })
 
     onBeforeUnmount(() => {
       enableScroll()
+
+      if (scopedModelValue.value)
+        restorePreviousFocus()
     })
 
     // click outside
@@ -214,9 +384,9 @@ export default defineComponent({
 
     // close on back button
     if (IN_BROWSER && props.closeOnBack) {
-      const instace = getCurrentInstance()!
+      const instance = getCurrentInstance()!
 
-      let currentDialogHash = `dialog-${instace.uid}`
+      let currentDialogHash = `dialog-${instance.uid}`
       if (window.location.hash)
         currentDialogHash = `${window.location.hash.slice(1)}-${currentDialogHash}`
 
@@ -229,7 +399,7 @@ export default defineComponent({
 
       onMounted(() => {
         if (scopedModelValue.value)
-          window.location.hash = currentDialogHash
+          window.location.hash = `#${currentDialogHash}`
 
         window.addEventListener('popstate', popstateListener)
       })
@@ -244,9 +414,9 @@ export default defineComponent({
         }
         else if (value) {
           if (window.location.hash)
-            currentDialogHash = `${window.location.hash.slice(1)}-${`dialog-${instace.uid}`}`
+            currentDialogHash = `${window.location.hash.slice(1)}-dialog-${instance.uid}`
           else
-            currentDialogHash = `dialog-${instace.uid}`
+            currentDialogHash = `dialog-${instance.uid}`
 
           window.location.hash = `#${currentDialogHash}`
         }
@@ -268,6 +438,7 @@ export default defineComponent({
       zIndex,
       isActive,
       activatorAttrs,
+      handleFrameKeydown,
       onClickOutside,
       onClose,
     }
@@ -299,6 +470,9 @@ export default defineComponent({
         :max-width="maxWidth"
         :width="width"
         :height="height"
+        :aria-describedby="ariaDescribedby"
+        :aria-label="ariaLabel"
+        :aria-labelledby="ariaLabelledby"
         :scrollable="scrollable"
         :transition="transition"
         :depressed="depressed"
@@ -306,8 +480,8 @@ export default defineComponent({
         :background="background"
         :border-radius="borderRadius"
         :content-class="contentClass"
+        :handle-keydown="handleFrameKeydown"
         :local="local"
-        :persistent="persistent"
       >
         <slot :on-close="onClose" />
       </GDialogFrame>

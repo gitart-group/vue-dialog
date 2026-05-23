@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import type { IDialogItemId } from 'src/types/Plugin'
+import type { IDialogItemId } from '../types/Plugin'
+
 import { defineComponent, inject } from 'vue'
 
 import { dialogInjectionFallback, dialogInjectionKey, errorLogger } from '../plugin'

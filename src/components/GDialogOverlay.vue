@@ -98,13 +98,10 @@ export default defineComponent({
 
 <style lang="scss">
 .g-dialog-overlay {
-  --overlay-bg: var(--g-dialog-overlay-bg, rgba(33, 33, 33, 0.46));
+  --overlay-bg: var(--g-dialog-overlay-bg, rgb(33 33 33 / 46%));
 
   position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;

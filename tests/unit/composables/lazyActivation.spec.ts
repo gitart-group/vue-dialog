@@ -1,4 +1,5 @@
 import { nextTick, ref } from 'vue'
+
 import { useLazyActivation } from '../../../src/composables/lazyActivation'
 
 describe('Test lazyActivation composable', () => {

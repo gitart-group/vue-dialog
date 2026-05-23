@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
     "lib": [
-      "es2015",
-      "es2016",
-      "es2017",
-      "es2018",
-      "es2019",
-      "es2020",
+      "ES2020",
       "dom",
       "dom.iterable"
     ],
@@ -18,19 +12,13 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "downlevelIteration": true,
     "strict": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
-    "experimentalDecorators": true,
     "skipLibCheck": true,
-    "jsx": "preserve",
-    "emitDecoratorMetadata": true,
-    "paths": {
-      "gitart-vue-dialog": ["./src/index.ts"]
-    }
+    "jsx": "preserve"
   },
   "exclude": [
     "node_modules",
