@@ -168,7 +168,7 @@ const value = await pickValueDialog({
 - Keyboard focus can be trapped inside the active dialog
 - `Escape` closes only the top-most dialog
 - Overlay clicks close the dialog unless `persistent` is enabled
-- `closeOnBack` integrates with browser history
+- `closeOnBack` integrates with browser history; `disableUseCloseOnBack` opts out when that sync is managed externally
 - `teleportTo`, `disableTeleport`, and `local` help control where the dialog is rendered
 - `fullscreen`, `scrollable`, `maxWidth`, `width`, `height`, `background`, and `borderRadius` cover common layout and UI needs
 

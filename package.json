@@ -1,6 +1,6 @@
 {
   "name": "gitart-vue-dialog",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "keywords": [
     "gitart",
     "gitart dialog",
@@ -65,7 +65,7 @@
     "vue": "^3.2.47"
   },
   "dependencies": {
-    "gitart-manage-vue-dialog": "^1.0.1"
+    "gitart-manage-vue-dialog": "^1.1.0-alpha.0"
   },
   "devDependencies": {
     "@gitart/eslint-config-vue": "0.3.0",
