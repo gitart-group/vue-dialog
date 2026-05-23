@@ -8,10 +8,10 @@ import {
   nextTick,
   onBeforeUnmount,
   onMounted,
-  onUnmounted,
   ref,
   watch,
 } from 'vue'
+import { useCloseOnBack } from 'gitart-manage-vue-dialog'
 
 import { IN_BROWSER } from '../util'
 import { useStack } from '../composables/stack'
@@ -181,6 +181,12 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+
+    /**
+     * disables internal useCloseOnBack integration.
+     * useful when history/hash sync is managed externally.
+     */
+    disableUseCloseOnBack: Boolean,
   },
 
   emits: {
@@ -188,6 +194,7 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
+    const instance = getCurrentInstance()!
     const overlayComponent = ref<InstanceType<typeof GDialogOverlay> | null>(null)
     const frameComponent = ref<InstanceType<typeof GDialogFrame> | null>(null)
 
@@ -382,46 +389,12 @@ export default defineComponent({
         animateClick()
     }
 
-    // close on back button
-    if (IN_BROWSER && props.closeOnBack) {
-      const instance = getCurrentInstance()!
-
-      let currentDialogHash = `dialog-${instance.uid}`
-      if (window.location.hash)
-        currentDialogHash = `${window.location.hash.slice(1)}-${currentDialogHash}`
-
-      const popstateListener = () => {
-        if (window.location.hash.includes(currentDialogHash) || !scopedModelValue.value)
-          return
-
-        onClose()
-      }
-
-      onMounted(() => {
-        if (scopedModelValue.value)
-          window.location.hash = `#${currentDialogHash}`
-
-        window.addEventListener('popstate', popstateListener)
-      })
-
-      onUnmounted(() => {
-        window.removeEventListener('popstate', popstateListener)
-      })
-
-      watch(scopedModelValue, (value) => {
-        if (!value && window.location.hash.includes(currentDialogHash)) {
-          window.history.back()
-        }
-        else if (value) {
-          if (window.location.hash)
-            currentDialogHash = `${window.location.hash.slice(1)}-dialog-${instance.uid}`
-          else
-            currentDialogHash = `dialog-${instance.uid}`
-
-          window.location.hash = `#${currentDialogHash}`
-        }
-      })
-    }
+    useCloseOnBack({
+      active: scopedModelValue,
+      closeOnBack: props.closeOnBack && !props.disableUseCloseOnBack,
+      dialogHash: `dialog-${instance.uid}`,
+      onClose,
+    })
 
     // activator slot
     const activatorAttrs = {

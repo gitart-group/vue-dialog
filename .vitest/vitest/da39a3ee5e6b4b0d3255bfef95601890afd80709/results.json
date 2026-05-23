@@ -1,0 +1,1 @@
+{"version":"4.1.7","results":[[":tests/unit/GDialog.spec.ts",{"duration":69.32174999999984,"failed":false}],[":tests/unit/GDialogRoot.spec.ts",{"duration":36.18900000000008,"failed":false}],[":tests/unit/plugin.spec.ts",{"duration":32.18116700000007,"failed":false}],[":tests/unit/composables/lazyActivation.spec.ts",{"duration":3.006208000000015,"failed":false}]]}

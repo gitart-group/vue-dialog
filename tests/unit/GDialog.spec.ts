@@ -200,4 +200,71 @@ describe('GDialog', () => {
 
     expect(wrapper.vm.dialog).toBe(false)
   })
+
+  it('does not duplicate the dialog hash when mounted open', async() => {
+    mount(defineComponent({
+      components: {
+        GDialog,
+      },
+      setup() {
+        const dialog = ref(true)
+
+        return {
+          dialog,
+        }
+      },
+      template: `
+        <GDialog
+          v-model="dialog"
+          close-on-back
+          disable-teleport
+        >
+          <div>Content</div>
+        </GDialog>
+      `,
+    }), {
+      attachTo: document.body,
+    })
+
+    await waitForDialog()
+
+    expect(window.location.hash.match(/dialog-\d+/g)).toHaveLength(1)
+  })
+
+  it('does not wire browser history when useCloseOnBack is disabled', async() => {
+    const wrapper = mount(defineComponent({
+      components: {
+        GDialog,
+      },
+      setup() {
+        const dialog = ref(true)
+
+        return {
+          dialog,
+        }
+      },
+      template: `
+        <GDialog
+          v-model="dialog"
+          close-on-back
+          disable-use-close-on-back
+          disable-teleport
+        >
+          <div>Content</div>
+        </GDialog>
+      `,
+    }), {
+      attachTo: document.body,
+    })
+
+    await waitForDialog()
+
+    expect(window.location.hash).toBe('')
+
+    window.location.hash = '#external-route'
+    window.dispatchEvent(new PopStateEvent('popstate'))
+    await waitForDialog()
+
+    expect(wrapper.vm.dialog).toBe(true)
+  })
 })

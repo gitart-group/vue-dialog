@@ -1,2 +1,4 @@
 allowBuilds:
   '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - gitart-manage-vue-dialog@1.1.0-alpha.0
